@@ -1,19 +1,27 @@
 from lark import Lark
-json_parser = Lark("""
-    exp: symbol 
-        | value 
-        | op1 exp 
-        | exp op2 exp 
-    
-    value: "true" 
-        | "false"
-    
-    symbol: ESCAPED_STRING
-    op1: "!"
-    op2: "&" | "|"
+ds3_parser = Lark("""
+    e: value f_* 
+        | op1 e
+        | "(" e ")" f_*
 
-    %import common.ESCAPED_STRING
+    f_: op2 e 
+        
+    !value: "true" 
+        | "false"
+        | symbol
+    
+    !op1: "~"
+    !op2: "&" | "|" | "->"
+
+    symbol: WORD
+
+    %import common.WORD
     %import common.WS
     %ignore WS
 
-    """, start='exp')
+    """, start='e')
+
+print(ds3_parser.parse('''
+        ~(A&B) & ~B & ~A
+    '''
+))
