@@ -1,7 +1,6 @@
-#implementar a execucao de prova com estrategia
-
 model = 'modelo'
 stateTree = ['w1']
+spn = 'caminho'
 
 def solve(state, valid, formulae):
     if(formulae.__contains__('->')):
@@ -15,7 +14,13 @@ def solve(state, valid, formulae):
     else:
         return symbol(state,valid,formulae)
 
-def implication(state,valid,formulae):
+#<s,π>ϕ
+# Inicialmente vou supor que a marcação é sempre a marcação inicial e
+#  o programa é a própria rede.
+# Logo, preciso guardar o caminho do arquivo que representa a rede apenas.
+#def modal(state, valid, formulae):   
+
+def implication(state, valid, formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
     exp = formulae.split("->")
     lhs = exp[0]
@@ -69,11 +74,5 @@ def valid_on_state(state,symbol):
         #return symbol in valor_function(state)
         return False
 
-#print(solve('w1',True,'FALSE'))
-#print(solve('w1',True,'A'))
-#print(solve('w1',True,'~A'))
-#print(solve('w1',True,'~A&~B'))
-#print(solve('w1',True,'A|B'))
-#print(solve('w1',True,'~A|B'))
 print(solve('w1',True,'A->B'))
 print(solve('w1',True,'~A->B'))
