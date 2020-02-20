@@ -1,12 +1,13 @@
-from lark import Lark
-ds3_parser = Lark("""
-    e: value f_* 
-        | op1 e
-        | "(" e ")" f_*
+from lark import Lark, Visitor
 
-    f_: op2 e 
+ds3_parser = Lark("""
+    _exp: _value _e* 
+        | op1 _exp
+        | "(" _exp ")" _e*
+
+    _e: op2 _exp 
         
-    !value: "true" 
+    _value: "true" 
         | "false"
         | symbol
     
@@ -19,9 +20,18 @@ ds3_parser = Lark("""
     %import common.WS
     %ignore WS
 
-    """, start='e')
+    """, start='_exp')
 
-print(ds3_parser.parse('''
-        ~(A&B) & ~B & ~A
-    '''
-))
+#parse_tree = ds3_parser.parse(''' ~(A&B) & ~B & ~A ''')
+#parse_tree = ds3_parser.parse(''' A & B ''')
+
+#print(parse_tree)
+#print(parse_tree.children[1])
+
+class Print_Tokens(Visitor):
+  def symbol(self, tree):
+    assert tree.data == "symbol"
+    t = tree.children[0]
+    print(t)
+
+#Print_Tokens().visit(parse_tree)

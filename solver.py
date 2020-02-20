@@ -56,9 +56,8 @@ def conjunction(state,valid,formulae):
 
 def negate(state,valid,formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
-    formulae = formulae[1:]
     
-    return solve(state,not valid, formulae)
+    return solve(state,not valid, formulae[1:])
 
 def symbol(state,valid,formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
@@ -75,4 +74,4 @@ def valid_on_state(state,symbol):
         return False
 
 print(solve('w1',True,'A->B'))
-print(solve('w1',True,'~A->B'))
+#print(solve('w1',True,'~A->B'))
