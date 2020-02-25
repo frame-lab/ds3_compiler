@@ -1,10 +1,17 @@
-import stormpy.examples
-import stormpy.examples.files
+import stormpy 
 
-path = stormpy.examples.files.prism_dtmc_die
-prism_program = stormpy.parse_prism_program(path)
+path = '/code/example_models/philosophers.jani'
 
-model = stormpy.build_model(prism_program)
-print("Number of states: {}".format(model.nr_states))
+properties = { 
+    
+}
 
-print("Labels: {}".format(model.labeling.get_labels()))
+jani_program, properties = stormpy.parse_jani_model(path)
+
+print(properties)
+
+#model = stormpy.build_model(jani_program, properties)
+
+#print(model.model_type)
+
+#print("Labels: {}".format(model.labeling.get_labels()))

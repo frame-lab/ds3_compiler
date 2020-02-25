@@ -19,6 +19,10 @@ def solve(state, valid, formulae):
 #  o programa é a própria rede.
 # Logo, preciso guardar o caminho do arquivo que representa a rede apenas.
 #def modal(state, valid, formulae):   
+#Onde guardar o arquivo da rede? Ele precisa ser dado na propria formula?
+#    caminho_arquivo_rede, formula
+
+
 
 def implication(state, valid, formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)

@@ -1,20 +1,33 @@
 from lark import Lark, Visitor
 
 ds3_parser = Lark("""
-    _exp: _value _e* 
-        | op1 _exp
-        | "(" _exp ")" _e*
-
-    _e: op2 _exp 
+    _exp: "(" _exp ")"
+        | _op2    
+        | _op1
+        | _value 
         
-    _value: "true" 
-        | "false"
-        | symbol
+    _op1: diamond
+        | box
+        | negate
     
-    !op1: "~"
-    !op2: "&" | "|" | "->"
+    _op2: conjunction
+        | disjunction
+        | implication
 
-    symbol: WORD
+    _value: true | false | symbol
+    
+    true: "true"
+    false: "false"
+    symbol: WORD  
+
+    negate: "~" _exp
+    conjunction: _exp "&" _exp
+    disjunction: _exp "|" _exp
+    implication: _exp "->" _exp
+    diamond: "<" path ">" _exp
+    box: "[" path "]" _exp
+
+    path: WORD
 
     %import common.WORD
     %import common.WS
@@ -22,16 +35,5 @@ ds3_parser = Lark("""
 
     """, start='_exp')
 
-#parse_tree = ds3_parser.parse(''' ~(A&B) & ~B & ~A ''')
-#parse_tree = ds3_parser.parse(''' A & B ''')
-
-#print(parse_tree)
-#print(parse_tree.children[1])
-
-class Print_Tokens(Visitor):
-  def symbol(self, tree):
-    assert tree.data == "symbol"
-    t = tree.children[0]
-    print(t)
-
-#Print_Tokens().visit(parse_tree)
+parse_tree = ds3_parser.parse(''' ~(A&B) & ~B & ~A ''')
+print(parse_tree)
