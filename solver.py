@@ -3,16 +3,20 @@ stateTree = ['w1']
 spn = 'caminho'
 
 def solve(state, valid, formulae):
-    if(formulae.__contains__('->')):
-        return implication(state,valid,formulae)
-    elif(formulae.__contains__('|')):
-        return disjunction(state,valid,formulae)
-    elif(formulae.__contains__('&')):
+    if(formulae.data == 'conjunction'):
         return conjunction(state,valid,formulae)
-    elif(formulae.startswith('~')):
+    elif(formulae.data == 'disjunction'):
+        return disjunction(state,valid,formulae)
+    elif(formulae.data == 'implication'):
+        return implication(state,valid,formulae)
+    elif(formulae.data == 'negate'):
         return negate(state,valid,formulae)
-    else:
+    elif(formulae.data == 'symbol'):
         return symbol(state,valid,formulae)
+    elif(formulae.data == 'true'):
+        return True
+    elif(formulae.data == 'false'):
+        return False
 
 #<s,π>ϕ
 # Inicialmente vou supor que a marcação é sempre a marcação inicial e
@@ -22,13 +26,15 @@ def solve(state, valid, formulae):
 #Onde guardar o arquivo da rede? Ele precisa ser dado na propria formula?
 #    caminho_arquivo_rede, formula
 
-
+# def diamond: "<" path ">" _exp
+    
+# def box: "[" path "]" _exp
 
 def implication(state, valid, formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
-    exp = formulae.split("->")
-    lhs = exp[0]
-    rhs = exp[1]
+    
+    lhs = formulae.children[0]
+    rhs = formulae.children[1]
 
     if valid:
         return solve(state,False,lhs) or solve(state,True,rhs)
@@ -37,9 +43,9 @@ def implication(state, valid, formulae):
 
 def disjunction(state,valid,formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
-    exp = formulae.split('|')
-    lhs = exp[0]
-    rhs = exp[1]
+    
+    lhs = formulae.children[0]
+    rhs = formulae.children[1]
 
     if valid:
         return solve(state,True,lhs) or solve(state,True,rhs)
@@ -49,9 +55,9 @@ def disjunction(state,valid,formulae):
 
 def conjunction(state,valid,formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
-    exp = formulae.split('&')
-    lhs = exp[0]
-    rhs = exp[1]
+    
+    lhs = formulae.children[0]
+    rhs = formulae.children[1]
 
     if valid:
         return solve(state,True,lhs) and solve(state,True,rhs)
@@ -61,7 +67,7 @@ def conjunction(state,valid,formulae):
 def negate(state,valid,formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
     
-    return solve(state,not valid, formulae[1:])
+    return solve(state,not valid, formulae.children[0])
 
 def symbol(state,valid,formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
@@ -77,5 +83,4 @@ def valid_on_state(state,symbol):
         #return symbol in valor_function(state)
         return False
 
-print(solve('w1',True,'A->B'))
-#print(solve('w1',True,'~A->B'))
+#print(solve('w1',True,'A->B'))
