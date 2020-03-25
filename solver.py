@@ -1,9 +1,13 @@
+import stormpy
+
 model = 'modelo'
 stateTree = ['w1']
 spn = 'caminho'
 
 def solve(state, valid, formulae):
-    if(formulae.data == 'conjunction'):
+    if(formulae.data == 'diamond'):
+        return diamond(state,valid,formulae)
+    elif(formulae.data == 'conjunction'):
         return conjunction(state,valid,formulae)
     elif(formulae.data == 'disjunction'):
         return disjunction(state,valid,formulae)
@@ -18,16 +22,25 @@ def solve(state, valid, formulae):
     elif(formulae.data == 'false'):
         return False
 
-#<s,π>ϕ
-# Inicialmente vou supor que a marcação é sempre a marcação inicial e
-#  o programa é a própria rede.
-# Logo, preciso guardar o caminho do arquivo que representa a rede apenas.
-#def modal(state, valid, formulae):   
-#Onde guardar o arquivo da rede? Ele precisa ser dado na propria formula?
-#    caminho_arquivo_rede, formula
 
-# def diamond: "<" path ">" _exp
+def diamond(state, valid, formulae):  
     
+    print("State:",state,"Entails:",valid,"Formulae:",formulae)
+    
+    path = formulae.children[0]
+    #exp = formulae.children[1]
+
+    jani_program, properties = stormpy.parse_jani_model(path)
+    #properties = stormpy.parse_properties_for_jani_model(formula,jani_program)
+    model = stormpy.build_model(jani_program, properties)
+
+    print("Storm Output:")
+    print("\tNumber of states: {}".format(model.nr_states))
+    print("\tNumber of transitions: {}".format(model.nr_transitions))
+    print("\tLabels: {}".format(model.labeling.get_labels()))
+    
+    return 
+
 # def box: "[" path "]" _exp
 
 def implication(state, valid, formulae):
@@ -74,13 +87,6 @@ def symbol(state,valid,formulae):
     return valid_on_state(state,formulae) if valid else not valid_on_state(state,formulae)
 
 def valid_on_state(state,symbol):
-    if symbol == 'TRUE':
-        return True
-    elif symbol == 'FALSE':
-        return False
-    else:
-        #Futuramente tera o link com a funcao de valoracao
-        #return symbol in valor_function(state)
-        return False
-
-#print(solve('w1',True,'A->B'))
+    #Futuramente tera o link com a funcao de valoracao
+    #return symbol in valor_function(state)
+    return False

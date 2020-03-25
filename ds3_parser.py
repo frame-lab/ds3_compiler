@@ -17,30 +17,21 @@ def ds3_parser():
 
         _value: true | false | symbol
         
-        true: "true"
-        false: "false"
-        symbol: WORD  
-
         negate: "~" _exp
         conjunction: _exp "&" _exp
         disjunction: _exp "|" _exp
         implication: _exp "->" _exp
-        diamond: "<" path ">" _exp
-        box: "[" path "]" _exp
+        diamond: "<" PATH ">" _exp
+        box: "[" PATH "]" _exp
+        
+        true: "true"
+        false: "false"
+        symbol: WORD  
 
-        path: WORD
+        PATH: /(\/{0,1}(((\w)|(\.)|(\\\s))+\/)*((\w)|(\.)|(\\\s))+)|\//
 
         %import common.WORD
         %import common.WS
         %ignore WS
 
         """, start='_exp')
-
-#parse_tree = ds3_parser.parse(''' ~(A&B) & ~B & ~A ''')
-
-#print(parse_tree.data)
-
-# for child in parse_tree.children:
-#     print(child.data)
-
-#print(parse_tree.pretty())
