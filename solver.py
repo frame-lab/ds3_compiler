@@ -22,23 +22,37 @@ def solve(state, valid, formulae):
     elif(formulae.data == 'false'):
         return False
 
-
 def diamond(state, valid, formulae):  
-    
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
     
     path = formulae.children[0]
-    #exp = formulae.children[1]
+    exp = formulae.children[1]
+
+    # #Path: Token 
+    # #Exp: Tree
+    # print("\nPath:" + path)
+    # print("\nExp:" + exp.data)
 
     jani_program, properties = stormpy.parse_jani_model(path)
-    #properties = stormpy.parse_properties_for_jani_model(formula,jani_program)
+    properties = stormpy.parse_properties_for_jani_model(exp.data,jani_program)
     model = stormpy.build_model(jani_program, properties)
+    result = stormpy.check_model_sparse(model, properties[0])
+    initial_state = model.initial_states[0]
 
     print("Storm Output:")
     print("\tNumber of states: {}".format(model.nr_states))
     print("\tNumber of transitions: {}".format(model.nr_transitions))
     print("\tLabels: {}".format(model.labeling.get_labels()))
+    print("\tProperty check result: {}".format(result.at(initial_state)))
     
+    ## TO-DO:
+
+    # State control structure
+    # Check if the SPN has transitions with probability of firing > 0
+    # If it has create a new state on the structure
+    # Check if exp is valid based on Storm Output
+    # Return accordingly to the Solver function
+
     return 
 
 # def box: "[" path "]" _exp
