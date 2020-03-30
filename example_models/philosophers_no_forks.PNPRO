@@ -2,14 +2,14 @@
 <!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="Dining Philosophers" version="121">
   <gspn name="Philosophers4">
     <nodes>
-      <place marking="1" name="fork1" x="21.0" y="4.0"/>
+      <place name="fork1" x="21.0" y="4.0"/>
       <transition delay="lambda" delay-x="-0.5" delay-y="1.5" name="T0" rotation="0.7853981633974483" type="EXP" x="26.55" y="9.0"/>
       <transition delay="lambda" name="T1" rotation="2.356194490192345" type="EXP" x="16.55" y="9.0"/>
-      <place marking="1" name="fork4" x="11.0" y="14.0"/>
-      <place marking="1" name="fork2" x="31.0" y="14.0"/>
+      <place name="fork4" x="11.0" y="14.0"/>
+      <place name="fork2" x="31.0" y="14.0"/>
       <transition delay="lambda" delay-x="0.0" delay-y="1.5" name="T2" rotation="0.7853981633974483" type="EXP" x="16.55" y="19.0"/>
       <transition delay="lambda" name="T3" rotation="2.356194490192345" type="EXP" x="26.55" y="19.0"/>
-      <place marking="1" name="fork3" x="21.0" y="24.0"/>
+      <place name="fork3" x="21.0" y="24.0"/>
       <place name="eating1" x="11.0" y="9.0"/>
       <place label-y="-1.5" marking="1" name="thinking1" x="16.0" y="4.0"/>
       <place label-y="-1.5" name="wait1" x="6.0" y="4.0"/>

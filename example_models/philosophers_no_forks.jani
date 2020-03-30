@@ -793,487 +793,20 @@
             ],
             "locations": [
                 {
-                    "name": "loc",
-                    "transient-values": [
-                        {
-                            "comment": "deadl <- (((((((((((((((eating2 < 1) | ((thinking2 + 1) > 1)) | ((fork2 + 1) > 1)) | ((fork1 + 1) > 1)) & ((((eating1 < 1) | ((fork4 + 1) > 1)) | ((thinking1 + 1) > 1)) | ((fork1 + 1) > 1))) & ((((eating4 < 1) | ((fork3 + 1) > 1)) | ((thinking4 + 1) > 1)) | ((fork4 + 1) > 1))) & ((((eating3 < 1) | ((fork2 + 1) > 1)) | ((thinking3 + 1) > 1)) | ((fork3 + 1) > 1))) & (((fork4 < 1) | (wait1 < 1)) | ((eating1 + 1) > 1))) & (((wait3 < 1) | (fork2 < 1)) | ((eating3 + 1) > 1))) & (((thinking2 < 1) | (fork2 < 1)) | ((wait2 + 1) > 1))) & (((thinking4 < 1) | (fork4 < 1)) | ((wait4 + 1) > 1))) & (((fork1 < 1) | (thinking1 < 1)) | ((wait1 + 1) > 1))) & (((fork1 < 1) | (wait2 < 1)) | ((eating2 + 1) > 1))) & (((fork3 < 1) | (thinking3 < 1)) | ((wait3 + 1) > 1))) & (((fork3 < 1) | (wait4 < 1)) | ((eating4 + 1) > 1)))",
-                            "ref": "deadl",
-                            "value": {
-                                "left": {
-                                    "left": {
-                                        "left": {
-                                            "left": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": "fork3",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": "wait4",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    }
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": {
-                                                        "left": "eating4",
-                                                        "op": "+",
-                                                        "right": 1
-                                                    },
-                                                    "op": ">",
-                                                    "right": 1
-                                                }
-                                            },
-                                            "op": "∧",
-                                            "right": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": {
-                                                            "left": "fork1",
-                                                            "op": "+",
-                                                            "right": 1
-                                                        },
-                                                        "op": ">",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": {
-                                                            "left": "fork4",
-                                                            "op": "+",
-                                                            "right": 1
-                                                        },
-                                                        "op": ">",
-                                                        "right": 1
-                                                    }
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": {
-                                                        "left": {
-                                                            "left": "thinking1",
-                                                            "op": "+",
-                                                            "right": 1
-                                                        },
-                                                        "op": ">",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": "eating1",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "op": "∧",
-                                        "right": {
-                                            "left": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": "thinking2",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": "fork2",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    }
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": {
-                                                        "left": "wait2",
-                                                        "op": "+",
-                                                        "right": 1
-                                                    },
-                                                    "op": ">",
-                                                    "right": 1
-                                                }
-                                            },
-                                            "op": "∧",
-                                            "right": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": "wait3",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": "fork2",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    }
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": {
-                                                        "left": "eating3",
-                                                        "op": "+",
-                                                        "right": 1
-                                                    },
-                                                    "op": ">",
-                                                    "right": 1
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "op": "∧",
-                                    "right": {
-                                        "left": {
-                                            "left": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": "fork1",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": "wait2",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    }
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": {
-                                                        "left": "eating2",
-                                                        "op": "+",
-                                                        "right": 1
-                                                    },
-                                                    "op": ">",
-                                                    "right": 1
-                                                }
-                                            },
-                                            "op": "∧",
-                                            "right": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": {
-                                                            "left": "fork4",
-                                                            "op": "+",
-                                                            "right": 1
-                                                        },
-                                                        "op": ">",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": {
-                                                            "left": "fork3",
-                                                            "op": "+",
-                                                            "right": 1
-                                                        },
-                                                        "op": ">",
-                                                        "right": 1
-                                                    }
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": {
-                                                        "left": {
-                                                            "left": "thinking4",
-                                                            "op": "+",
-                                                            "right": 1
-                                                        },
-                                                        "op": ">",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": "eating4",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "op": "∧",
-                                        "right": {
-                                            "left": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": "fork1",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": "thinking1",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    }
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": {
-                                                        "left": "wait1",
-                                                        "op": "+",
-                                                        "right": 1
-                                                    },
-                                                    "op": ">",
-                                                    "right": 1
-                                                }
-                                            },
-                                            "op": "∧",
-                                            "right": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": {
-                                                            "left": "fork3",
-                                                            "op": "+",
-                                                            "right": 1
-                                                        },
-                                                        "op": ">",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": {
-                                                            "left": "fork2",
-                                                            "op": "+",
-                                                            "right": 1
-                                                        },
-                                                        "op": ">",
-                                                        "right": 1
-                                                    }
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": {
-                                                        "left": {
-                                                            "left": "thinking3",
-                                                            "op": "+",
-                                                            "right": 1
-                                                        },
-                                                        "op": ">",
-                                                        "right": 1
-                                                    },
-                                                    "op": "∨",
-                                                    "right": {
-                                                        "left": "eating3",
-                                                        "op": "<",
-                                                        "right": 1
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": {
-                                        "left": {
-                                            "left": {
-                                                "left": {
-                                                    "left": "fork3",
-                                                    "op": "<",
-                                                    "right": 1
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": "thinking3",
-                                                    "op": "<",
-                                                    "right": 1
-                                                }
-                                            },
-                                            "op": "∨",
-                                            "right": {
-                                                "left": {
-                                                    "left": "wait3",
-                                                    "op": "+",
-                                                    "right": 1
-                                                },
-                                                "op": ">",
-                                                "right": 1
-                                            }
-                                        },
-                                        "op": "∧",
-                                        "right": {
-                                            "left": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": "fork1",
-                                                        "op": "+",
-                                                        "right": 1
-                                                    },
-                                                    "op": ">",
-                                                    "right": 1
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": {
-                                                        "left": "thinking2",
-                                                        "op": "+",
-                                                        "right": 1
-                                                    },
-                                                    "op": ">",
-                                                    "right": 1
-                                                }
-                                            },
-                                            "op": "∨",
-                                            "right": {
-                                                "left": {
-                                                    "left": {
-                                                        "left": "fork2",
-                                                        "op": "+",
-                                                        "right": 1
-                                                    },
-                                                    "op": ">",
-                                                    "right": 1
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": "eating2",
-                                                    "op": "<",
-                                                    "right": 1
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "op": "∧",
-                                    "right": {
-                                        "left": {
-                                            "left": {
-                                                "left": {
-                                                    "left": "thinking4",
-                                                    "op": "<",
-                                                    "right": 1
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": "fork4",
-                                                    "op": "<",
-                                                    "right": 1
-                                                }
-                                            },
-                                            "op": "∨",
-                                            "right": {
-                                                "left": {
-                                                    "left": "wait4",
-                                                    "op": "+",
-                                                    "right": 1
-                                                },
-                                                "op": ">",
-                                                "right": 1
-                                            }
-                                        },
-                                        "op": "∧",
-                                        "right": {
-                                            "left": {
-                                                "left": {
-                                                    "left": "fork4",
-                                                    "op": "<",
-                                                    "right": 1
-                                                },
-                                                "op": "∨",
-                                                "right": {
-                                                    "left": "wait1",
-                                                    "op": "<",
-                                                    "right": 1
-                                                }
-                                            },
-                                            "op": "∨",
-                                            "right": {
-                                                "left": {
-                                                    "left": "eating1",
-                                                    "op": "+",
-                                                    "right": 1
-                                                },
-                                                "op": ">",
-                                                "right": 1
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    ]
+                    "name": "loc"
                 }
             ],
             "name": "gspn_automaton",
             "variables": []
         }
     ],
-    "constants": [
-        {
-            "name": "TIME_BOUND",
-            "type": "real"
-        }
-    ],
+    "constants": [],
     "features": [
         "derived-operators"
     ],
     "jani-version": 1,
     "name": "Philosophers4",
-    "properties": [
-        {
-            "expression": {
-                "fun": "values",
-                "op": "filter",
-                "states": {
-                    "op": "initial"
-                },
-                "values": {
-                    "exp": {
-                        "left": true,
-                        "op": "U",
-                        "right": "deadl"
-                    },
-                    "op": "Pmax"
-                }
-            },
-            "name": "MaxPrReachDeadlock"
-        },
-        {
-            "expression": {
-                "fun": "values",
-                "op": "filter",
-                "states": {
-                    "op": "initial"
-                },
-                "values": {
-                    "exp": {
-                        "left": true,
-                        "op": "U",
-                        "right": "deadl",
-                        "time-bounds": {
-                            "upper": "TIME_BOUND",
-                            "upper-exclusive": false
-                        }
-                    },
-                    "op": "Pmax"
-                }
-            },
-            "name": "MaxPrReachDeadlockTB"
-        },
-        {
-            "expression": {
-                "fun": "values",
-                "op": "filter",
-                "states": {
-                    "op": "initial"
-                },
-                "values": {
-                    "accumulate": [
-                        "time"
-                    ],
-                    "exp": 1,
-                    "op": "Emin",
-                    "reach": "deadl"
-                }
-            },
-            "name": "MinExpTimeDeadlock"
-        }
-    ],
+    "properties": [],
     "restrict-initial": {
         "exp": true
     },
@@ -1287,170 +820,84 @@
     "type": "ctmc",
     "variables": [
         {
-            "initial-value": 1,
+            "initial-value": 0,
             "name": "fork1",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
-            "initial-value": 1,
+            "initial-value": 0,
             "name": "fork4",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
-            "initial-value": 1,
+            "initial-value": 0,
             "name": "fork2",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
-            "initial-value": 1,
+            "initial-value": 0,
             "name": "fork3",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 0,
             "name": "eating1",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 1,
             "name": "thinking1",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 0,
             "name": "wait1",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 0,
             "name": "eating2",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 1,
             "name": "thinking2",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 0,
             "name": "wait2",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 0,
             "name": "eating3",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 1,
             "name": "thinking4",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 0,
             "name": "eating4",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 1,
             "name": "thinking3",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 0,
             "name": "wait3",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
+            "type": "int"
         },
         {
             "initial-value": 0,
             "name": "wait4",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 1
-            }
-        },
-        {
-            "initial-value": false,
-            "name": "deadl",
-            "transient": true,
-            "type": "bool"
+            "type": "int"
         }
     ]
 }
