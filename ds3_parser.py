@@ -2,7 +2,7 @@ from lark import Lark
 
 def ds3_parser():
     return Lark("""
-        _exp: "(" _exp ")"
+            _exp: "(" _exp ")"
             | _op2    
             | _op1
             | _value 
@@ -15,7 +15,10 @@ def ds3_parser():
             | disjunction
             | implication
 
-        _value: true | false | symbol
+        _value: true 
+            | false 
+            | loc_exp 
+            | symbol
         
         negate: "~" _exp
         conjunction: _exp "&" _exp
@@ -26,6 +29,7 @@ def ds3_parser():
         
         true: "true"
         false: "false"
+        loc_exp: /[a-zA-Z_][a-zA-Z_0-9]*\s*(<=|>=|!=|<|>|=)?\s*[\d]*/
         symbol: WORD  
 
         PATH: /(\/{0,1}(((\w)|(\.)|(\\\s))+\/)*((\w)|(\.)|(\\\s))+)|\//

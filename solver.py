@@ -1,7 +1,16 @@
 import stormpy
 
+class StateTree:
+    def __init__(self, model):
+        self.model = model
+        self.children = []
+    
+    def append_child(self, node):
+        if isinstance(node, StateTree):
+            self.children.append(node)
+
 model = 'modelo'
-stateTree = ['w1']
+stateTree = StateTree('w1')
 spn = 'caminho'
 
 def solve(state, valid, formulae):
@@ -23,6 +32,10 @@ def solve(state, valid, formulae):
         return False
 
 def diamond(state, valid, formulae):  
+    if not valid:
+        print("not yet implemented")
+        return 
+
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
     
     path = formulae.children[0]
@@ -34,28 +47,65 @@ def diamond(state, valid, formulae):
     # print("\nExp:" + exp.data)
 
     jani_program, properties = stormpy.parse_jani_model(path)
-    properties = stormpy.parse_properties_for_jani_model(exp.data,jani_program)
     model = stormpy.build_model(jani_program, properties)
-    result = stormpy.check_model_sparse(model, properties[0])
-    initial_state = model.initial_states[0]
 
-    print("Storm Output:")
+    print("Model - Storm Output:")
     print("\tNumber of states: {}".format(model.nr_states))
     print("\tNumber of transitions: {}".format(model.nr_transitions))
     print("\tLabels: {}".format(model.labeling.get_labels()))
-    print("\tProperty check result: {}".format(result.at(initial_state)))
+
+    if valid:
+        #Check if there's modality(diamond or box) inside of formulae
+        if tem_modalidade_dentro():
+            if networkExecutes(model):
+                #Updates State Tree
+                new_state = StateTree(model)
+                stateTree.children.append(new_state)
+
+                return solve(state,True,exp)
+            else:
+                return False
+        else:
+            # No modality inside
+            # Goes directly to Storm
+            if networkExecutes(model): 
+                #Atualiza referencia da arvore de estados
+                new_state = StateTree(model)
+                stateTree.children.append(new_state)
+                
+                #True/False (Quantity must be resolved to true or false ?)
+                return model_check_storm(jani_program,exp)
+            else:
+                return False
+    else:
+        #~<spn> formula == [spn] ~formula
+        return 
     
-    ## TO-DO:
+    
+def tem_modalidade_dentro():
+    return False
 
-    # State control structure
-    # Check if the SPN has transitions with probability of firing > 0
-    # If it has create a new state on the structure
-    # Check if exp is valid based on Storm Output
-    # Return accordingly to the Solver function
+def model_check_storm(program, storm_formula):
+    print(storm_formula)
 
-    return 
+    properties = stormpy.parse_properties_for_jani_model("eating1 = 1",program)
+    model = stormpy.build_model(program, properties)
+    result = stormpy.check_model_sparse(model, properties[0])
+    
+    #Change to consider only final states instead of initial states
+    initial_state = model.initial_states[0]
+    print("\tProperty check \nResult (for initial states): {}".format(result.at(initial_state)))
 
-# def box: "[" path "]" _exp
+    return result.at(initial_state)
+
+def networkExecutes(model):
+    #TO DO - Evolve the condigiton: How to verify if the network executes?
+    return model.nr_states > 1
+
+#def box(state, valid, formulae):    
+
+# def net_markup_exp: 
+#   Ex.: "eating1=1"
 
 def implication(state, valid, formulae):
     print("State:",state,"Entails:",valid,"Formulae:",formulae)
@@ -103,4 +153,8 @@ def symbol(state,valid,formulae):
 def valid_on_state(state,symbol):
     #Futuramente tera o link com a funcao de valoracao
     #return symbol in valor_function(state)
+
+    # Check if exp is valid based on Storm Output
+    # Ex.: Is "eating1=1" valid on state?
+    #   If there's no state(execution) "eating1=1" is false
     return False
