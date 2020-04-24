@@ -1,5 +1,6 @@
 from solver import solve
 from ds3_parser import ds3_parser
+from solver import StateTree
 
 # import sys
 
@@ -20,8 +21,12 @@ parse_tree = parser.parse("< {} > eating1 = 1".format(network))
 
 print(parse_tree.pretty())
 
+#Default Initial State
+stateTree = StateTree('w1','w1')
+
 #Lembrar de ignorar o no raiz da arvore que possui _exp
 print(solve('w1',True,parse_tree.children[0]))
+
 
 # for child in parse_tree.children:
 #     print(child.data

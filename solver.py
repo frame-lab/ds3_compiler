@@ -1,7 +1,12 @@
 import stormpy
+from datetime import datetime
 
 class StateTree:
-    def __init__(self, model):
+    def __init__(self, model, name= None):
+        if name:
+            self.name = name
+        else:
+            self.name = str(datetime.now())
         self.model = model
         self.children = []
     
@@ -9,9 +14,6 @@ class StateTree:
         if isinstance(node, StateTree):
             self.children.append(node)
 
-model = 'modelo'
-stateTree = StateTree('w1')
-spn = 'caminho'
 
 def solve(state, valid, formulae):
     if(formulae.data == 'diamond'):
@@ -36,7 +38,7 @@ def diamond(state, valid, formulae):
         print("not yet implemented")
         return 
 
-    print("State:",state,"Entails:",valid,"Formulae:",formulae)
+    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
     
     path = formulae.children[0]
     exp = formulae.children[1]
@@ -55,12 +57,11 @@ def diamond(state, valid, formulae):
     print("\tLabels: {}".format(model.labeling.get_labels()))
 
     if valid:
-        #Check if there's modality(diamond or box) inside of formulae
-        if tem_modalidade_dentro():
+        if has_modality(exp):
             if networkExecutes(model):
                 #Updates State Tree
                 new_state = StateTree(model)
-                stateTree.children.append(new_state)
+                state.children.append(new_state)
 
                 return solve(state,True,exp)
             else:
@@ -71,9 +72,11 @@ def diamond(state, valid, formulae):
             if networkExecutes(model): 
                 #Atualiza referencia da arvore de estados
                 new_state = StateTree(model)
-                stateTree.children.append(new_state)
+                state.children.append(new_state)
                 
                 #True/False (Quantity must be resolved to true or false ?)
+
+                # TO DO - Get a node corresponding String Formulae (reconstruct the subtree to a string)
                 return model_check_storm(jani_program,exp)
             else:
                 return False
@@ -81,25 +84,33 @@ def diamond(state, valid, formulae):
         #~<spn> formula == [spn] ~formula
         return 
     
+def has_modality(formulae):
+    if formulae.data == "diamond" or formulae.data == "box":
+       return True
     
-def tem_modalidade_dentro():
+    for index in range(len(formulae.children)):
+        if has_modality(formulae.children[index]):
+            return True 
     return False
 
 def model_check_storm(program, storm_formula):
-    print(storm_formula)
+    #Marcação do estado & garantir que o estado é final (definir propriedade e passar pro storm)
 
-    properties = stormpy.parse_properties_for_jani_model("eating1 = 1",program)
+    print("Storm Formula:" + storm_formula)
+
+    #properties = stormpy.parse_properties_for_jani_model("eating1 = 1",program)
+    properties = stormpy.parse_properties_for_jani_model(storm_formula,program)
     model = stormpy.build_model(program, properties)
     result = stormpy.check_model_sparse(model, properties[0])
     
     #Change to consider only final states instead of initial states
     initial_state = model.initial_states[0]
-    print("\tProperty check \nResult (for initial states): {}".format(result.at(initial_state)))
+    print("\tProperty check \n\t\tResult (for initial states): {}".format(result.at(initial_state)))
 
     return result.at(initial_state)
 
 def networkExecutes(model):
-    #TO DO - Evolve the condigiton: How to verify if the network executes?
+    #TO DO - Evolve the condition: How to verify if the network executes?
     return model.nr_states > 1
 
 #def box(state, valid, formulae):    
@@ -108,7 +119,7 @@ def networkExecutes(model):
 #   Ex.: "eating1=1"
 
 def implication(state, valid, formulae):
-    print("State:",state,"Entails:",valid,"Formulae:",formulae)
+    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
     
     lhs = formulae.children[0]
     rhs = formulae.children[1]
@@ -119,7 +130,7 @@ def implication(state, valid, formulae):
         return solve(state,True,lhs) and solve(state,False,rhs)
 
 def disjunction(state,valid,formulae):
-    print("State:",state,"Entails:",valid,"Formulae:",formulae)
+    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
     
     lhs = formulae.children[0]
     rhs = formulae.children[1]
@@ -131,7 +142,7 @@ def disjunction(state,valid,formulae):
 
 
 def conjunction(state,valid,formulae):
-    print("State:",state,"Entails:",valid,"Formulae:",formulae)
+    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
     
     lhs = formulae.children[0]
     rhs = formulae.children[1]
@@ -142,12 +153,12 @@ def conjunction(state,valid,formulae):
         return solve(state,False,lhs) or solve(state,False,rhs)
 
 def negate(state,valid,formulae):
-    print("State:",state,"Entails:",valid,"Formulae:",formulae)
+    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
     
     return solve(state,not valid, formulae.children[0])
 
 def symbol(state,valid,formulae):
-    print("State:",state,"Entails:",valid,"Formulae:",formulae)
+    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
     return valid_on_state(state,formulae) if valid else not valid_on_state(state,formulae)
 
 def valid_on_state(state,symbol):
