@@ -57,29 +57,25 @@ def diamond(state, valid, formulae):
     print("\tLabels: {}".format(model.labeling.get_labels()))
 
     if valid:
-        if has_modality(exp):
-            if networkExecutes(model):
-                #Updates State Tree
-                new_state = StateTree(model)
-                state.children.append(new_state)
+        if not networkExecutes(model):
+            return False 
 
-                return solve(state,True,exp)
-            else:
-                return False
+        ## Quando que o meu estado muda no sentido de estado no sentido de ds3?
+        ## E no sentido do storm?
+
+        #Updates State Tree
+        new_state = StateTree(model)
+        state.children.append(new_state)
+
+        if has_modality(exp):    
+            return solve(new_state,True,exp)
         else:
-            # No modality inside
-            # Goes directly to Storm
-            if networkExecutes(model): 
-                #Atualiza referencia da arvore de estados
-                new_state = StateTree(model)
-                state.children.append(new_state)
-                
-                #True/False (Quantity must be resolved to true or false ?)
+            # No modality inside -> Goes directly to Storm
+            
+            #True/False (Quantity must be resolved to true or false ?)
 
-                # TO DO - Get a node corresponding String Formulae (reconstruct the subtree to a string)
-                return model_check_storm(jani_program,exp)
-            else:
-                return False
+            # TO DO - Get a node corresponding String Formulae (reconstruct the subtree to a string)
+            return model_check_storm(jani_program,syntax_tree_to_string(exp))
     else:
         #~<spn> formula == [spn] ~formula
         return 
@@ -112,6 +108,15 @@ def model_check_storm(program, storm_formula):
 def networkExecutes(model):
     #TO DO - Evolve the condition: How to verify if the network executes?
     return model.nr_states > 1
+
+def syntax_tree_to_string(exp):
+    ## How to transform the syntax tree back to a string in an easy way?
+    # Use recursion to mount the string
+    # Use a function that relates non token/terminals with their respective string counterpart
+    #   Ex.: implication => "->"
+    #       negation => "~"
+    #       conjunction => "&"
+    return ""
 
 #def box(state, valid, formulae):    
 
