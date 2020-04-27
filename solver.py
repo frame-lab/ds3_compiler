@@ -60,9 +60,6 @@ def diamond(state, valid, formulae):
         if not networkExecutes(model):
             return False 
 
-        ## Quando que o meu estado muda no sentido de estado no sentido de ds3?
-        ## E no sentido do storm?
-
         #Updates State Tree
         new_state = StateTree(model)
         state.children.append(new_state)
@@ -70,11 +67,8 @@ def diamond(state, valid, formulae):
         if has_modality(exp):    
             return solve(new_state,True,exp)
         else:
-            # No modality inside -> Goes directly to Storm
-            
+            # No modality inside -> Goes directly to Storm 
             #True/False (Quantity must be resolved to true or false ?)
-
-            # TO DO - Get a node corresponding String Formulae (reconstruct the subtree to a string)
             return model_check_storm(jani_program,syntax_tree_to_string(exp))
     else:
         #~<spn> formula == [spn] ~formula
@@ -91,7 +85,6 @@ def has_modality(formulae):
 
 def model_check_storm(program, storm_formula):
     #Marcação do estado & garantir que o estado é final (definir propriedade e passar pro storm)
-
     print("Storm Formula:" + storm_formula)
 
     #properties = stormpy.parse_properties_for_jani_model("eating1 = 1",program)
@@ -109,14 +102,21 @@ def networkExecutes(model):
     #TO DO - Evolve the condition: How to verify if the network executes?
     return model.nr_states > 1
 
-def syntax_tree_to_string(exp):
-    ## How to transform the syntax tree back to a string in an easy way?
-    # Use recursion to mount the string
-    # Use a function that relates non token/terminals with their respective string counterpart
-    #   Ex.: implication => "->"
-    #       negation => "~"
-    #       conjunction => "&"
-    return ""
+def syntax_tree_to_string(formulae):
+    if formulae.data == "negate":
+        return "~ (" + syntax_tree_to_string(formulae.children[0]) + ")"
+    elif formulae.data == "conjunction":
+        return syntax_tree_to_string(formulae.children[0]) + "&" + syntax_tree_to_string(formulae.children[1])
+    elif formulae.data == "disjunction":
+        return syntax_tree_to_string(formulae.children[0]) + "|" + syntax_tree_to_string(formulae.children[1])
+    elif formulae.data == "implication":
+        return syntax_tree_to_string(formulae.children[0]) + "->" + syntax_tree_to_string(formulae.children[1])
+    elif formulae.data == "true":
+        return "true"
+    elif formulae.data == "false":
+        return "false"
+    else:  #Token elements
+        return formulae
 
 #def box(state, valid, formulae):    
 
