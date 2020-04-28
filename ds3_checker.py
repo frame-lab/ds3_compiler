@@ -17,7 +17,7 @@ network = 'example_models/philosophers.jani'
 parser = ds3_parser()
 #parse_tree = ds3_parser.parse(''' ~(A&B) & ~B & ~A ''')
 #parse_tree = parser.parse('A | B -> ~B')
-parse_tree = parser.parse("< {} > eating1 = 1".format(network))
+parse_tree = parser.parse("< {} > thinking1 = 1".format(network))
 
 print(parse_tree.pretty())
 
@@ -25,8 +25,7 @@ print(parse_tree.pretty())
 stateTree = StateTree('w1','w1')
 
 #Lembrar de ignorar o no raiz da arvore que possui _exp
-print(solve('w1',True,parse_tree.children[0]))
-
+print(solve(stateTree,True,parse_tree.children[0]))
 
 # for child in parse_tree.children:
 #     print(child.data

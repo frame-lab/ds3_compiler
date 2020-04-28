@@ -1,5 +1,6 @@
 import stormpy
 from datetime import datetime
+from lark import Token
 
 class StateTree:
     def __init__(self, model, name= None):
@@ -67,14 +68,16 @@ def diamond(state, valid, formulae):
         if has_modality(exp):    
             return solve(new_state,True,exp)
         else:
-            # No modality inside -> Goes directly to Storm 
-            #True/False (Quantity must be resolved to true or false ?)
+            #Storm Output: True/False (Quantity must be resolved to true or false ?)
             return model_check_storm(jani_program,syntax_tree_to_string(exp))
     else:
         #~<spn> formula == [spn] ~formula
         return 
     
 def has_modality(formulae):
+    if isinstance(formulae,Token):  #Ignore Tokens
+        return False
+
     if formulae.data == "diamond" or formulae.data == "box":
        return True
     
@@ -84,17 +87,17 @@ def has_modality(formulae):
     return False
 
 def model_check_storm(program, storm_formula):
-    #Marcação do estado & garantir que o estado é final (definir propriedade e passar pro storm)
-    print("Storm Formula:" + storm_formula)
+    ## TO-DO:
+    #   Return result from final states only
+    print("Storm - Check Property: " + storm_formula)
 
-    #properties = stormpy.parse_properties_for_jani_model("eating1 = 1",program)
     properties = stormpy.parse_properties_for_jani_model(storm_formula,program)
     model = stormpy.build_model(program, properties)
     result = stormpy.check_model_sparse(model, properties[0])
     
     #Change to consider only final states instead of initial states
     initial_state = model.initial_states[0]
-    print("\tProperty check \n\t\tResult (for initial states): {}".format(result.at(initial_state)))
+    print("\t\tResult (for initial states): {}".format(result.at(initial_state)))
 
     return result.at(initial_state)
 
@@ -103,7 +106,14 @@ def networkExecutes(model):
     return model.nr_states > 1
 
 def syntax_tree_to_string(formulae):
-    if formulae.data == "negate":
+    """ 
+        Syntax Tree to String conversion
+            Currently not considering Modality and Loc_Exp
+    """ 
+
+    if isinstance(formulae, Token):
+        return formulae
+    elif formulae.data == "negate":
         return "~ (" + syntax_tree_to_string(formulae.children[0]) + ")"
     elif formulae.data == "conjunction":
         return syntax_tree_to_string(formulae.children[0]) + "&" + syntax_tree_to_string(formulae.children[1])
@@ -115,8 +125,8 @@ def syntax_tree_to_string(formulae):
         return "true"
     elif formulae.data == "false":
         return "false"
-    else:  #Token elements
-        return formulae
+    else:
+        return syntax_tree_to_string(formulae.children[0])
 
 #def box(state, valid, formulae):    
 
@@ -124,7 +134,7 @@ def syntax_tree_to_string(formulae):
 #   Ex.: "eating1=1"
 
 def implication(state, valid, formulae):
-    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
+    print("State:", state.name,"Entails:",valid,"Formulae:",formulae)
     
     lhs = formulae.children[0]
     rhs = formulae.children[1]
@@ -135,7 +145,7 @@ def implication(state, valid, formulae):
         return solve(state,True,lhs) and solve(state,False,rhs)
 
 def disjunction(state,valid,formulae):
-    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
+    print("State:", state.name,"Entails:",valid,"Formulae:",formulae)
     
     lhs = formulae.children[0]
     rhs = formulae.children[1]
@@ -147,7 +157,7 @@ def disjunction(state,valid,formulae):
 
 
 def conjunction(state,valid,formulae):
-    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
+    print("State:", state.name,"Entails:",valid,"Formulae:",formulae)
     
     lhs = formulae.children[0]
     rhs = formulae.children[1]
@@ -158,17 +168,18 @@ def conjunction(state,valid,formulae):
         return solve(state,False,lhs) or solve(state,False,rhs)
 
 def negate(state,valid,formulae):
-    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
+    print("State:", state.name,"Entails:",valid,"Formulae:",formulae)
     
     return solve(state,not valid, formulae.children[0])
 
 def symbol(state,valid,formulae):
-    print("State:",state.name,"Entails:",valid,"Formulae:",formulae)
+    print("State:", state.name,"Entails:",valid,"Formulae:",formulae)
     return valid_on_state(state,formulae) if valid else not valid_on_state(state,formulae)
 
 def valid_on_state(state,symbol):
-    #Futuramente tera o link com a funcao de valoracao
-    #return symbol in valor_function(state)
+    ## TO DO
+    # (Future) Change to Value Function passed as parameter
+    #       return symbol in valor_function(state)
 
     # Check if exp is valid based on Storm Output
     # Ex.: Is "eating1=1" valid on state?
