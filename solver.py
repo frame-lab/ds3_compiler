@@ -68,8 +68,11 @@ def diamond(state, valid, formulae):
         if has_modality(exp):    
             return solve(new_state,True,exp)
         else:
-            #Storm Output: True/False (Quantity must be resolved to true or false ?)
-            return model_check_storm(jani_program,syntax_tree_to_string(exp))
+            #print("State:",new_state.name,"Entails:",valid,"Formulae:",exp)
+            model_check_result = model_check_storm(jani_program,exp)
+            
+            ## Probability != 0 => True
+            return bool(model_check_result)
     else:
         #~<spn> formula == [spn] ~formula
         return 
@@ -86,20 +89,24 @@ def has_modality(formulae):
             return True 
     return False
 
-def model_check_storm(program, storm_formula):
-    ## TO-DO:
-    #   Return result from final states only
+def model_check_storm(program, formulae):
+    """ 
+        Transforms the Syntax Tree into a Storm formula to avaliate Final(deadlock) states 
+        Returns boolean (quali) or float (quanti) result
+    """
+    
+    storm_formula = "P=? [true U ({}) & \"deadlock\"]".format(syntax_tree_to_string(formulae))
     print("Storm - Check Property: " + storm_formula)
 
     properties = stormpy.parse_properties_for_jani_model(storm_formula,program)
     model = stormpy.build_model(program, properties)
-    result = stormpy.check_model_sparse(model, properties[0])
+    results_for_all_states = stormpy.check_model_sparse(model, properties[0])
     
-    #Change to consider only final states instead of initial states
     initial_state = model.initial_states[0]
-    print("\t\tResult (for initial states): {}".format(result.at(initial_state)))
+    result = results_for_all_states.at(initial_state)
+    print("\t\tResult: {}".format(result))
 
-    return result.at(initial_state)
+    return result
 
 def networkExecutes(model):
     #TO DO - Evolve the condition: How to verify if the network executes?

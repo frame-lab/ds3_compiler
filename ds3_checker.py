@@ -17,7 +17,7 @@ network = 'example_models/philosophers.jani'
 parser = ds3_parser()
 #parse_tree = ds3_parser.parse(''' ~(A&B) & ~B & ~A ''')
 #parse_tree = parser.parse('A | B -> ~B')
-parse_tree = parser.parse("< {} > thinking1 = 1".format(network))
+parse_tree = parser.parse("< {} > wait1 = 1".format(network))
 
 print(parse_tree.pretty())
 
