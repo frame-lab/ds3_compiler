@@ -194,7 +194,7 @@ def loc_exp(state,valid,formulae):
         print("This formula can't be resolved without an associated Stochastic Petri Net")
         return
     else: 
-        storm_formula = syntax_tree_to_string(formulae)
+        storm_formula = ast_to_string(formulae)
         result = model_check_storm(program,storm_formula)
         return result if valid else not result
 
