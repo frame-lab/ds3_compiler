@@ -1,0 +1,989 @@
+{
+    "actions": [],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Criar_Ordem <- (Criar_Ordem - 1)",
+                                    "ref": "Criar_Ordem",
+                                    "value": {
+                                        "left": "Criar_Ordem",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Ordem_Criada <- (Ordem_Criada + 1)",
+                                    "ref": "Ordem_Criada",
+                                    "value": {
+                                        "left": "Ordem_Criada",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Ordem_Verificando <- (Ordem_Verificando + 1)",
+                                    "ref": "Ordem_Verificando",
+                                    "value": {
+                                        "left": "Ordem_Verificando",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Criar_Ordem >= 1)",
+                        "exp": {
+                            "left": "Criar_Ordem",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Criar_Ordem / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Criar_Ordem",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Criar_Ordem <- (Criar_Ordem - 1)",
+                                    "ref": "Criar_Ordem",
+                                    "value": {
+                                        "left": "Criar_Ordem",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Erro_Ordem <- (Erro_Ordem + 1)",
+                                    "ref": "Erro_Ordem",
+                                    "value": {
+                                        "left": "Erro_Ordem",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Criar_Ordem >= 1)",
+                        "exp": {
+                            "left": "Criar_Ordem",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(7205759403792793/36028797018963968 * (Criar_Ordem / 1))",
+                        "exp": {
+                            "left": 0.2,
+                            "op": "*",
+                            "right": {
+                                "left": "Criar_Ordem",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Ordem_Criada <- (Ordem_Criada - 1)",
+                                    "ref": "Ordem_Criada",
+                                    "value": {
+                                        "left": "Ordem_Criada",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Reservar_Produto <- (Reservar_Produto + 1)",
+                                    "ref": "Reservar_Produto",
+                                    "value": {
+                                        "left": "Reservar_Produto",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Ordem_Criada >= 1)",
+                        "exp": {
+                            "left": "Ordem_Criada",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Ordem_Criada / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Ordem_Criada",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Erro_Estoque <- (Erro_Estoque + 1)",
+                                    "ref": "Erro_Estoque",
+                                    "value": {
+                                        "left": "Erro_Estoque",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Reservar_Produto <- (Reservar_Produto - 1)",
+                                    "ref": "Reservar_Produto",
+                                    "value": {
+                                        "left": "Reservar_Produto",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Reservar_Produto >= 1)",
+                        "exp": {
+                            "left": "Reservar_Produto",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1/2 * (Reservar_Produto / 1))",
+                        "exp": {
+                            "left": 0.5,
+                            "op": "*",
+                            "right": {
+                                "left": "Reservar_Produto",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Cancelar_Ordem <- (Cancelar_Ordem + 1)",
+                                    "ref": "Cancelar_Ordem",
+                                    "value": {
+                                        "left": "Cancelar_Ordem",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Erro_Estoque <- (Erro_Estoque - 1)",
+                                    "ref": "Erro_Estoque",
+                                    "value": {
+                                        "left": "Erro_Estoque",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Erro_Estoque >= 1)",
+                        "exp": {
+                            "left": "Erro_Estoque",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Erro_Estoque / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Erro_Estoque",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Cancelar_Ordem <- (Cancelar_Ordem - 1)",
+                                    "ref": "Cancelar_Ordem",
+                                    "value": {
+                                        "left": "Cancelar_Ordem",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Ordem_Falhou <- (Ordem_Falhou + 1)",
+                                    "ref": "Ordem_Falhou",
+                                    "value": {
+                                        "left": "Ordem_Falhou",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Ordem_Verificando <- (Ordem_Verificando - 1)",
+                                    "ref": "Ordem_Verificando",
+                                    "value": {
+                                        "left": "Ordem_Verificando",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((Cancelar_Ordem >= 1) & (Ordem_Verificando >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "Cancelar_Ordem",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "Ordem_Verificando",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Ordem_Verificando / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Ordem_Verificando",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Estoque <- (Estoque - 1)",
+                                    "ref": "Estoque",
+                                    "value": {
+                                        "left": "Estoque",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "OK_Estoque <- (OK_Estoque + 1)",
+                                    "ref": "OK_Estoque",
+                                    "value": {
+                                        "left": "OK_Estoque",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Produto_Reservado <- (Produto_Reservado + 1)",
+                                    "ref": "Produto_Reservado",
+                                    "value": {
+                                        "left": "Produto_Reservado",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Reservar_Produto <- (Reservar_Produto - 1)",
+                                    "ref": "Reservar_Produto",
+                                    "value": {
+                                        "left": "Reservar_Produto",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((Estoque >= 1) & (Reservar_Produto >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "Estoque",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "Reservar_Produto",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Reservar_Produto / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Reservar_Produto",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Agendar_Entrega <- (Agendar_Entrega + 1)",
+                                    "ref": "Agendar_Entrega",
+                                    "value": {
+                                        "left": "Agendar_Entrega",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "OK_Estoque <- (OK_Estoque - 1)",
+                                    "ref": "OK_Estoque",
+                                    "value": {
+                                        "left": "OK_Estoque",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(OK_Estoque >= 1)",
+                        "exp": {
+                            "left": "OK_Estoque",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (OK_Estoque / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "OK_Estoque",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Agendar_Entrega <- (Agendar_Entrega - 1)",
+                                    "ref": "Agendar_Entrega",
+                                    "value": {
+                                        "left": "Agendar_Entrega",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Entregas_Agendadas <- (Entregas_Agendadas + 1)",
+                                    "ref": "Entregas_Agendadas",
+                                    "value": {
+                                        "left": "Entregas_Agendadas",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "OK_Entrega <- (OK_Entrega + 1)",
+                                    "ref": "OK_Entrega",
+                                    "value": {
+                                        "left": "OK_Entrega",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Agendar_Entrega >= 1)",
+                        "exp": {
+                            "left": "Agendar_Entrega",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Agendar_Entrega / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Agendar_Entrega",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Agendar_Entrega <- (Agendar_Entrega - 1)",
+                                    "ref": "Agendar_Entrega",
+                                    "value": {
+                                        "left": "Agendar_Entrega",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Erro_Entrega <- (Erro_Entrega + 1)",
+                                    "ref": "Erro_Entrega",
+                                    "value": {
+                                        "left": "Erro_Entrega",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Agendar_Entrega >= 1)",
+                        "exp": {
+                            "left": "Agendar_Entrega",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(7205759403792793/36028797018963968 * (Agendar_Entrega / 1))",
+                        "exp": {
+                            "left": 0.2,
+                            "op": "*",
+                            "right": {
+                                "left": "Agendar_Entrega",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Confirmar_Ordem <- (Confirmar_Ordem + 1)",
+                                    "ref": "Confirmar_Ordem",
+                                    "value": {
+                                        "left": "Confirmar_Ordem",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Confirmar_Reserva <- (Confirmar_Reserva + 1)",
+                                    "ref": "Confirmar_Reserva",
+                                    "value": {
+                                        "left": "Confirmar_Reserva",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "OK_Entrega <- (OK_Entrega - 1)",
+                                    "ref": "OK_Entrega",
+                                    "value": {
+                                        "left": "OK_Entrega",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(OK_Entrega >= 1)",
+                        "exp": {
+                            "left": "OK_Entrega",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (OK_Entrega / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "OK_Entrega",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Confirmar_Ordem <- (Confirmar_Ordem - 1)",
+                                    "ref": "Confirmar_Ordem",
+                                    "value": {
+                                        "left": "Confirmar_Ordem",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Ordem_Confirmada <- (Ordem_Confirmada + 1)",
+                                    "ref": "Ordem_Confirmada",
+                                    "value": {
+                                        "left": "Ordem_Confirmada",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Ordem_Verificando <- (Ordem_Verificando - 1)",
+                                    "ref": "Ordem_Verificando",
+                                    "value": {
+                                        "left": "Ordem_Verificando",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((Ordem_Verificando >= 1) & (Confirmar_Ordem >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "Ordem_Verificando",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "Confirmar_Ordem",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Confirmar_Ordem / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Confirmar_Ordem",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Cancelar_Reserva <- (Cancelar_Reserva - 1)",
+                                    "ref": "Cancelar_Reserva",
+                                    "value": {
+                                        "left": "Cancelar_Reserva",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Estoque <- (Estoque + 1)",
+                                    "ref": "Estoque",
+                                    "value": {
+                                        "left": "Estoque",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Produto_Reservado <- (Produto_Reservado - 1)",
+                                    "ref": "Produto_Reservado",
+                                    "value": {
+                                        "left": "Produto_Reservado",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((Produto_Reservado >= 1) & (Cancelar_Reserva >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "Produto_Reservado",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "Cancelar_Reserva",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Cancelar_Reserva / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Cancelar_Reserva",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Confirmar_Reserva <- (Confirmar_Reserva - 1)",
+                                    "ref": "Confirmar_Reserva",
+                                    "value": {
+                                        "left": "Confirmar_Reserva",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Produto_Reservado <- (Produto_Reservado - 1)",
+                                    "ref": "Produto_Reservado",
+                                    "value": {
+                                        "left": "Produto_Reservado",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Produto_Vendido <- (Produto_Vendido + 1)",
+                                    "ref": "Produto_Vendido",
+                                    "value": {
+                                        "left": "Produto_Vendido",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((Produto_Reservado >= 1) & (Confirmar_Reserva >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "Produto_Reservado",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "Confirmar_Reserva",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Confirmar_Reserva / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Confirmar_Reserva",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Cancelar_Ordem <- (Cancelar_Ordem + 1)",
+                                    "ref": "Cancelar_Ordem",
+                                    "value": {
+                                        "left": "Cancelar_Ordem",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Cancelar_Reserva <- (Cancelar_Reserva + 1)",
+                                    "ref": "Cancelar_Reserva",
+                                    "value": {
+                                        "left": "Cancelar_Reserva",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Erro_Entrega <- (Erro_Entrega - 1)",
+                                    "ref": "Erro_Entrega",
+                                    "value": {
+                                        "left": "Erro_Entrega",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Erro_Entrega >= 1)",
+                        "exp": {
+                            "left": "Erro_Entrega",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Erro_Entrega / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Erro_Entrega",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                }
+            ],
+            "initial-locations": [
+                "loc"
+            ],
+            "locations": [
+                {
+                    "name": "loc"
+                }
+            ],
+            "name": "gspn_automaton",
+            "variables": []
+        }
+    ],
+    "constants": [],
+    "features": [
+        "derived-operators"
+    ],
+    "jani-version": 1,
+    "name": "GSPN",
+    "properties": [],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "gspn_automaton"
+            }
+        ]
+    },
+    "type": "ctmc",
+    "variables": [
+        {
+            "initial-value": 1,
+            "name": "Criar_Ordem",
+            "type": "int"
+        },
+        {
+            "initial-value": 3,
+            "name": "Estoque",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Entregas_Agendadas",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Agendar_Entrega",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Ordem_Verificando",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Erro_Ordem",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Ordem_Criada",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "OK_Estoque",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Erro_Estoque",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Cancelar_Ordem",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Ordem_Falhou",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Reservar_Produto",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Produto_Reservado",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Erro_Entrega",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "OK_Entrega",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Confirmar_Ordem",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Ordem_Confirmada",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Cancelar_Reserva",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Produto_Vendido",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Confirmar_Reserva",
+            "type": "int"
+        }
+    ]
+}

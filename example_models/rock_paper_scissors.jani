@@ -8,37 +8,19 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "eating2 <- (eating2 - 1)",
-                                    "ref": "eating2",
+                                    "comment": "choosing1 <- (choosing1 - 1)",
+                                    "ref": "choosing1",
                                     "value": {
-                                        "left": "eating2",
+                                        "left": "choosing1",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "fork1 <- (fork1 + 1)",
-                                    "ref": "fork1",
+                                    "comment": "rock1 <- (rock1 + 1)",
+                                    "ref": "rock1",
                                     "value": {
-                                        "left": "fork1",
-                                        "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "fork2 <- (fork2 + 1)",
-                                    "ref": "fork2",
-                                    "value": {
-                                        "left": "fork2",
-                                        "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "thinking2 <- (thinking2 + 1)",
-                                    "ref": "thinking2",
-                                    "value": {
-                                        "left": "thinking2",
+                                        "left": "rock1",
                                         "op": "+",
                                         "right": 1
                                     }
@@ -48,21 +30,21 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(eating2 >= 1)",
+                        "comment": "(choosing1 >= 1)",
                         "exp": {
-                            "left": "eating2",
+                            "left": "choosing1",
                             "op": "≥",
                             "right": 1
                         }
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (eating2 / 1))",
+                        "comment": "(1 * (choosing1 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "eating2",
+                                "left": "choosing1",
                                 "op": "/",
                                 "right": 1
                             }
@@ -74,37 +56,19 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "eating1 <- (eating1 - 1)",
-                                    "ref": "eating1",
+                                    "comment": "choosing1 <- (choosing1 - 1)",
+                                    "ref": "choosing1",
                                     "value": {
-                                        "left": "eating1",
+                                        "left": "choosing1",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "fork1 <- (fork1 + 1)",
-                                    "ref": "fork1",
+                                    "comment": "paper1 <- (paper1 + 1)",
+                                    "ref": "paper1",
                                     "value": {
-                                        "left": "fork1",
-                                        "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "fork4 <- (fork4 + 1)",
-                                    "ref": "fork4",
-                                    "value": {
-                                        "left": "fork4",
-                                        "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "thinking1 <- (thinking1 + 1)",
-                                    "ref": "thinking1",
-                                    "value": {
-                                        "left": "thinking1",
+                                        "left": "paper1",
                                         "op": "+",
                                         "right": 1
                                     }
@@ -114,21 +78,21 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(eating1 >= 1)",
+                        "comment": "(choosing1 >= 1)",
                         "exp": {
-                            "left": "eating1",
+                            "left": "choosing1",
                             "op": "≥",
                             "right": 1
                         }
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (eating1 / 1))",
+                        "comment": "(1 * (choosing1 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "eating1",
+                                "left": "choosing1",
                                 "op": "/",
                                 "right": 1
                             }
@@ -140,37 +104,19 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "eating4 <- (eating4 - 1)",
-                                    "ref": "eating4",
+                                    "comment": "choosing1 <- (choosing1 - 1)",
+                                    "ref": "choosing1",
                                     "value": {
-                                        "left": "eating4",
+                                        "left": "choosing1",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "fork3 <- (fork3 + 1)",
-                                    "ref": "fork3",
+                                    "comment": "scissors1 <- (scissors1 + 1)",
+                                    "ref": "scissors1",
                                     "value": {
-                                        "left": "fork3",
-                                        "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "fork4 <- (fork4 + 1)",
-                                    "ref": "fork4",
-                                    "value": {
-                                        "left": "fork4",
-                                        "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "thinking4 <- (thinking4 + 1)",
-                                    "ref": "thinking4",
-                                    "value": {
-                                        "left": "thinking4",
+                                        "left": "scissors1",
                                         "op": "+",
                                         "right": 1
                                     }
@@ -180,21 +126,21 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(eating4 >= 1)",
+                        "comment": "(choosing1 >= 1)",
                         "exp": {
-                            "left": "eating4",
+                            "left": "choosing1",
                             "op": "≥",
                             "right": 1
                         }
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (eating4 / 1))",
+                        "comment": "(1 * (choosing1 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "eating4",
+                                "left": "choosing1",
                                 "op": "/",
                                 "right": 1
                             }
@@ -206,37 +152,19 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "eating3 <- (eating3 - 1)",
-                                    "ref": "eating3",
+                                    "comment": "choosing2 <- (choosing2 - 1)",
+                                    "ref": "choosing2",
                                     "value": {
-                                        "left": "eating3",
+                                        "left": "choosing2",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "fork2 <- (fork2 + 1)",
-                                    "ref": "fork2",
+                                    "comment": "rock2 <- (rock2 + 1)",
+                                    "ref": "rock2",
                                     "value": {
-                                        "left": "fork2",
-                                        "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "fork3 <- (fork3 + 1)",
-                                    "ref": "fork3",
-                                    "value": {
-                                        "left": "fork3",
-                                        "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "thinking3 <- (thinking3 + 1)",
-                                    "ref": "thinking3",
-                                    "value": {
-                                        "left": "thinking3",
+                                        "left": "rock2",
                                         "op": "+",
                                         "right": 1
                                     }
@@ -246,21 +174,21 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(eating3 >= 1)",
+                        "comment": "(choosing2 >= 1)",
                         "exp": {
-                            "left": "eating3",
+                            "left": "choosing2",
                             "op": "≥",
                             "right": 1
                         }
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (eating3 / 1))",
+                        "comment": "(1 * (choosing2 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "eating3",
+                                "left": "choosing2",
                                 "op": "/",
                                 "right": 1
                             }
@@ -272,29 +200,20 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "eating1 <- (eating1 + 1)",
-                                    "ref": "eating1",
+                                    "comment": "choosing2 <- (choosing2 - 1)",
+                                    "ref": "choosing2",
                                     "value": {
-                                        "left": "eating1",
+                                        "left": "choosing2",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "paper2 <- (paper2 + 1)",
+                                    "ref": "paper2",
+                                    "value": {
+                                        "left": "paper2",
                                         "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "fork4 <- (fork4 - 1)",
-                                    "ref": "fork4",
-                                    "value": {
-                                        "left": "fork4",
-                                        "op": "-",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "wait1 <- (wait1 - 1)",
-                                    "ref": "wait1",
-                                    "value": {
-                                        "left": "wait1",
-                                        "op": "-",
                                         "right": 1
                                     }
                                 }
@@ -303,29 +222,21 @@
                         }
                     ],
                     "guard": {
-                        "comment": "((fork4 >= 1) & (wait1 >= 1))",
+                        "comment": "(choosing2 >= 1)",
                         "exp": {
-                            "left": {
-                                "left": "fork4",
-                                "op": "≥",
-                                "right": 1
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "wait1",
-                                "op": "≥",
-                                "right": 1
-                            }
+                            "left": "choosing2",
+                            "op": "≥",
+                            "right": 1
                         }
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (wait1 / 1))",
+                        "comment": "(1 * (choosing2 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "wait1",
+                                "left": "choosing2",
                                 "op": "/",
                                 "right": 1
                             }
@@ -337,29 +248,20 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "eating3 <- (eating3 + 1)",
-                                    "ref": "eating3",
+                                    "comment": "choosing2 <- (choosing2 - 1)",
+                                    "ref": "choosing2",
                                     "value": {
-                                        "left": "eating3",
+                                        "left": "choosing2",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "scissors2 <- (scissors2 + 1)",
+                                    "ref": "scissors2",
+                                    "value": {
+                                        "left": "scissors2",
                                         "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "fork2 <- (fork2 - 1)",
-                                    "ref": "fork2",
-                                    "value": {
-                                        "left": "fork2",
-                                        "op": "-",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "wait3 <- (wait3 - 1)",
-                                    "ref": "wait3",
-                                    "value": {
-                                        "left": "wait3",
-                                        "op": "-",
                                         "right": 1
                                     }
                                 }
@@ -368,29 +270,21 @@
                         }
                     ],
                     "guard": {
-                        "comment": "((wait3 >= 1) & (fork2 >= 1))",
+                        "comment": "(choosing2 >= 1)",
                         "exp": {
-                            "left": {
-                                "left": "wait3",
-                                "op": "≥",
-                                "right": 1
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "fork2",
-                                "op": "≥",
-                                "right": 1
-                            }
+                            "left": "choosing2",
+                            "op": "≥",
+                            "right": 1
                         }
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (fork2 / 1))",
+                        "comment": "(1 * (choosing2 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "fork2",
+                                "left": "choosing2",
                                 "op": "/",
                                 "right": 1
                             }
@@ -402,28 +296,28 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "fork2 <- (fork2 - 1)",
-                                    "ref": "fork2",
+                                    "comment": "rock1 <- (rock1 - 1)",
+                                    "ref": "rock1",
                                     "value": {
-                                        "left": "fork2",
+                                        "left": "rock1",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "thinking2 <- (thinking2 - 1)",
-                                    "ref": "thinking2",
+                                    "comment": "scissors2 <- (scissors2 - 1)",
+                                    "ref": "scissors2",
                                     "value": {
-                                        "left": "thinking2",
+                                        "left": "scissors2",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "wait2 <- (wait2 + 1)",
-                                    "ref": "wait2",
+                                    "comment": "win1 <- (win1 + 1)",
+                                    "ref": "win1",
                                     "value": {
-                                        "left": "wait2",
+                                        "left": "win1",
                                         "op": "+",
                                         "right": 1
                                     }
@@ -433,16 +327,16 @@
                         }
                     ],
                     "guard": {
-                        "comment": "((thinking2 >= 1) & (fork2 >= 1))",
+                        "comment": "((scissors2 >= 1) & (rock1 >= 1))",
                         "exp": {
                             "left": {
-                                "left": "thinking2",
+                                "left": "scissors2",
                                 "op": "≥",
                                 "right": 1
                             },
                             "op": "∧",
                             "right": {
-                                "left": "fork2",
+                                "left": "rock1",
                                 "op": "≥",
                                 "right": 1
                             }
@@ -450,12 +344,12 @@
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (fork2 / 1))",
+                        "comment": "(1 * (rock1 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "fork2",
+                                "left": "rock1",
                                 "op": "/",
                                 "right": 1
                             }
@@ -467,28 +361,28 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "fork4 <- (fork4 - 1)",
-                                    "ref": "fork4",
+                                    "comment": "paper1 <- (paper1 - 1)",
+                                    "ref": "paper1",
                                     "value": {
-                                        "left": "fork4",
+                                        "left": "paper1",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "thinking4 <- (thinking4 - 1)",
-                                    "ref": "thinking4",
+                                    "comment": "rock2 <- (rock2 - 1)",
+                                    "ref": "rock2",
                                     "value": {
-                                        "left": "thinking4",
+                                        "left": "rock2",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "wait4 <- (wait4 + 1)",
-                                    "ref": "wait4",
+                                    "comment": "win1 <- (win1 + 1)",
+                                    "ref": "win1",
                                     "value": {
-                                        "left": "wait4",
+                                        "left": "win1",
                                         "op": "+",
                                         "right": 1
                                     }
@@ -498,16 +392,16 @@
                         }
                     ],
                     "guard": {
-                        "comment": "((thinking4 >= 1) & (fork4 >= 1))",
+                        "comment": "((rock2 >= 1) & (paper1 >= 1))",
                         "exp": {
                             "left": {
-                                "left": "thinking4",
+                                "left": "rock2",
                                 "op": "≥",
                                 "right": 1
                             },
                             "op": "∧",
                             "right": {
-                                "left": "fork4",
+                                "left": "paper1",
                                 "op": "≥",
                                 "right": 1
                             }
@@ -515,12 +409,12 @@
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (fork4 / 1))",
+                        "comment": "(1 * (paper1 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "fork4",
+                                "left": "paper1",
                                 "op": "/",
                                 "right": 1
                             }
@@ -532,28 +426,28 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "fork1 <- (fork1 - 1)",
-                                    "ref": "fork1",
+                                    "comment": "paper2 <- (paper2 - 1)",
+                                    "ref": "paper2",
                                     "value": {
-                                        "left": "fork1",
+                                        "left": "paper2",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "thinking1 <- (thinking1 - 1)",
-                                    "ref": "thinking1",
+                                    "comment": "scissors1 <- (scissors1 - 1)",
+                                    "ref": "scissors1",
                                     "value": {
-                                        "left": "thinking1",
+                                        "left": "scissors1",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "wait1 <- (wait1 + 1)",
-                                    "ref": "wait1",
+                                    "comment": "win1 <- (win1 + 1)",
+                                    "ref": "win1",
                                     "value": {
-                                        "left": "wait1",
+                                        "left": "win1",
                                         "op": "+",
                                         "right": 1
                                     }
@@ -563,16 +457,16 @@
                         }
                     ],
                     "guard": {
-                        "comment": "((fork1 >= 1) & (thinking1 >= 1))",
+                        "comment": "((paper2 >= 1) & (scissors1 >= 1))",
                         "exp": {
                             "left": {
-                                "left": "fork1",
+                                "left": "paper2",
                                 "op": "≥",
                                 "right": 1
                             },
                             "op": "∧",
                             "right": {
-                                "left": "thinking1",
+                                "left": "scissors1",
                                 "op": "≥",
                                 "right": 1
                             }
@@ -580,12 +474,12 @@
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (thinking1 / 1))",
+                        "comment": "(1 * (scissors1 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "thinking1",
+                                "left": "scissors1",
                                 "op": "/",
                                 "right": 1
                             }
@@ -597,29 +491,29 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "eating2 <- (eating2 + 1)",
-                                    "ref": "eating2",
+                                    "comment": "rock2 <- (rock2 - 1)",
+                                    "ref": "rock2",
                                     "value": {
-                                        "left": "eating2",
+                                        "left": "rock2",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "scissors1 <- (scissors1 - 1)",
+                                    "ref": "scissors1",
+                                    "value": {
+                                        "left": "scissors1",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "win2 <- (win2 + 1)",
+                                    "ref": "win2",
+                                    "value": {
+                                        "left": "win2",
                                         "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "fork1 <- (fork1 - 1)",
-                                    "ref": "fork1",
-                                    "value": {
-                                        "left": "fork1",
-                                        "op": "-",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "wait2 <- (wait2 - 1)",
-                                    "ref": "wait2",
-                                    "value": {
-                                        "left": "wait2",
-                                        "op": "-",
                                         "right": 1
                                     }
                                 }
@@ -628,16 +522,16 @@
                         }
                     ],
                     "guard": {
-                        "comment": "((fork1 >= 1) & (wait2 >= 1))",
+                        "comment": "((scissors1 >= 1) & (rock2 >= 1))",
                         "exp": {
                             "left": {
-                                "left": "fork1",
+                                "left": "scissors1",
                                 "op": "≥",
                                 "right": 1
                             },
                             "op": "∧",
                             "right": {
-                                "left": "wait2",
+                                "left": "rock2",
                                 "op": "≥",
                                 "right": 1
                             }
@@ -645,12 +539,12 @@
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (wait2 / 1))",
+                        "comment": "(1 * (rock2 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "wait2",
+                                "left": "rock2",
                                 "op": "/",
                                 "right": 1
                             }
@@ -662,28 +556,28 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "fork3 <- (fork3 - 1)",
-                                    "ref": "fork3",
+                                    "comment": "paper2 <- (paper2 - 1)",
+                                    "ref": "paper2",
                                     "value": {
-                                        "left": "fork3",
+                                        "left": "paper2",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "thinking3 <- (thinking3 - 1)",
-                                    "ref": "thinking3",
+                                    "comment": "rock1 <- (rock1 - 1)",
+                                    "ref": "rock1",
                                     "value": {
-                                        "left": "thinking3",
+                                        "left": "rock1",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "wait3 <- (wait3 + 1)",
-                                    "ref": "wait3",
+                                    "comment": "win2 <- (win2 + 1)",
+                                    "ref": "win2",
                                     "value": {
-                                        "left": "wait3",
+                                        "left": "win2",
                                         "op": "+",
                                         "right": 1
                                     }
@@ -693,16 +587,16 @@
                         }
                     ],
                     "guard": {
-                        "comment": "((fork3 >= 1) & (thinking3 >= 1))",
+                        "comment": "((rock1 >= 1) & (paper2 >= 1))",
                         "exp": {
                             "left": {
-                                "left": "fork3",
+                                "left": "rock1",
                                 "op": "≥",
                                 "right": 1
                             },
                             "op": "∧",
                             "right": {
-                                "left": "thinking3",
+                                "left": "paper2",
                                 "op": "≥",
                                 "right": 1
                             }
@@ -710,12 +604,12 @@
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (thinking3 / 1))",
+                        "comment": "(1 * (paper2 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "thinking3",
+                                "left": "paper2",
                                 "op": "/",
                                 "right": 1
                             }
@@ -727,28 +621,93 @@
                         {
                             "assignments": [
                                 {
-                                    "comment": "eating4 <- (eating4 + 1)",
-                                    "ref": "eating4",
+                                    "comment": "paper1 <- (paper1 - 1)",
+                                    "ref": "paper1",
                                     "value": {
-                                        "left": "eating4",
-                                        "op": "+",
-                                        "right": 1
-                                    }
-                                },
-                                {
-                                    "comment": "fork3 <- (fork3 - 1)",
-                                    "ref": "fork3",
-                                    "value": {
-                                        "left": "fork3",
+                                        "left": "paper1",
                                         "op": "-",
                                         "right": 1
                                     }
                                 },
                                 {
-                                    "comment": "wait4 <- (wait4 - 1)",
-                                    "ref": "wait4",
+                                    "comment": "scissors2 <- (scissors2 - 1)",
+                                    "ref": "scissors2",
                                     "value": {
-                                        "left": "wait4",
+                                        "left": "scissors2",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "win2 <- (win2 + 1)",
+                                    "ref": "win2",
+                                    "value": {
+                                        "left": "win2",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((paper1 >= 1) & (scissors2 >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "paper1",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "scissors2",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (scissors2 / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "scissors2",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "draw <- (draw + 1)",
+                                    "ref": "draw",
+                                    "value": {
+                                        "left": "draw",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "rock1 <- (rock1 - 1)",
+                                    "ref": "rock1",
+                                    "value": {
+                                        "left": "rock1",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "rock2 <- (rock2 - 1)",
+                                    "ref": "rock2",
+                                    "value": {
+                                        "left": "rock2",
                                         "op": "-",
                                         "right": 1
                                     }
@@ -758,16 +717,16 @@
                         }
                     ],
                     "guard": {
-                        "comment": "((fork3 >= 1) & (wait4 >= 1))",
+                        "comment": "((rock2 >= 1) & (rock1 >= 1))",
                         "exp": {
                             "left": {
-                                "left": "fork3",
+                                "left": "rock2",
                                 "op": "≥",
                                 "right": 1
                             },
                             "op": "∧",
                             "right": {
-                                "left": "wait4",
+                                "left": "rock1",
                                 "op": "≥",
                                 "right": 1
                             }
@@ -775,12 +734,199 @@
                     },
                     "location": "loc",
                     "rate": {
-                        "comment": "(1 * (wait4 / 1))",
+                        "comment": "(1 * (rock1 / 1))",
                         "exp": {
                             "left": 1,
                             "op": "*",
                             "right": {
-                                "left": "wait4",
+                                "left": "rock1",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "draw <- (draw + 1)",
+                                    "ref": "draw",
+                                    "value": {
+                                        "left": "draw",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "paper1 <- (paper1 - 1)",
+                                    "ref": "paper1",
+                                    "value": {
+                                        "left": "paper1",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "paper2 <- (paper2 - 1)",
+                                    "ref": "paper2",
+                                    "value": {
+                                        "left": "paper2",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((paper1 >= 1) & (paper2 >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "paper1",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "paper2",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (paper2 / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "paper2",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "draw <- (draw + 1)",
+                                    "ref": "draw",
+                                    "value": {
+                                        "left": "draw",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "scissors1 <- (scissors1 - 1)",
+                                    "ref": "scissors1",
+                                    "value": {
+                                        "left": "scissors1",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "scissors2 <- (scissors2 - 1)",
+                                    "ref": "scissors2",
+                                    "value": {
+                                        "left": "scissors2",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((scissors1 >= 1) & (scissors2 >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "scissors1",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "scissors2",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (scissors2 / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "scissors2",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "choosing1 <- (choosing1 + 1)",
+                                    "ref": "choosing1",
+                                    "value": {
+                                        "left": "choosing1",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "choosing2 <- (choosing2 + 1)",
+                                    "ref": "choosing2",
+                                    "value": {
+                                        "left": "choosing2",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "coins <- (coins - 1)",
+                                    "ref": "coins",
+                                    "value": {
+                                        "left": "coins",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(coins >= 1)",
+                        "exp": {
+                            "left": "coins",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (coins / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "coins",
                                 "op": "/",
                                 "right": 1
                             }
@@ -805,7 +951,7 @@
         "derived-operators"
     ],
     "jani-version": 1,
-    "name": "Philosophers4",
+    "name": "GSPN",
     "properties": [],
     "restrict-initial": {
         "exp": true
@@ -821,82 +967,62 @@
     "variables": [
         {
             "initial-value": 0,
-            "name": "fork1",
+            "name": "rock1",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "fork4",
+            "name": "paper1",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "fork2",
+            "name": "scissors1",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "fork3",
+            "name": "choosing1",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "eating1",
-            "type": "int"
-        },
-        {
-            "initial-value": 1,
-            "name": "thinking1",
+            "name": "win1",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "wait1",
+            "name": "win2",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "eating2",
-            "type": "int"
-        },
-        {
-            "initial-value": 1,
-            "name": "thinking2",
+            "name": "rock2",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "wait2",
+            "name": "paper2",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "eating3",
-            "type": "int"
-        },
-        {
-            "initial-value": 1,
-            "name": "thinking4",
+            "name": "scissors2",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "eating4",
-            "type": "int"
-        },
-        {
-            "initial-value": 1,
-            "name": "thinking3",
+            "name": "choosing2",
             "type": "int"
         },
         {
             "initial-value": 0,
-            "name": "wait3",
+            "name": "draw",
             "type": "int"
         },
         {
-            "initial-value": 0,
-            "name": "wait4",
+            "initial-value": 3,
+            "name": "coins",
             "type": "int"
         }
     ]

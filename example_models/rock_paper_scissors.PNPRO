@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="New project" version="121">
+  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false">
+    <nodes>
+      <place label-x="-2.0" label-y="-1.5" name="rock1" x="6.0" y="22.0"/>
+      <place label-x="-2.0" label-y="-1.5" name="paper1" x="11.0" y="22.0"/>
+      <place label-x="-2.0" label-y="-1.5" name="scissors1" x="16.0" y="22.0"/>
+      <place label-y="-2.0" name="choosing1" x="11.0" y="11.0"/>
+      <place name="win1" x="11.0" y="38.0"/>
+      <place name="win2" x="31.0" y="37.0"/>
+      <transition label-x="-0.5" name="T0" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="6.55" y="17.0"/>
+      <transition label-x="-1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="11.55" y="17.0"/>
+      <transition label-x="0.5" name="T2" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="17.0"/>
+      <place label-x="-2.0" label-y="-1.5" name="rock2" x="26.0" y="22.0"/>
+      <place label-x="-2.0" label-y="-1.5" name="paper2" x="31.0" y="22.0"/>
+      <place label-x="-2.5" label-y="-1.5" name="scissors2" x="36.0" y="22.0"/>
+      <place label-y="-2.0" name="choosing2" x="31.0" y="11.0"/>
+      <transition label-x="-0.5" name="T3" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="26.55" y="17.0"/>
+      <transition label-x="-1.0" name="T4" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="31.55" y="17.0"/>
+      <transition label-x="0.5" name="T5" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="36.55" y="17.0"/>
+      <place name="draw" x="21.0" y="47.0"/>
+      <transition label-x="-2.0" label-y="0.0" name="T6" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="6.55" y="33.0"/>
+      <transition label-x="-1.0" label-y="1.0" name="T7" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="11.55" y="33.0"/>
+      <transition label-x="-2.0" label-y="0.0" name="T8" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="33.0"/>
+      <transition label-x="-2.0" label-y="0.0" name="T9" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="26.55" y="33.0"/>
+      <transition label-x="2.0" label-y="0.0" name="T10" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="31.55" y="33.0"/>
+      <transition label-x="2.0" label-y="0.0" name="T11" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="36.55" y="33.0"/>
+      <transition label-x="-2.0" label-y="0.0" name="T12" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="42.0"/>
+      <transition label-x="-1.0" label-y="1.0" name="T13" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="21.55" y="42.0"/>
+      <transition label-x="2.5" label-y="0.0" name="T14" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="26.55" y="42.0"/>
+      <place label-x="-2.0" label-y="-1.0" marking="3" name="coins" x="21.0" y="3.0"/>
+      <transition label-x="-1.5" name="T15" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="21.55" y="8.0"/>
+    </nodes>
+    <edges>
+      <arc head="T0" kind="INPUT" tail="choosing1"/>
+      <arc head="rock1" kind="OUTPUT" tail="T0"/>
+      <arc head="T1" kind="INPUT" tail="choosing1"/>
+      <arc head="paper1" kind="OUTPUT" tail="T1"/>
+      <arc head="T2" kind="INPUT" tail="choosing1"/>
+      <arc head="scissors1" kind="OUTPUT" tail="T2"/>
+      <arc head="T3" kind="INPUT" tail="choosing2"/>
+      <arc head="rock2" kind="OUTPUT" tail="T3"/>
+      <arc head="T4" kind="INPUT" tail="choosing2"/>
+      <arc head="paper2" kind="OUTPUT" tail="T4"/>
+      <arc head="T5" kind="INPUT" tail="choosing2"/>
+      <arc head="scissors2" kind="OUTPUT" tail="T5"/>
+      <arc head="T6" kind="INPUT" tail="rock1"/>
+      <arc head="T6" kind="INPUT" tail="scissors2"/>
+      <arc head="T7" kind="INPUT" tail="paper1"/>
+      <arc head="T7" kind="INPUT" tail="rock2"/>
+      <arc head="T8" kind="INPUT" tail="scissors1"/>
+      <arc head="T8" kind="INPUT" tail="paper2"/>
+      <arc head="win1" kind="OUTPUT" tail="T6"/>
+      <arc head="win1" kind="OUTPUT" tail="T7"/>
+      <arc head="win1" kind="OUTPUT" tail="T8"/>
+      <arc head="T9" kind="INPUT" tail="rock2"/>
+      <arc head="T9" kind="INPUT" tail="scissors1"/>
+      <arc head="T10" kind="INPUT" tail="paper2"/>
+      <arc head="T10" kind="INPUT" tail="rock1"/>
+      <arc head="T11" kind="INPUT" tail="scissors2"/>
+      <arc head="T11" kind="INPUT" tail="paper1"/>
+      <arc head="draw" kind="OUTPUT" tail="T12"/>
+      <arc head="draw" kind="OUTPUT" tail="T13"/>
+      <arc head="draw" kind="OUTPUT" tail="T14"/>
+      <arc head="T12" kind="INPUT" tail="rock1"/>
+      <arc head="T12" kind="INPUT" tail="rock2"/>
+      <arc head="T13" kind="INPUT" tail="paper2"/>
+      <arc head="T13" kind="INPUT" tail="paper1"/>
+      <arc head="T14" kind="INPUT" tail="scissors2"/>
+      <arc head="T14" kind="INPUT" tail="scissors1"/>
+      <arc head="win2" kind="OUTPUT" tail="T9"/>
+      <arc head="win2" kind="OUTPUT" tail="T10"/>
+      <arc head="win2" kind="OUTPUT" tail="T11"/>
+      <arc head="T15" kind="INPUT" tail="coins"/>
+      <arc head="choosing1" kind="OUTPUT" tail="T15"/>
+      <arc head="choosing2" kind="OUTPUT" tail="T15"/>
+    </edges>
+  </gspn>
+</project>

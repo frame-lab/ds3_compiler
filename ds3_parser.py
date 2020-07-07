@@ -20,7 +20,7 @@ def ds3_parser():
             | loc_exp 
             | symbol
         
-        negate: "~" _exp
+        negate: "!" _exp
         conjunction: _exp "&" _exp
         disjunction: _exp "|" _exp
         implication: _exp "->" _exp

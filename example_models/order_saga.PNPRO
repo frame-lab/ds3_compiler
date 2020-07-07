@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="New project" version="121">
+  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false" zoom="75">
+    <nodes>
+      <place label-x="-4.0" label-y="-1.5" marking="1" name="Criar_Ordem" x="8.0" y="14.0"/>
+      <place label-x="-2.0" label-y="-1.5" marking="3" name="Estoque" x="42.0" y="2.0"/>
+      <place label-x="-1.5" label-y="-1.5" name="Entregas_Agendadas" x="70.0" y="2.0"/>
+      <place label-x="-4.0" label-y="-1.5" name="Agendar_Entrega" x="70.0" y="14.0"/>
+      <transition delay-y="1.5" label-x="-1.0" label-y="1.5" name="T0" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="8.0"/>
+      <place label-x="-4.5" label-y="-1.5" name="Ordem_Verificando" x="8.0" y="2.0"/>
+      <place label-x="-3.5" label-y="-1.0" name="Erro_Ordem" x="8.0" y="29.0"/>
+      <place label-x="-1.5" label-y="2.0" name="Ordem_Criada" x="17.0" y="29.0"/>
+      <transition delay="0.2" delay-x="-1.5" delay-y="1.5" label-x="-1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="20.0"/>
+      <transition delay-y="1.5" label-x="-1.0" name="T2" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="17.55" y="20.0"/>
+      <place name="OK_Estoque" x="42.0" y="27.0"/>
+      <place name="Erro_Estoque" x="36.0" y="27.0"/>
+      <transition delay="0.5" label-x="-1.0" label-y="-2.0" name="T4" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="36.55" y="20.0"/>
+      <place label-x="-3.5" label-y="-2.0" name="Cancelar_Ordem" x="17.0" y="14.0"/>
+      <transition delay-x="1.5" delay-y="-1.0" label-x="-0.5" label-y="-2.0" name="T5" nservers-x="0.5" rotation="3.9269908169872414" type="EXP" x="32.55" y="24.0"/>
+      <place label-x="-3.0" label-y="-1.5" name="Ordem_Falhou" x="17.0" y="2.0"/>
+      <transition delay-x="1.5" delay-y="1.5" label-x="-1.0" label-y="1.5" name="T6" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="17.55" y="8.0"/>
+      <place label-x="-3.0" label-y="-1.5" name="Reservar_Produto" x="36.0" y="14.0"/>
+      <place label-x="-2.0" label-y="-1.5" name="Produto_Reservado" x="52.0" y="2.0"/>
+      <transition delay-x="1.5" label-x="-1.5" name="T7" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="42.55" y="8.0"/>
+      <transition delay-x="1.5" delay-y="-0.5" name="T3" nservers-x="0.5" rotation="5.759586531581287" type="EXP" x="46.55" y="27.0"/>
+      <transition delay-y="1.5" label-x="-1.0" label-y="1.5" name="T8" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="70.55" y="8.0"/>
+      <transition delay="0.2" label-x="1.0" name="T9" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="70.55" y="22.0"/>
+      <place name="Erro_Entrega" x="70.0" y="35.0"/>
+      <place name="OK_Entrega" x="79.0" y="31.0"/>
+      <place label-x="-4.0" label-y="-1.5" name="Confirmar_Ordem" x="26.0" y="14.0"/>
+      <transition label-x="-2.0" label-y="1.0" name="T10" nservers-x="0.5" rotation="3.665191429188092" type="EXP" x="74.55" y="31.0"/>
+      <transition delay-x="1.0" delay-y="1.5" label-x="-1.5" label-y="1.5" name="T11" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="26.55" y="8.0"/>
+      <place label-x="-3.0" label-y="-1.5" name="Ordem_Confirmada" x="26.0" y="2.0"/>
+      <place label-x="-4.0" label-y="-1.5" name="Cancelar_Reserva" x="52.0" y="14.0"/>
+      <place label-x="-1.0" label-y="-1.5" name="Produto_Vendido" x="61.0" y="2.0"/>
+      <place label-x="-4.0" label-y="-1.5" name="Confirmar_Reserva" x="61.0" y="14.0"/>
+      <transition delay-x="1.0" label-x="1.5" label-y="-1.0" name="T13" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="52.55" y="8.0"/>
+      <transition delay-x="1.0" label-x="1.5" label-y="-1.0" name="T14" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="61.55" y="7.0"/>
+      <transition delay-x="-2.0" delay-y="1.5" label-x="-1.5" name="T12" nservers-x="0.5" type="EXP" x="52.55" y="35.0"/>
+      <place name="Eventos_Erro_Ordem" x="8.0" y="39.0"/>
+      <place name="Eventos_Ordem_Criada" x="22.0" y="39.0"/>
+      <place name="Eventos_Erro_Estoque" x="32.0" y="39.0"/>
+      <place name="Eventos_OK_Estoque" x="46.0" y="39.0"/>
+      <place name="Eventos_Erro_Entrega" x="57.0" y="39.0"/>
+      <place name="Eventos_OK_Entrega" x="74.0" y="39.0"/>
+      <transition delay-x="-2.0" label-x="-1.5" name="T15" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="34.0"/>
+    </nodes>
+    <edges>
+      <arc head="T0" kind="INPUT" tail="Criar_Ordem"/>
+      <arc head="Ordem_Verificando" kind="OUTPUT" tail="T0"/>
+      <arc head="Erro_Ordem" kind="OUTPUT" tail="T1"/>
+      <arc head="Ordem_Criada" kind="OUTPUT" tail="T0"/>
+      <arc head="T2" kind="INPUT" tail="Ordem_Criada"/>
+      <arc head="T1" kind="INPUT" tail="Criar_Ordem"/>
+      <arc head="Erro_Estoque" kind="OUTPUT" tail="T4"/>
+      <arc head="T5" kind="INPUT" tail="Erro_Estoque"/>
+      <arc head="Cancelar_Ordem" kind="OUTPUT" tail="T5"/>
+      <arc head="T6" kind="INPUT" tail="Ordem_Verificando"/>
+      <arc head="T6" kind="INPUT" tail="Cancelar_Ordem"/>
+      <arc head="Ordem_Falhou" kind="OUTPUT" tail="T6"/>
+      <arc head="Reservar_Produto" kind="OUTPUT" tail="T2"/>
+      <arc head="T7" kind="INPUT" tail="Reservar_Produto"/>
+      <arc head="Produto_Reservado" kind="OUTPUT" tail="T7"/>
+      <arc head="T7" kind="INPUT" tail="Estoque"/>
+      <arc head="T4" kind="INPUT" tail="Reservar_Produto"/>
+      <arc head="OK_Estoque" kind="OUTPUT" tail="T7"/>
+      <arc head="T3" kind="INPUT" tail="OK_Estoque"/>
+      <arc head="Agendar_Entrega" kind="OUTPUT" tail="T3"/>
+      <arc head="T8" kind="INPUT" tail="Agendar_Entrega"/>
+      <arc head="Entregas_Agendadas" kind="OUTPUT" tail="T8"/>
+      <arc head="T9" kind="INPUT" tail="Agendar_Entrega"/>
+      <arc head="Erro_Entrega" kind="OUTPUT" tail="T9"/>
+      <arc head="T10" kind="INPUT" tail="OK_Entrega"/>
+      <arc head="Ordem_Confirmada" kind="OUTPUT" tail="T11"/>
+      <arc head="T11" kind="INPUT" tail="Confirmar_Ordem"/>
+      <arc head="T11" kind="INPUT" tail="Ordem_Verificando"/>
+      <arc head="T13" kind="INPUT" tail="Cancelar_Reserva"/>
+      <arc head="T13" kind="INPUT" tail="Produto_Reservado"/>
+      <arc head="Estoque" kind="OUTPUT" tail="T13"/>
+      <arc head="T14" kind="INPUT" tail="Confirmar_Reserva"/>
+      <arc head="T14" kind="INPUT" tail="Produto_Reservado"/>
+      <arc head="Produto_Vendido" kind="OUTPUT" tail="T14"/>
+      <arc head="T12" kind="INPUT" tail="Erro_Entrega"/>
+      <arc head="Cancelar_Reserva" kind="OUTPUT" tail="T12"/>
+      <arc head="Cancelar_Ordem" kind="OUTPUT" tail="T12">
+        <point x="26.5" y="36.0"/>
+      </arc>
+      <arc head="Confirmar_Reserva" kind="OUTPUT" tail="T10"/>
+      <arc head="Confirmar_Ordem" kind="OUTPUT" tail="T10">
+        <point x="27.0" y="32.0"/>
+      </arc>
+      <arc head="OK_Entrega" kind="OUTPUT" tail="T8">
+        <point x="80.0" y="9.0"/>
+      </arc>
+      <arc head="T15" kind="INPUT" tail="Erro_Ordem"/>
+      <arc head="Eventos_Erro_Ordem" kind="OUTPUT" tail="T15"/>
+      <arc head="Eventos_Ordem_Criada" kind="OUTPUT" tail="T2"/>
+      <arc head="Eventos_Erro_Estoque" kind="OUTPUT" tail="T5"/>
+      <arc head="Eventos_OK_Estoque" kind="OUTPUT" mult-k="0.18349609375" tail="T3"/>
+      <arc head="Eventos_Erro_Entrega" kind="OUTPUT" tail="T12"/>
+      <arc head="Eventos_OK_Entrega" kind="OUTPUT" tail="T10"/>
+    </edges>
+  </gspn>
+</project>

@@ -1,9 +1,12 @@
 import stormpy
 from state_tree import StateTree
 from lark import Token
+from lark import Tree as LarkTree
+from ds3_parser import ds3_parser
 
 def solve(state, valid, formulae):
-    print("State:", state.name, "Entails:", valid, "Formulae:", formulae)
+    #print("State:", state.name, "Entails:", valid, "Formulae:", formulae)
+    print("Solving:\n  State: {}\n  Entails: {}\n  Formulae: {}\n".format(state.name, valid, ast_to_string(formulae)))
 
     if(formulae.data == 'conjunction'):
         return conjunction(state,valid,formulae)
@@ -32,10 +35,11 @@ def diamond(state, valid, formulae):
     
     jani_program, properties = stormpy.parse_jani_model(path)
     model = stormpy.build_model(jani_program, properties)
-    print_model_info(model)
+    #print_model_info(model)
     
     if valid:
         if not networkExecutes(model):
+            print("Network has no possible execution")
             return False 
 
         #Updates State Tree
@@ -48,8 +52,13 @@ def diamond(state, valid, formulae):
             model_check_result = model_check_storm(jani_program,exp)
             return bool(model_check_result)     ## Probability != 0 => True
     else:
-        #~(<spn> expression) == [spn] ~expression
-        return 
+        # ~(<spn> expression) == [spn] ~expression
+        negated_exp = LarkTree("negate",[exp])
+        new_formulae = LarkTree("box", [path, negated_exp])
+
+        print(new_formulae.pretty())    
+        
+        return solve(state, True, new_formulae)
 
 def box(state, valid, formulae):    
     path = formulae.children[0]
@@ -57,18 +66,14 @@ def box(state, valid, formulae):
 
     jani_program, properties = stormpy.parse_jani_model(path)
     model = stormpy.build_model(jani_program, properties)
-    print_model_info(model)
+    #print_model_info(model)
 
     if valid:
         if not networkExecutes(model):
             return False 
 
-        #Updates State Tree
-        new_state = StateTree(jani_program)
-        state.children.append(new_state)
-
         if has_modality(exp):    
-            return solve(new_state,True,exp)
+            return solve(state,True,exp)
         else:
             model_check_result = model_check_storm(jani_program,exp)
             if model_check_result == 1 or model_check_result == True:
@@ -79,11 +84,10 @@ def box(state, valid, formulae):
         ## ~[spn] expression <=> <spn> ~(expression)
         return
 
-def print_model_info(model):
-    print("Model - Storm Output:")
-    print("\tNumber of states: {}".format(model.nr_states))
-    print("\tNumber of transitions: {}".format(model.nr_transitions))
-    print("\tLabels: {}".format(model.labeling.get_labels()))
+    # print("Model - Storm Output:")
+    # print("\tNumber of states: {}".format(model.nr_states))
+    # print("\tNumber of transitions: {}".format(model.nr_transitions))
+    # print("\tLabels: {}".format(model.labeling.get_labels()))
 
 def has_modality(formulae):
     if isinstance(formulae,Token):  #Ignore Tokens
@@ -92,9 +96,9 @@ def has_modality(formulae):
     if formulae.data == "diamond" or formulae.data == "box":
        return True
     
-    for index in range(len(formulae.children)):
-        if has_modality(formulae.children[index]):
-            return True 
+    for child in formulae.children:
+        if has_modality(child):
+            return True  
     return False
 
 def model_check_storm(program, formulae):
@@ -117,7 +121,7 @@ def model_check_storm(program, formulae):
     return result
 
 def networkExecutes(model):
-    #TO DO - Evolve the condition: How to verify if the network executes?
+    #TODO - Evolve the condition: How to verify if the network executes?
     return model.nr_states > 1
 
 def ast_to_string(ast):
@@ -136,7 +140,7 @@ def ast_to_string(ast):
 
     if len(ast.children) == 1:
         if ast.data == "negate":
-            return "~ ({})".format(ast_to_string(ast.children[0]))
+            return "! ({})".format(ast_to_string(ast.children[0]))
 
     if len(ast.children) == 2:
         fst = ast.children[0]
@@ -146,7 +150,7 @@ def ast_to_string(ast):
             return "({}) & ({})".format(ast_to_string(fst), ast_to_string(snd))
         if ast.data == "disjunction":
             return "({}) | ({})".format(ast_to_string(fst), ast_to_string(snd))
-        if ast.data.data == "implication":
+        if ast.data == "implication":
             return "({}) -> ({})".format(ast_to_string(fst), ast_to_string(snd))
         if(ast.data == 'diamond'):
             return "<{}> ({})".format(ast_to_string(fst), ast_to_string(snd))
@@ -173,7 +177,16 @@ def disjunction(state,valid,formulae):
     else:
         return solve(state,False,lhs) and solve(state,False,rhs)
 
-def conjunction(state,valid,formulae):   
+def conjunction(state,valid,formulae):
+    """ 
+        Considering:
+            M is a DS3 Model
+            w is a world in the model 
+            A1 and A2 are DS3 formulae
+
+        M,w ||= A1 ∧ A2 iff M,w ||= A1 and M,w ||= A2 
+    """
+
     lhs = formulae.children[0]
     rhs = formulae.children[1]
 
@@ -183,7 +196,7 @@ def conjunction(state,valid,formulae):
         return solve(state,False,lhs) or solve(state,False,rhs)
 
 def negate(state,valid,formulae):
-    return solve(state,not valid, formulae.children[0])
+    return solve(state, not valid, formulae.children[0])
 
 def symbol(state,valid,formulae):
     return valid_on_state(state,formulae) if valid else not valid_on_state(state,formulae)
@@ -199,7 +212,7 @@ def loc_exp(state,valid,formulae):
         return result if valid else not result
 
 def valid_on_state(state,symbol):
-    ## TO DO
+    ##TODO
     # (Future) Change to Value Function passed as parameter
     #       return symbol in valor_function(state)
     return False
