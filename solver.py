@@ -52,12 +52,10 @@ def diamond(state, valid, formulae):
             model_check_result = model_check_storm(jani_program,exp)
             return bool(model_check_result)     ## Probability != 0 => True
     else:
-        # ~(<spn> expression) == [spn] ~expression
+        ## ~(<spn> expression) <=> [spn] ~expression
         negated_exp = LarkTree("negate",[exp])
         new_formulae = LarkTree("box", [path, negated_exp])
 
-        print(new_formulae.pretty())    
-        
         return solve(state, True, new_formulae)
 
 def box(state, valid, formulae):    
@@ -82,7 +80,10 @@ def box(state, valid, formulae):
                 return False
     else:
         ## ~[spn] expression <=> <spn> ~(expression)
-        return
+        negated_exp = LarkTree("negate",[exp])
+        new_formulae = LarkTree("diamond", [path, negated_exp])
+
+        return solve(state, True, new_formulae)
 
     # print("Model - Storm Output:")
     # print("\tNumber of states: {}".format(model.nr_states))

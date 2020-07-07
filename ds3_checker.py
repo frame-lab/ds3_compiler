@@ -15,13 +15,14 @@ from solver import StateTree
 network = 'example_models/rock_paper_scissors.jani'
 
 parser = ds3_parser()
-#parse_tree = parser.parse("< {} > wait1 = 1".format(network))
-parse_tree = parser.parse("! < {} > draw = 3".format(network))
-
-print(parse_tree.pretty())
+#parse_tree = parser.parse("< {} > draw = 3".format(network))
+parse_tree = parser.parse("< {} > < {} > draw = 3 ".format(network, network))
 
 #Default Initial State
-stateTree = StateTree(name='w1')
+stateTree = StateTree()
 
-#Lembrar de ignorar o no raiz da arvore que possui _exp
-print(solve(stateTree,True,parse_tree.children[0]))
+#Ignores Tree Root (_exp)
+formulae = parse_tree.children[0]
+
+result = solve(stateTree, True, formulae)
+print("Formulae Result: {}".format(result))
