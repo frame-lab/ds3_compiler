@@ -16,8 +16,9 @@ network = 'example_models/rock_paper_scissors.jani'
 
 parser = ds3_parser()
 #parse_tree = parser.parse(" (A & eating1 = 1) & !(eating1=1 & A)")
-parse_tree = parser.parse(" ((A & B) & (C & D)) & !((B & B) & (D & C))")
+#parse_tree = parser.parse(" ((A & B) & (C & D)) & !((B & A) & (D & C))")
 #parse_tree = parser.parse(" A | !A")
+parse_tree = parser.parse(" ((A & B) & (C & D)) | !((B & A) & (D & C))")
 #parse_tree = parser.parse("< {} > < {} > draw = 3 ".format(network, network))
 
 #Default Initial State

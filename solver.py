@@ -174,8 +174,16 @@ def disjunction(state,valid,formulae):
     rhs = formulae.children[1]
 
     if valid:
+        if are_contradictions(lhs,rhs):
+            print("Third Excluded Law applied.\nFormulae is a Contradiction")
+            return True
+        
         return solve(state,True,lhs) or solve(state,True,rhs)
     else:
+        if are_contradictions(lhs,rhs):
+            print("Third Excluded Law applied.\nFormulae is a Contradiction")
+            return False
+
         return solve(state,False,lhs) and solve(state,False,rhs)
 
 def conjunction(state,valid,formulae):
@@ -183,14 +191,14 @@ def conjunction(state,valid,formulae):
     rhs = formulae.children[1]
 
     if valid:
-        if is_contradiction(lhs,rhs):
-            print("Formulae is a Contradiction")
-            return False 
+        if are_contradictions(lhs,rhs):
+            print("Third Excluded Law applied.\nFormulae is a Contradiction")
+            return False
         
         return solve(state,True,lhs) and solve(state,True,rhs)
     else:
-        if is_contradiction(lhs,rhs):
-            print("Formulae is a Contradiction")
+        if are_contradictions(lhs,rhs):
+            print("Third Excluded Law applied.\nFormulae is a Contradiction")
             return True
         
         return solve(state,False,lhs) or solve(state,False,rhs)
@@ -231,11 +239,13 @@ def is_tree_equivalent(t1, t2):
 
     return True
         
-def is_contradiction(lhs, rhs):
-    """ Detects cases like A & !A and returns False without evaluating inside expressions"""
-    t1 = lhs
-    t2 = rhs
-    
+def are_contradictions(t1, t2):
+    """ Detects if formulas contradictions.
+            Ex.: ((A & B) & (C & D)) & !((B & A) & (D & C))
+        IMPORTANT: The function is not exhaustive. 
+                    If are_contradictions(n1, n2) -> n1 and n2 are contradictions
+                    If not are_contradictions(n1, n2) -> nothing can be affirmed
+    """
     if t1.data == "negate":
         t1 = t1.children[0]
     elif t2.data == "negate":
@@ -243,17 +253,10 @@ def is_contradiction(lhs, rhs):
     else:
         return False
     
-    a = is_tree_equivalent(t1,t2)
-    print(str(a)+"\n\n")
-
     if is_tree_equivalent(t1, t2):
         return True
     else:
-        return False
-    
-#def is_tautology():
-
-
+        return False    
 
 def negate(state,valid,formulae):
     return solve(state, not valid, formulae.children[0])
