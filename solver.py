@@ -179,22 +179,81 @@ def disjunction(state,valid,formulae):
         return solve(state,False,lhs) and solve(state,False,rhs)
 
 def conjunction(state,valid,formulae):
-    """ 
-        Considering:
-            M is a DS3 Model
-            w is a world in the model 
-            A1 and A2 are DS3 formulae
-
-        M,w ||= A1 ∧ A2 iff M,w ||= A1 and M,w ||= A2 
-    """
-
     lhs = formulae.children[0]
     rhs = formulae.children[1]
 
     if valid:
+        if is_contradiction(lhs,rhs):
+            print("Formulae is a Contradiction")
+            return False 
+        
         return solve(state,True,lhs) and solve(state,True,rhs)
     else:
+        if is_contradiction(lhs,rhs):
+            print("Formulae is a Contradiction")
+            return True
+        
         return solve(state,False,lhs) or solve(state,False,rhs)
+
+def is_node_equivalent(n1, n2):
+    if type(n1) != type(n2):
+        return False 
+    elif isinstance(n1, Token):
+        return n1.replace(" ","") == n2.replace(" ","")
+    else:
+        return n1.data == n2.data
+
+def is_tree_equivalent(t1, t2):
+    if not is_node_equivalent(t1, t2):
+        return False
+    
+    if not isinstance(t1, Token):
+        if len(t1.children) != len(t2.children):
+            return False
+    
+        if t1.data in ("conjunction", "disjunction"):
+            t1_list = [ item for item in t1.children ]
+            t2_list = [ item for item in t2.children ]
+            for e1 in t1_list:
+                match = False
+                for e2 in t2_list:
+                    if is_tree_equivalent(e1, e2):
+                        match = True
+                        t2_list.remove(e2)
+                        break
+                
+                if not match:
+                    return False
+        else:
+            for i in range(0,len(t1.children)):
+                if not is_tree_equivalent(t1.children[i], t2.children[i]):
+                    return False 
+
+    return True
+        
+def is_contradiction(lhs, rhs):
+    """ Detects cases like A & !A and returns False without evaluating inside expressions"""
+    t1 = lhs
+    t2 = rhs
+    
+    if t1.data == "negate":
+        t1 = t1.children[0]
+    elif t2.data == "negate":
+        t2 = t2.children[0]
+    else:
+        return False
+    
+    a = is_tree_equivalent(t1,t2)
+    print(str(a)+"\n\n")
+
+    if is_tree_equivalent(t1, t2):
+        return True
+    else:
+        return False
+    
+#def is_tautology():
+
+
 
 def negate(state,valid,formulae):
     return solve(state, not valid, formulae.children[0])

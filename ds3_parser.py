@@ -29,7 +29,7 @@ def ds3_parser():
         
         true: "true"
         false: "false"
-        loc_exp: /[a-zA-Z_][a-zA-Z_0-9]*\s*(<=|>=|!=|<|>|=)?\s*[\d]*/
+        loc_exp: /[a-zA-Z_][a-zA-Z_0-9]*\s*(<=|>=|!=|<|>|=)+\s*[\d]*/
         symbol: WORD  
 
         PATH: /(\/{0,1}(((\w)|(\.)|(\\\s))+\/)*((\w)|(\.)|(\\\s))+)|\//
