@@ -4,61 +4,53 @@ from lark import Token
 from lark import Tree as LarkTree
 from ds3_parser import ds3_parser
 
-def solve(state, valid, formulae):
-    #print("State:", state.name, "Entails:", valid, "Formulae:", formulae)
-    print("Solving:\n  State: {}\n  Entails: {}\n  Formulae: {}\n".format(state.name, valid, ast_to_string(formulae)))
+def solve(state, formulae):
+    print("Solving:\n  State: {}\n  Formulae: {}\n".format(state.name, ast_to_string(formulae)))
 
     if(formulae.data == 'conjunction'):
-        return conjunction(state,valid,formulae)
+        return conjunction(state, formulae)
     elif(formulae.data == 'disjunction'):
-        return disjunction(state,valid,formulae)
+        return disjunction(state, formulae)
     elif(formulae.data == 'implication'):
-        return implication(state,valid,formulae)
+        return implication(state, formulae)
     elif(formulae.data == 'negate'):
-        return negate(state,valid,formulae)
+        return negate(state, formulae)
     elif(formulae.data == 'diamond'):
-        return diamond(state,valid,formulae)
+        return diamond(state, formulae)
     elif(formulae.data == 'box'):
-        return box(state,valid,formulae)
+        return box(state, formulae)
     elif(formulae.data == 'loc_exp'):
-        return loc_exp(state,valid,formulae)
+        return loc_exp(state, formulae)
     elif(formulae.data == 'symbol'):
-        return symbol(state,valid,formulae)
+        return symbol(state, formulae)
     elif(formulae.data == 'true'):
         return True
     elif(formulae.data == 'false'):
         return False
 
-def diamond(state, valid, formulae):  
+def diamond(state, formulae):  
     path = formulae.children[0]
     exp = formulae.children[1]
     
     jani_program, properties = stormpy.parse_jani_model(path)
     model = stormpy.build_model(jani_program, properties)
-    #print_model_info(model)
-    
-    if valid:
-        if not networkExecutes(model):
-            print("Network has no possible execution")
-            return False 
+    #print_model_info(model)    
 
-        #Updates State Tree
-        new_state = StateTree(jani_program)
-        state.children.append(new_state)
+    if not networkExecutes(model):
+        print("Network has no possible execution")
+        return False 
 
-        if has_modality(exp):    
-            return solve(new_state,True,exp)
-        else:
-            model_check_result = model_check_storm(jani_program,exp)
-            return bool(model_check_result)     ## Probability != 0 => True
+    #Updates State Tree
+    new_state = StateTree(jani_program)
+    state.children.append(new_state)
+
+    if has_modality(exp):    
+        return solve(new_state, exp)
     else:
-        ## ~(<spn> expression) <=> [spn] ~expression
-        negated_exp = LarkTree("negate",[exp])
-        new_formulae = LarkTree("box", [path, negated_exp])
+        model_check_result = model_check_storm(jani_program,exp)
+        return bool(model_check_result)     ## Probability != 0 => True
 
-        return solve(state, True, new_formulae)
-
-def box(state, valid, formulae):    
+def box(state, formulae):    
     path = formulae.children[0]
     exp = formulae.children[1]
 
@@ -66,24 +58,17 @@ def box(state, valid, formulae):
     model = stormpy.build_model(jani_program, properties)
     #print_model_info(model)
 
-    if valid:
-        if not networkExecutes(model):
-            return False 
+    if not networkExecutes(model):
+        return False 
 
-        if has_modality(exp):    
-            return solve(state,True,exp)
-        else:
-            model_check_result = model_check_storm(jani_program,exp)
-            if model_check_result == 1 or model_check_result == True:
-                return True
-            else:
-                return False
+    if has_modality(exp):    
+        return solve(state, exp)
     else:
-        ## ~[spn] expression <=> <spn> ~(expression)
-        negated_exp = LarkTree("negate",[exp])
-        new_formulae = LarkTree("diamond", [path, negated_exp])
-
-        return solve(state, True, new_formulae)
+        model_check_result = model_check_storm(jani_program,exp)
+        if model_check_result == 1 or model_check_result == True:
+            return True
+        else:
+            return False
 
     # print("Model - Storm Output:")
     # print("\tNumber of states: {}".format(model.nr_states))
@@ -160,48 +145,31 @@ def ast_to_string(ast):
         
     return ast_to_string(ast.children[0])    
 
-def implication(state, valid, formulae):
+def implication(state, formulae):
     lhs = formulae.children[0]
     rhs = formulae.children[1]
 
-    if valid:
-        return solve(state,False,lhs) or solve(state,True,rhs)
-    else:
-        return solve(state,True,lhs) and solve(state,False,rhs)
+    return solve(state, lhs) or solve(state, rhs)
 
-def disjunction(state,valid,formulae):
+def disjunction(state, formulae):
     lhs = formulae.children[0]
     rhs = formulae.children[1]
 
-    if valid:
-        if are_contradictions(lhs,rhs):
-            print("Third Excluded Law applied.\nFormulae is a Contradiction")
-            return True
-        
-        return solve(state,True,lhs) or solve(state,True,rhs)
-    else:
-        if are_contradictions(lhs,rhs):
-            print("Third Excluded Law applied.\nFormulae is a Contradiction")
-            return False
+    if are_contradictions(lhs,rhs):
+        print("Third Excluded Law applied.\nFormulae is a Contradiction")
+        return True
+    
+    return solve(state, lhs) or solve(state, rhs)
 
-        return solve(state,False,lhs) and solve(state,False,rhs)
-
-def conjunction(state, valid, formulae):
+def conjunction(state, formulae):
     lhs = formulae.children[0]
     rhs = formulae.children[1]
 
-    if valid:
-        if are_contradictions(lhs,rhs):
-            print("Third Excluded Law applied.\nFormulae is a Contradiction")
-            return False
-        
-        return solve(state,True,lhs) and solve(state,True,rhs)
-    else:
-        if are_contradictions(lhs,rhs):
-            print("Third Excluded Law applied.\nFormulae is a Contradiction")
-            return True
-        
-        return solve(state,False,lhs) or solve(state,False,rhs)
+    if are_contradictions(lhs,rhs):
+        print("Third Excluded Law applied.\nFormulae is a Contradiction")
+        return False
+    
+    return solve(state, lhs) and solve(state, rhs)
 
 def is_node_equivalent(n1, n2):
     if type(n1) != type(n2):
@@ -258,13 +226,15 @@ def are_contradictions(t1, t2):
     else:
         return False    
 
-def negate(state,valid,formulae):
-    return solve(state, not valid, formulae.children[0])
+def negate(state, formulae):
+    ##TODO: Negation of probability (quanti)
 
-def symbol(state,valid,formulae):
-    return valid_on_state(state,formulae) if valid else not valid_on_state(state,formulae)
+    return not solve(state, formulae.children[0])
 
-def loc_exp(state,valid,formulae):
+def symbol(state, formulae):
+    return valid_on_state(state, formulae)
+
+def loc_exp(state, formulae):
     program = state.jani_program
     if not program:
         print("This formula can't be resolved without an associated Stochastic Petri Net")
@@ -272,7 +242,7 @@ def loc_exp(state,valid,formulae):
     else: 
         storm_formula = ast_to_string(formulae)
         result = model_check_storm(program,storm_formula)
-        return result if valid else not result
+        return result
 
 def valid_on_state(state,symbol):
     ##TODO
