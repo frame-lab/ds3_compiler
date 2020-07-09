@@ -186,7 +186,7 @@ def disjunction(state,valid,formulae):
 
         return solve(state,False,lhs) and solve(state,False,rhs)
 
-def conjunction(state,valid,formulae):
+def conjunction(state, valid, formulae):
     lhs = formulae.children[0]
     rhs = formulae.children[1]
 
