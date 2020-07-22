@@ -41,13 +41,13 @@ def diamond(state, formulae):
         return False 
 
     #Updates State Tree
-    new_state = StateTree(jani_program)
+    new_state = StateTree(path)
     state.children.append(new_state)
 
     if has_modality(exp):    
         return solve(new_state, exp)
     else:
-        model_check_result = model_check_storm(jani_program,exp)
+        model_check_result = model_check_storm(jani_program, exp, final_states=True)
         return bool(model_check_result)     ## Probability != 0 => True
 
 def box(state, formulae):    
@@ -64,7 +64,7 @@ def box(state, formulae):
     if has_modality(exp):    
         return solve(state, exp)
     else:
-        model_check_result = model_check_storm(jani_program,exp)
+        model_check_result = model_check_storm(jani_program, exp, final_states=True)
         if model_check_result == 1 or model_check_result == True:
             return True
         else:
@@ -87,13 +87,17 @@ def has_modality(formulae):
             return True  
     return False
 
-def model_check_storm(program, formulae):
+def model_check_storm(program, formulae, final_states=False):
     """ 
         Transforms the Syntax Tree into a Storm formula to avaliate Final(deadlock) states 
         Returns boolean (quali) or float (quanti) result
     """
     
-    storm_formula = "P=? [true U ({}) & \"deadlock\"]".format(ast_to_string(formulae))
+    storm_formula = ast_to_string(formulae)
+
+    if final_states:
+        storm_formula = "P=? [true U ({}) & \"deadlock\"]".format(storm_formula)
+        
     print("Storm - Check Property: " + storm_formula)
 
     properties = stormpy.parse_properties_for_jani_model(storm_formula,program)
@@ -227,21 +231,19 @@ def are_contradictions(t1, t2):
         return False    
 
 def negate(state, formulae):
-    ##TODO: Negation of probability (quanti)
-
     return not solve(state, formulae.children[0])
 
 def symbol(state, formulae):
     return valid_on_state(state, formulae)
 
 def loc_exp(state, formulae):
-    program = state.jani_program
+    program, properties = stormpy.parse_jani_model(state.network)
     if not program:
         print("This formula can't be resolved without an associated Stochastic Petri Net")
+        ##TODO: O programa precisa retornar erro 
         return
     else: 
-        storm_formula = ast_to_string(formulae)
-        result = model_check_storm(program,storm_formula)
+        result = model_check_storm(program, formulae)
         return result
 
 def valid_on_state(state,symbol):
