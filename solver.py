@@ -153,7 +153,7 @@ def implication(state, formulae):
     lhs = formulae.children[0]
     rhs = formulae.children[1]
 
-    return solve(state, lhs) or solve(state, rhs)
+    return (not solve(state, lhs)) or solve(state, rhs)
 
 def disjunction(state, formulae):
     lhs = formulae.children[0]
@@ -212,7 +212,7 @@ def is_tree_equivalent(t1, t2):
     return True
         
 def are_contradictions(t1, t2):
-    """ Detects if formulas contradictions.
+    """ Detects if t1 and t2 are contradictions.
             Ex.: ((A & B) & (C & D)) & !((B & A) & (D & C))
         IMPORTANT: The function is not exhaustive. 
                     If are_contradictions(n1, n2) -> n1 and n2 are contradictions
