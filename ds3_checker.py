@@ -1,34 +1,29 @@
 from solver import solve
 from ds3_parser import ds3_parser
 from solver import StateTree
+import sys
 
-# import sys
+formula = None
+spn = None
 
-# if len(sys.argv) != 2:
-#     print("Incorrect number of arguments")
-# else:
-#     print("Correct number of arguments")
+if len(sys.argv) == 2:
+    formula = sys.argv[1]
+    print("Checking:\n\tFormula: {}".format(formula))
+elif len(sys.argv) == 3:
+    formula = sys.argv[1]
+    spn = sys.argv[2]
+    print("Checking:\n\tFormula:{} SPN: {}".format(formula,spn))
+else:
+    print("Incorrect number of arguments.\nCorrect Use: python ds3_checker.py <formula> [<spn>]")
+    exit()
 
-# expression = sys.argv[1]
-
-#preciso dar PNPRO como entrada
-#E ter a opcao de passar SPN como parametro fora da formula 
-#   (parametro opcional msm so se o usuario quiser verificar algo no estado inicial 
-#           (ou seja sem uso de modalidade))
-#  Faz sentido o usuário não passar rede alguma? Nesse caso eu teria um modelo vazio, é possível, mas incomum.
-network = 'example_models/philosophers.jani'
-
+#Generates AST(formula)
 parser = ds3_parser()
-#parse_tree = parser.parse(" eating1 = 1")
-parse_tree = parser.parse(" < {} > thinking1 = 1".format(network))
+ast_formula = parser.parse(formula)
+ast_formula = ast_formula.children[0]  #Ignores Tree Root (_exp)
 
-#parse_tree = parser.parse("< {} > < {} > draw = 3 ".format(network, network))
+#Generates Initial State
+initial_state = StateTree(spn)
 
-#Default Initial State
-stateTree = StateTree(network)
-
-#Ignores Tree Root (_exp)
-formulae = parse_tree.children[0]
-
-result = solve(stateTree, formulae)
-print("Formulae Result: {}".format(result))
+result = solve(initial_state, ast_formula)
+print("Formulae Validation: {}".format(result))

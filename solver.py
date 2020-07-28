@@ -237,12 +237,11 @@ def symbol(state, formulae):
     return valid_on_state(state, formulae)
 
 def loc_exp(state, formulae):
-    program, properties = stormpy.parse_jani_model(state.network)
-    if not program:
-        print("This formula can't be resolved without an associated Stochastic Petri Net")
-        ##TODO: O programa precisa retornar erro 
-        return
+    if not state.network:
+        print("Markup Expressions can't be resolved without an associated Stochastic Petri Net")
+        exit()
     else: 
+        program, properties = stormpy.parse_jani_model(state.network)
         result = model_check_storm(program, formulae)
         return result
 
