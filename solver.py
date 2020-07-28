@@ -1,4 +1,5 @@
 import stormpy
+import stormpy.gspn
 from state_tree import StateTree
 from lark import Token
 from lark import Tree as LarkTree
@@ -28,12 +29,25 @@ def solve(state, formulae):
     elif(formulae.data == 'false'):
         return False
 
+def get_jani_program(path):
+    #Jani:
+    if ".jani" in "path":
+        jani_program, properties = stormpy.parse_jani_model(path)
+        return jani_program
+    
+    #PNPRO:
+    gspn_parser = stormpy.gspn.GSPNParser()
+    gspn = gspn_parser.parse(path)
+    jani_builder = stormpy.gspn.GSPNToJaniBuilder(gspn)
+    jani_program = jani_builder.build()
+    return jani_program
+
 def diamond(state, formulae):  
     path = formulae.children[0]
     exp = formulae.children[1]
     
-    jani_program, properties = stormpy.parse_jani_model(path)
-    model = stormpy.build_model(jani_program, properties)
+    jani_program = get_jani_program(path)
+    model = stormpy.build_model(jani_program)
     #print_model_info(model)    
 
     if not networkExecutes(model):
@@ -54,8 +68,8 @@ def box(state, formulae):
     path = formulae.children[0]
     exp = formulae.children[1]
 
-    jani_program, properties = stormpy.parse_jani_model(path)
-    model = stormpy.build_model(jani_program, properties)
+    jani_program = get_jani_program(path)
+    model = stormpy.build_model(jani_program)
     #print_model_info(model)
 
     if not networkExecutes(model):
@@ -241,7 +255,7 @@ def loc_exp(state, formulae):
         print("Markup Expressions can't be resolved without an associated Stochastic Petri Net")
         exit()
     else: 
-        program, properties = stormpy.parse_jani_model(state.network)
+        program = get_jani_program(state.network)
         result = model_check_storm(program, formulae)
         return result
 
