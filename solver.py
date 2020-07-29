@@ -30,17 +30,19 @@ def solve(state, formulae):
         return False
 
 def get_jani_program(path):
-    #Jani:
-    if ".jani" in "path":
+    if path.lower().endswith(".jani"):
         jani_program, properties = stormpy.parse_jani_model(path)
         return jani_program
     
-    #PNPRO:
-    gspn_parser = stormpy.gspn.GSPNParser()
-    gspn = gspn_parser.parse(path)
-    jani_builder = stormpy.gspn.GSPNToJaniBuilder(gspn)
-    jani_program = jani_builder.build()
-    return jani_program
+    if path.lower().endswith(".pnpro"):
+        gspn_parser = stormpy.gspn.GSPNParser()
+        gspn = gspn_parser.parse(path)
+        jani_builder = stormpy.gspn.GSPNToJaniBuilder(gspn)
+        jani_program = jani_builder.build()
+        return jani_program
+    
+    print("Unsupported file format: {}".format(path))
+    exit()
 
 def diamond(state, formulae):  
     path = formulae.children[0]
@@ -255,8 +257,8 @@ def loc_exp(state, formulae):
         print("Markup Expressions can't be resolved without an associated Stochastic Petri Net")
         exit()
     else: 
-        program = get_jani_program(state.network)
-        result = model_check_storm(program, formulae)
+        jani_program = get_jani_program(state.network)
+        result = model_check_storm(jani_program, formulae)
         return result
 
 def valid_on_state(state,symbol):
