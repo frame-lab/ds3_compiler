@@ -52,7 +52,7 @@ def diamond(state, formulae):
     model = stormpy.build_model(jani_program)
     #print_model_info(model)    
 
-    if not networkExecutes(model):
+    if not network_executes(model):
         print("Network has no possible execution")
         return False 
 
@@ -74,18 +74,15 @@ def box(state, formulae):
     model = stormpy.build_model(jani_program)
     #print_model_info(model)
 
-    if not networkExecutes(model):
+    if not network_executes(model):
         return False 
 
     if has_modality(exp):    
         return solve(state, exp)
     else:
         model_check_result = model_check_storm(jani_program, exp, final_states=True)
-        if model_check_result == 1 or model_check_result == True:
-            return True
-        else:
-            return False
-
+        return model_check_result == 1
+        
     # print("Model - Storm Output:")
     # print("\tNumber of states: {}".format(model.nr_states))
     # print("\tNumber of transitions: {}".format(model.nr_transitions))
@@ -126,8 +123,15 @@ def model_check_storm(program, formulae, final_states=False):
 
     return result
 
-def networkExecutes(model):
-    #TODO - Evolve the condition: How to verify if the network executes?
+def network_executes(model):
+    """ 
+    A rede ``path1" precisa executar e parar?
+    Executa e para. Se ela não para ela está fora do escopo da lógica.
+
+    Além de verificar que a rede executa eu deveria também verificar que a rede para, 
+        ou seja existe algum estado em que a propriedade "deadlock" é verdadeira.
+    """
+
     return model.nr_states > 1
 
 def ast_to_string(ast):
