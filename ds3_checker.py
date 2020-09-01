@@ -8,11 +8,11 @@ spn = None
 
 if len(sys.argv) == 2:
     formula = sys.argv[1]
-    print("Checking:\n\tFormula: {}".format(formula))
+    print(f"Checking Formula \"{formula}\"\n")
 elif len(sys.argv) == 3:
     formula = sys.argv[1]
     spn = sys.argv[2]
-    print("Checking:\n\tFormula:{} SPN: {}".format(formula,spn))
+    print(f"Checking Formula \"{formula}\" SPN: {spn}\n")
 else:
     print("Incorrect number of arguments.\nCorrect Use: python ds3_checker.py <formula> [<spn>]")
     exit()
@@ -26,4 +26,4 @@ ast_formula = ast_formula.children[0]  #Ignores Tree Root (_exp)
 initial_state = StateTree(spn)
 
 result = solve(initial_state, ast_formula)
-print("Formulae Validation: {}".format(result))
+print(f"Formula \"{formula}\" is {result}")

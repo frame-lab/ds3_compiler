@@ -5,29 +5,35 @@ from lark import Token
 from lark import Tree as LarkTree
 from ds3_parser import ds3_parser
 
-def solve(state, formulae):
-    print("Solving:\n  State: {}\n  Formulae: {}\n".format(state.name, ast_to_string(formulae)))
+def solve(state, formulae):    
+    formulae_string = ast_to_string(formulae)
+    print(f"Solving:\n  State: {state.name}\n  Formula: \"{formulae_string}\"\n  Waiting for result...\n")
+
+    result = None
 
     if(formulae.data == 'conjunction'):
-        return conjunction(state, formulae)
+        result = conjunction(state, formulae)
     elif(formulae.data == 'disjunction'):
-        return disjunction(state, formulae)
+        result = disjunction(state, formulae)
     elif(formulae.data == 'implication'):
-        return implication(state, formulae)
+        result = implication(state, formulae)
     elif(formulae.data == 'negate'):
-        return negate(state, formulae)
+        result = negate(state, formulae)
     elif(formulae.data == 'diamond'):
-        return diamond(state, formulae)
+        result = diamond(state, formulae)
     elif(formulae.data == 'box'):
-        return box(state, formulae)
+        result = box(state, formulae)
     elif(formulae.data == 'loc_exp'):
-        return loc_exp(state, formulae)
+        result = loc_exp(state, formulae)
     elif(formulae.data == 'symbol'):
-        return symbol(state, formulae)
+        result = symbol(state, formulae)
     elif(formulae.data == 'true'):
-        return True
+        result = True
     elif(formulae.data == 'false'):
-        return False
+        result = False
+
+    print(f"Formula \"{formulae_string}\" is {result} \n")
+    return result
 
 def get_jani_program(path):
     if path.lower().endswith(".jani"):
@@ -119,7 +125,7 @@ def model_check_storm(program, formulae, final_states=False):
     
     initial_state = model.initial_states[0]
     result = results_for_all_states.at(initial_state)
-    print("\t\tResult: {}".format(result))
+    print("\t\tResult: {}\n".format(result))
 
     return result
 
@@ -252,6 +258,13 @@ def are_contradictions(t1, t2):
 
 def negate(state, formulae):
     return not solve(state, formulae.children[0])
+    # exp = ast_to_string(formulae.children[0])
+    # exp_result = solve(state, formulae.children[0])
+    # result = not exp_result
+    # print(f"Since {exp} : {exp_result}\nApplying negate: {result}")
+    # return result
+
+
 
 def symbol(state, formulae):
     return valid_on_state(state, formulae)
