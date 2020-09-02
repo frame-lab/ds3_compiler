@@ -55,6 +55,7 @@ def diamond(state, formulae):
     jani_program = get_jani_program(path)
 
     if not network_executes_and_stops(jani_program):
+        print("Network does not executes and stops. So modality is false\n")
         return False
 
     #Updates State Tree
@@ -74,6 +75,7 @@ def box(state, formulae):
     jani_program = get_jani_program(path)
 
     if not network_executes_and_stops(jani_program):
+        print("Network does not executes and stops. So modality is false")
         return False 
 
     if has_modality(exp):    
@@ -131,23 +133,17 @@ def model_check_storm(program, formulae, final_states=False):
 
 def network_executes_and_stops(program):
     """ Verifies if network executes and stops """
-
-    #TODO: Quebrar essa função em duas, pois as consequências precisam ser diferentes.
-    #   Se a rede não para, então faz sentido sair direto do programa
-    #   Se a rede não executa então a modalidade precisa retornar falso e o programa segue normalmente.
-
-    #Executes and changes State
-    #TODO: Teste com um local só que dispara e volta para ele mesmo
-    #   Na verdade ter um estado não significa que não dispara necessariamente, ele pode disparar e não trocar de estado.
-    model = stormpy.build_model(program)
-    if model.nr_states <= 1:
-        print("Network doesn't have a possible state alteration")
-        return False
     
-    #Stops
+    #Stops?
     result = storm_check(program, "P=? [true U \"deadlock\"]")
     if result == 0:
-        print("The given SPN does not stop. DS3 Checker was not designed to deal with this use case.")
+        print("The given SPN does not stop. DS3 Checker was not designed to deal with this use case.\n")
+        exit()
+    
+    #Executes?
+    model = stormpy.build_model(program)
+    if model.nr_states <= 1:
+        print("Network doesn't have possible execution.\n")
         return False
     
     return True
