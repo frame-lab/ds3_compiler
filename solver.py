@@ -25,8 +25,6 @@ def solve(state, formulae):
         result = box(state, formulae)
     elif(formulae.data == 'loc_exp'):
         result = loc_exp(state, formulae)
-    elif(formulae.data == 'symbol'):
-        result = symbol(state, formulae)
     elif(formulae.data == 'true'):
         result = True
     elif(formulae.data == 'false'):
@@ -255,11 +253,6 @@ def negate(state, formulae):
     # print(f"Since {exp} : {exp_result}\nApplying negate: {result}")
     # return result
 
-
-
-def symbol(state, formulae):
-    return valid_on_state(state, formulae)
-
 def loc_exp(state, formulae):
     if not state.network:
         print("Markup Expressions can't be resolved without an associated Stochastic Petri Net")
@@ -268,9 +261,3 @@ def loc_exp(state, formulae):
         jani_program = get_jani_program(state.network)
         result = model_check_storm(jani_program, formulae)
         return result
-
-def valid_on_state(state,symbol):
-    ##TODO
-    # (Future) Change to Value Function passed as parameter
-    #       return symbol in valor_function(state)
-    return False
