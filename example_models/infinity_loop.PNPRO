@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="infinity_loop" version="121">
+  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false">
+    <nodes>
+      <place marking="1" name="P0" x="4.0" y="6.0"/>
+      <transition delay="2" name="T0" nservers-x="0.5" type="EXP" x="9.55" y="4.0"/>
+    </nodes>
+    <edges>
+      <arc head="T0" kind="INPUT" tail="P0"/>
+      <arc head="P0" kind="OUTPUT" tail="T0">
+        <point x="10.0" y="10.0"/>
+      </arc>
+    </edges>
+  </gspn>
+</project>

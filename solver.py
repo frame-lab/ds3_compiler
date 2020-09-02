@@ -53,11 +53,9 @@ def diamond(state, formulae):
     exp = formulae.children[1]
     
     jani_program = get_jani_program(path)
-    model = stormpy.build_model(jani_program)
 
-    if not network_executes(model):
-        print("Network has no possible execution\n")
-        return False 
+    if not network_executes_and_stops(jani_program):
+        return False
 
     #Updates State Tree
     new_state = StateTree(path)
@@ -74,10 +72,8 @@ def box(state, formulae):
     exp = formulae.children[1]
 
     jani_program = get_jani_program(path)
-    model = stormpy.build_model(jani_program)
 
-    if not network_executes(model):
-        print("Network has no possible execution\n")
+    if not network_executes_and_stops(jani_program):
         return False 
 
     if has_modality(exp):    
@@ -98,36 +94,63 @@ def has_modality(formulae):
             return True  
     return False
 
+def storm_check(program, formula):
+    """ Model Checks formula(string) over model """
+
+    properties = stormpy.parse_properties_for_jani_model(formula,program)
+    model = stormpy.build_model(program, properties)
+    results_for_all_states = stormpy.check_model_sparse(model, properties[0])
+    initial_state = model.initial_states[0]
+    result = results_for_all_states.at(initial_state)
+    
+    return result
+
+
 def model_check_storm(program, formulae, final_states=False):
     """ 
-        Transforms the Syntax Tree into a Storm formula to avaliate Final(deadlock) states 
+        Uses Storm Checker to verify formulae
+
+        Program: Jani Program
+        Formulae: String or AST Formulae
+        Final States: Boolean
+
         Returns boolean (quali) or float (quanti) result
     """
-    
-    storm_formula = ast_to_string(formulae)
+
+    if type(formulae) != str:
+        storm_formula = ast_to_string(formulae)
 
     if final_states:
         storm_formula = "P=? [true U ({}) & \"deadlock\"]".format(storm_formula)
         
     print("Storm - Check Property: " + storm_formula)
-
-    properties = stormpy.parse_properties_for_jani_model(storm_formula,program)
-    model = stormpy.build_model(program, properties)
-    results_for_all_states = stormpy.check_model_sparse(model, properties[0])
-    
-    initial_state = model.initial_states[0]
-    result = results_for_all_states.at(initial_state)
-    print("\t\tResult: {}\n".format(result))
+    result = storm_check(program, storm_formula)
+    print(f"\t\tResult: {result}\n")
 
     return result
 
-def network_executes(model):
-    """ 
-    Além de verificar que a rede executa eu deveria também verificar que a rede para, 
-        ou seja existe algum estado em que a propriedade "deadlock" é verdadeira.
-    """
+def network_executes_and_stops(program):
+    """ Verifies if network executes and stops """
 
-    return model.nr_states > 1
+    #TODO: Quebrar essa função em duas, pois as consequências precisam ser diferentes.
+    #   Se a rede não para, então faz sentido sair direto do programa
+    #   Se a rede não executa então a modalidade precisa retornar falso e o programa segue normalmente.
+
+    #Executes and changes State
+    #TODO: Teste com um local só que dispara e volta para ele mesmo
+    #   Na verdade ter um estado não significa que não dispara necessariamente, ele pode disparar e não trocar de estado.
+    model = stormpy.build_model(program)
+    if model.nr_states <= 1:
+        print("Network doesn't have a possible state alteration")
+        return False
+    
+    #Stops
+    result = storm_check(program, "P=? [true U \"deadlock\"]")
+    if result == 0:
+        print("The given SPN does not stop. DS3 Checker was not designed to deal with this use case.")
+        return False
+    
+    return True
 
 def ast_to_string(ast):
     """ 
@@ -175,7 +198,7 @@ def disjunction(state, formulae):
     rhs = formulae.children[1]
 
     if are_contradictions(lhs,rhs):
-        print("Third Excluded Law applied.\nFormulae is a Contradiction")
+        print("Third Excluded Law applied.\nFormulae is a Contradiction\n")
         return True
     
     return solve(state, lhs) or solve(state, rhs)
