@@ -22,7 +22,7 @@ def ds3_parser():
         negate: "!" _exp
         conjunction: _exp "&" _exp
         disjunction: _exp "|" _exp
-        implication: _exp "->" _exp
+        implication: _exp "=>" _exp
         diamond: "<" PATH ">" _exp
         box: "[" PATH "]" _exp
         

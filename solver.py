@@ -175,7 +175,7 @@ def ast_to_string(ast):
         if ast.data == "disjunction":
             return "({}) | ({})".format(ast_to_string(fst), ast_to_string(snd))
         if ast.data == "implication":
-            return "({}) -> ({})".format(ast_to_string(fst), ast_to_string(snd))
+            return "({}) => ({})".format(ast_to_string(fst), ast_to_string(snd))
         if(ast.data == 'diamond'):
             return "<{}> ({})".format(ast_to_string(fst), ast_to_string(snd))
         if(ast.data == 'box'):
@@ -249,8 +249,8 @@ def are_contradictions(t1, t2):
     """ Detects if t1 and t2 are contradictions.
             Ex.: ((A & B) & (C & D)) & !((B & A) & (D & C))
         IMPORTANT: The function is not exhaustive. 
-                    If are_contradictions(n1, n2) -> n1 and n2 are contradictions
-                    If not are_contradictions(n1, n2) -> nothing can be affirmed
+                    If are_contradictions(n1, n2) => n1 and n2 are contradictions
+                    If not are_contradictions(n1, n2) => nothing can be affirmed
     """
     if t1.data == "negate":
         t1 = t1.children[0]
