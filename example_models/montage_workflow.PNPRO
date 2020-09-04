@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="New project" version="121">
+  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false">
+    <nodes>
+      <place name="P11" x="8.0" y="1.0"/>
+      <place name="P12" x="12.0" y="1.0"/>
+      <place name="P13" x="16.0" y="1.0"/>
+      <place name="P14" x="20.0" y="1.0"/>
+      <place name="P21" x="4.0" y="8.0"/>
+      <place name="P22" x="8.0" y="8.0"/>
+      <place name="P23" x="12.0" y="8.0"/>
+      <place name="P24" x="16.0" y="8.0"/>
+      <place name="P25" x="20.0" y="8.0"/>
+      <place name="P26" x="24.0" y="8.0"/>
+      <place name="P31" x="14.0" y="15.0"/>
+      <place name="P41" x="14.0" y="24.0"/>
+      <place name="P51" x="8.0" y="32.0"/>
+      <place name="P52" x="12.0" y="32.0"/>
+      <place name="P53" x="16.0" y="32.0"/>
+      <place name="P54" x="20.0" y="32.0"/>
+      <place name="P61" x="14.0" y="40.0"/>
+      <place name="P71" x="14.0" y="47.0"/>
+      <place name="P81" x="14.0" y="54.0"/>
+      <place name="P91" x="14.0" y="62.0"/>
+      <transition name="E2" nservers-x="0.5" type="EXP" x="10.55" y="56.0"/>
+      <transition name="E1" nservers-x="0.5" type="EXP" x="18.55" y="41.0"/>
+      <transition name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="4.55" y="5.0"/>
+      <transition name="T2" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="5.0"/>
+      <transition name="T3" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="12.55" y="5.0"/>
+      <transition name="T4" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="5.0"/>
+      <transition name="T5" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="20.55" y="5.0"/>
+      <transition name="T6" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="24.55" y="5.0"/>
+      <transition name="T7" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="14.55" y="12.0"/>
+      <transition name="T8" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="14.55" y="20.0"/>
+      <transition name="T9" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="29.0"/>
+      <transition name="T10" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="12.55" y="29.0"/>
+      <transition name="T11" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="29.0"/>
+      <transition name="T12" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="20.55" y="29.0"/>
+      <transition name="T13" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="14.55" y="36.0"/>
+      <transition name="T14" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="14.55" y="44.0"/>
+      <transition name="T15" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="14.55" y="51.0"/>
+      <transition name="T16" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="14.55" y="59.0"/>
+      <place name="Erro1" x="26.0" y="44.0"/>
+      <place name="Erro2" x="5.0" y="58.0"/>
+    </nodes>
+    <edges>
+      <arc head="T1" kind="INPUT" tail="P11"/>
+      <arc head="P21" kind="OUTPUT" tail="T1"/>
+      <arc head="T2" kind="INPUT" tail="P11"/>
+      <arc head="T1" kind="INPUT" tail="P12"/>
+      <arc head="T2" kind="INPUT" tail="P12"/>
+      <arc head="T3" kind="INPUT" tail="P12"/>
+      <arc head="T5" kind="INPUT" tail="P12"/>
+      <arc head="T3" kind="INPUT" tail="P13"/>
+      <arc head="T4" kind="INPUT" tail="P13"/>
+      <arc head="T5" kind="INPUT" tail="P13"/>
+      <arc head="T6" kind="INPUT" tail="P14"/>
+      <arc head="T5" kind="INPUT" tail="P14"/>
+      <arc head="T4" kind="INPUT" tail="P14"/>
+      <arc head="P22" kind="OUTPUT" tail="T2"/>
+      <arc head="P23" kind="OUTPUT" tail="T3"/>
+      <arc head="P24" kind="OUTPUT" tail="T4"/>
+      <arc head="P25" kind="OUTPUT" tail="T5"/>
+      <arc head="P26" kind="OUTPUT" tail="T6"/>
+      <arc head="T7" kind="INPUT" tail="P21"/>
+      <arc head="T7" kind="INPUT" tail="P22"/>
+      <arc head="T7" kind="INPUT" tail="P23"/>
+      <arc head="T7" kind="INPUT" tail="P24"/>
+      <arc head="T7" kind="INPUT" tail="P25"/>
+      <arc head="T7" kind="INPUT" tail="P26"/>
+      <arc head="P31" kind="OUTPUT" tail="T7"/>
+      <arc head="T8" kind="INPUT" tail="P31"/>
+      <arc head="P41" kind="OUTPUT" tail="T8"/>
+      <arc head="T9" kind="INPUT" tail="P41"/>
+      <arc head="T10" kind="INPUT" tail="P41"/>
+      <arc head="T11" kind="INPUT" tail="P41"/>
+      <arc head="T12" kind="INPUT" tail="P41"/>
+      <arc head="P51" kind="OUTPUT" tail="T9"/>
+      <arc head="P52" kind="OUTPUT" tail="T10"/>
+      <arc head="P53" kind="OUTPUT" tail="T11"/>
+      <arc head="P54" kind="OUTPUT" tail="T12"/>
+      <arc head="T13" kind="INPUT" tail="P51"/>
+      <arc head="T13" kind="INPUT" tail="P52"/>
+      <arc head="T13" kind="INPUT" tail="P53"/>
+      <arc head="T13" kind="INPUT" tail="P54"/>
+      <arc head="P61" kind="OUTPUT" tail="T13"/>
+      <arc head="T14" kind="INPUT" tail="P61"/>
+      <arc head="P71" kind="OUTPUT" tail="T14"/>
+      <arc head="T15" kind="INPUT" tail="P71"/>
+      <arc head="P81" kind="OUTPUT" tail="T15"/>
+      <arc head="T16" kind="INPUT" tail="P81"/>
+      <arc head="P91" kind="OUTPUT" tail="T16"/>
+      <arc head="T9" kind="INPUT" tail="P11">
+        <point x="1.0" y="2.0"/>
+        <point x="1.0" y="26.0"/>
+      </arc>
+      <arc head="T10" kind="INPUT" tail="P12">
+        <point x="2.5" y="4.0"/>
+        <point x="2.5" y="24.5"/>
+      </arc>
+      <arc head="T12" kind="INPUT" tail="P14">
+        <point x="28.5" y="2.0"/>
+        <point x="28.5" y="26.0"/>
+      </arc>
+      <arc head="T11" kind="INPUT" tail="P13">
+        <point x="27.5" y="4.0"/>
+        <point x="27.5" y="24.5"/>
+      </arc>
+      <arc head="E1" kind="INPUT" tail="P61"/>
+      <arc head="E2" kind="INPUT" tail="P81"/>
+    </edges>
+  </gspn>
+</project>
