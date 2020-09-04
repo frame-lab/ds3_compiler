@@ -9,15 +9,15 @@
       <place name="win1" x="11.0" y="38.0"/>
       <place name="win2" x="31.0" y="37.0"/>
       <transition label-x="-0.5" name="T0" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="6.55" y="17.0"/>
-      <transition label-x="-1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="11.55" y="17.0"/>
+      <transition delay="2.0" label-x="-1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="11.55" y="17.0"/>
       <transition label-x="0.5" name="T2" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="17.0"/>
       <place label-x="-2.0" label-y="-1.5" name="rock2" x="26.0" y="22.0"/>
       <place label-x="-2.0" label-y="-1.5" name="paper2" x="31.0" y="22.0"/>
       <place label-x="-2.5" label-y="-1.5" name="scissors2" x="36.0" y="22.0"/>
       <place label-y="-2.0" name="choosing2" x="31.0" y="11.0"/>
-      <transition label-x="-0.5" name="T3" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="26.55" y="17.0"/>
+      <transition delay="1.5" label-x="-0.5" name="T3" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="26.55" y="17.0"/>
       <transition label-x="-1.0" name="T4" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="31.55" y="17.0"/>
-      <transition label-x="0.5" name="T5" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="36.55" y="17.0"/>
+      <transition delay="1.5" label-x="0.5" name="T5" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="36.55" y="17.0"/>
       <place name="draw" x="21.0" y="47.0"/>
       <transition label-x="-2.0" label-y="0.0" name="T6" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="6.55" y="33.0"/>
       <transition label-x="-1.0" label-y="1.0" name="T7" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="11.55" y="33.0"/>

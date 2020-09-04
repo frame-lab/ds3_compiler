@@ -6,25 +6,25 @@
       <place label-x="-2.0" label-y="-1.5" marking="3" name="Estoque" x="40.0" y="4.0"/>
       <place label-x="-1.0" label-y="-2.0" name="Entregas_Agendadas" x="69.0" y="4.0"/>
       <place label-x="-4.5" label-y="-1.5" name="Agendar_Entrega" x="69.0" y="16.0"/>
-      <transition delay-y="1.5" label-x="-1.0" label-y="1.5" name="T0" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="10.0"/>
+      <transition delay="5.0" delay-x="1.0" delay-y="1.5" label-x="-1.0" label-y="1.5" name="T0" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="10.0"/>
       <place label-x="-4.5" label-y="-1.5" name="Ordem_Verificando" x="8.0" y="4.0"/>
       <place name="Erro_Ordem" x="8.0" y="31.0"/>
       <place name="Ordem_Criada" x="17.0" y="31.0"/>
-      <transition delay="0.2" delay-x="-1.5" delay-y="1.5" label-x="-1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="22.0"/>
+      <transition delay-x="-1.5" delay-y="1.5" label-x="-1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="22.0"/>
       <transition delay-y="1.5" label-x="-1.0" name="T2" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="17.55" y="22.0"/>
       <place name="OK_Estoque" x="40.0" y="29.0"/>
       <place name="Erro_Estoque" x="34.0" y="29.0"/>
-      <transition delay="0.5" label-x="-1.0" label-y="-2.0" name="T4" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="34.55" y="22.0"/>
+      <transition label-x="-1.0" label-y="-2.0" name="T4" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="34.55" y="22.0"/>
       <place label-x="-3.5" label-y="-2.0" name="Cancelar_Ordem" x="17.0" y="16.0"/>
       <transition delay-x="0.0" delay-y="1.5" label-x="-1.0" label-y="1.5" name="T5" nservers-x="0.5" rotation="3.9269908169872414" type="EXP" x="29.55" y="25.0"/>
       <place label-x="-3.0" label-y="-1.5" name="Ordem_Falhou" x="17.0" y="4.0"/>
       <transition delay-x="1.5" delay-y="1.5" label-x="-1.0" label-y="1.5" name="T6" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="17.55" y="10.0"/>
       <place label-x="-3.0" label-y="-1.5" name="Reservar_Produto" x="34.0" y="16.0"/>
       <place label-x="-2.0" label-y="-1.5" name="Produto_Reservado" x="48.0" y="4.0"/>
-      <transition delay-x="1.5" label-x="-1.5" name="T7" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="40.55" y="10.0"/>
+      <transition delay="2.0" delay-x="1.5" label-x="-1.5" name="T7" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="40.55" y="10.0"/>
       <transition delay-x="1.5" delay-y="-0.5" name="T3" nservers-x="0.5" rotation="5.235987755982988" type="EXP" x="61.55" y="29.0"/>
-      <transition delay-y="1.5" label-x="-1.0" label-y="1.5" name="T8" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="69.55" y="10.0"/>
-      <transition delay="0.2" label-x="1.0" name="T9" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="69.55" y="24.0"/>
+      <transition delay="5.0" delay-y="1.5" label-x="-1.0" label-y="1.5" name="T8" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="69.55" y="10.0"/>
+      <transition label-x="1.0" name="T9" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="69.55" y="24.0"/>
       <place name="Erro_Entrega" x="69.0" y="37.0"/>
       <place name="OK_Entrega" x="76.0" y="34.0"/>
       <place label-x="-4.0" label-y="-1.5" name="Confirmar_Ordem" x="26.0" y="16.0"/>

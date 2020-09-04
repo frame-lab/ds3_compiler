@@ -9,12 +9,12 @@
       <place label-x="3.0" label-y="1.0" name="Verificador" x="9.0" y="30.0"/>
       <place name="Artefados_Processados" x="24.0" y="30.0"/>
       <place marking="2" name="Artefatos_a_Processar" x="24.0" y="2.0"/>
-      <transition delay-x="-1.5" delay-y="1.5" label-x="-1.0" name="T0" nservers-x="0.5" type="EXP" x="9.55" y="2.0"/>
+      <transition delay="5.0" delay-x="-1.5" delay-y="1.5" label-x="-1.0" name="T0" nservers-x="0.5" type="EXP" x="9.55" y="2.0"/>
       <transition delay="5.0" delay-x="-2.0" label-x="-1.5" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="9.55" y="10.0"/>
-      <transition delay-x="-1.5" label-x="-1.0" name="T2" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="9.55" y="19.0"/>
-      <transition delay="0.5" delay-x="-1.5" label-x="-1.0" name="T3" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="9.55" y="26.0"/>
-      <transition delay="1.5" name="T4" nservers-x="0.5" type="EXP" x="16.55" y="30.0"/>
-      <transition delay="0.5" delay-x="-1.5" delay-y="1.5" label-x="-1.0" name="T5" nservers-x="0.5" type="EXP" x="3.55" y="22.0"/>
+      <transition delay="3.0" delay-x="-1.5" label-x="-1.0" name="T2" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="9.55" y="19.0"/>
+      <transition delay-x="-1.5" label-x="-1.0" name="T3" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="9.55" y="26.0"/>
+      <transition delay="2.0" name="T4" nservers-x="0.5" type="EXP" x="16.55" y="30.0"/>
+      <transition delay-x="-1.5" delay-y="1.5" label-x="-1.0" name="T5" nservers-x="0.5" type="EXP" x="3.55" y="22.0"/>
       <place name="Erro" x="3.0" y="30.0"/>
     </nodes>
     <edges>
