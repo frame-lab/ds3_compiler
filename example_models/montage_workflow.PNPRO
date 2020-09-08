@@ -1,47 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="New project" version="121">
-  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false">
+  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false" zoom="125">
     <nodes>
-      <place label-x="-1.5" label-y="-1.5" marking="3" name="P11" x="10.0" y="3.0"/>
-      <place label-x="-1.5" label-y="-1.5" marking="3" name="P12" x="14.0" y="3.0"/>
-      <place label-x="-1.0" label-y="-1.5" marking="3" name="P13" x="18.0" y="3.0"/>
-      <place label-x="-1.0" label-y="-1.5" marking="3" name="P14" x="22.0" y="3.0"/>
-      <place label-x="-0.5" name="P21" x="6.0" y="10.0"/>
-      <place label-x="-1.0" name="P22" x="10.0" y="10.0"/>
-      <place name="P23" x="14.0" y="10.0"/>
-      <place name="P24" x="18.0" y="10.0"/>
-      <place label-x="0.5" name="P25" x="22.0" y="10.0"/>
-      <place label-x="0.5" name="P26" x="26.0" y="10.0"/>
-      <place label-x="-1.5" label-y="1.0" name="P31" x="16.0" y="18.0"/>
-      <place label-x="-1.5" label-y="-1.0" name="P41" x="16.0" y="27.0"/>
-      <place name="P51" x="10.0" y="36.0"/>
-      <place name="P52" x="14.0" y="36.0"/>
-      <place name="P53" x="18.0" y="36.0"/>
-      <place name="P54" x="22.0" y="36.0"/>
-      <place label-x="-1.5" label-y="1.0" name="P61" x="16.0" y="44.0"/>
-      <place label-x="-1.5" label-y="1.0" name="P71" x="16.0" y="52.0"/>
-      <place label-x="1.5" name="P81" x="16.0" y="59.0"/>
-      <place label-x="1.5" label-y="-1.0" name="P91" x="16.0" y="66.0"/>
-      <transition delay-y="1.5" label-x="-0.5" label-y="1.5" name="E2" nservers-x="0.5" rotation="5.759586531581287" type="EXP" x="11.55" y="61.0"/>
-      <transition delay-x="0.0" delay-y="1.5" label-x="-1.0" label-y="1.5" name="E1" nservers-x="0.5" rotation="3.665191429188092" type="EXP" x="22.55" y="47.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="6.55" y="7.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T2" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="10.55" y="7.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T3" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="14.55" y="7.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T4" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="18.55" y="7.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T5" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="22.55" y="7.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T6" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="26.55" y="7.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T7" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="14.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T8" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="23.0"/>
-      <transition label-x="-1.5" label-y="1.0" name="T9" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="10.55" y="32.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T10" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="14.55" y="32.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T11" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="18.55" y="32.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T12" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="22.55" y="32.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T13" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="40.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T14" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="48.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T15" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="55.0"/>
-      <transition label-x="-1.0" label-y="1.0" name="T16" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="16.55" y="62.0"/>
-      <place name="Erro1" x="28.0" y="50.0"/>
-      <place name="Erro2" x="7.0" y="63.0"/>
+      <place label-x="-1.5" label-y="-1.5" marking="3" name="P11" x="5.0" y="2.0"/>
+      <place label-x="-1.5" label-y="-1.5" marking="5" name="P12" x="17.0" y="2.0"/>
+      <place label-x="-1.0" label-y="-1.5" marking="4" name="P13" x="24.0" y="2.0"/>
+      <place label-x="-1.0" label-y="-1.5" marking="4" name="P14" x="37.0" y="2.0"/>
+      <place label-x="-0.5" name="P21" x="5.0" y="12.0"/>
+      <place label-x="-1.0" name="P22" x="11.0" y="12.0"/>
+      <place name="P23" x="17.0" y="12.0"/>
+      <place name="P24" x="24.0" y="12.0"/>
+      <place label-x="0.5" name="P25" x="31.0" y="12.0"/>
+      <place label-x="0.5" name="P26" x="37.0" y="12.0"/>
+      <place label-x="-2.0" label-y="0.0" name="P31" x="20.0" y="19.0"/>
+      <place label-x="-1.0" label-y="1.0" name="P51" x="11.0" y="34.0"/>
+      <place label-x="-1.0" label-y="1.0" name="P52" x="17.0" y="34.0"/>
+      <place label-x="1.5" label-y="1.0" name="P53" x="24.0" y="34.0"/>
+      <place label-x="1.5" label-y="1.0" name="P54" x="31.0" y="34.0"/>
+      <place label-x="-1.5" label-y="1.0" name="P61" x="20.0" y="42.0"/>
+      <place label-x="-1.5" label-y="1.0" name="P71" x="20.0" y="50.0"/>
+      <place label-x="1.5" name="P81" x="20.0" y="57.0"/>
+      <place label-x="1.5" label-y="-1.0" name="P91" x="20.0" y="64.0"/>
+      <transition delay-y="1.5" label-x="-0.5" label-y="1.5" name="E2" nservers-x="0.5" rotation="5.759586531581287" type="EXP" x="15.55" y="59.0"/>
+      <transition delay-x="0.0" delay-y="1.5" label-x="-1.0" label-y="1.5" name="E1" nservers-x="0.5" rotation="3.665191429188092" type="EXP" x="25.55" y="45.0"/>
+      <transition delay="2.0" label-x="-1.0" label-y="1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="5.55" y="8.0"/>
+      <transition delay="2.0" label-x="-1.0" label-y="1.0" name="T2" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="11.55" y="8.0"/>
+      <transition delay="2.0" label-x="-1.0" label-y="1.0" name="T3" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="17.55" y="8.0"/>
+      <transition delay="2.0" label-x="-1.0" label-y="1.0" name="T4" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="24.55" y="8.0"/>
+      <transition delay="2.0" label-x="-1.0" label-y="1.0" name="T5" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="31.55" y="8.0"/>
+      <transition delay="2.0" label-x="-1.0" label-y="1.0" name="T6" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="37.55" y="8.0"/>
+      <transition delay="5.0" label-x="-1.0" label-y="1.0" name="T7" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="20.55" y="16.0"/>
+      <transition delay-x="1.5" delay-y="0.0" label-x="-2.0" label-y="0.0" name="T8" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="20.55" y="22.0"/>
+      <transition delay="3.0" label-x="-1.5" label-y="1.0" name="T9" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="11.55" y="30.0"/>
+      <transition delay="3.0" label-x="-1.0" label-y="1.0" name="T10" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="17.55" y="30.0"/>
+      <transition delay="3.0" label-x="-1.0" label-y="1.0" name="T11" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="24.55" y="30.0"/>
+      <transition delay="3.0" label-x="-1.0" label-y="1.0" name="T12" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="31.55" y="30.0"/>
+      <transition delay="5.0" label-x="-1.0" label-y="1.0" name="T13" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="20.55" y="38.0"/>
+      <transition delay="3.0" label-x="-1.0" label-y="1.0" name="T14" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="20.55" y="46.0"/>
+      <transition delay="2.0" label-x="-1.0" label-y="1.0" name="T15" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="20.55" y="53.0"/>
+      <transition delay="4.0" label-x="-1.0" label-y="1.0" name="T16" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="20.55" y="60.0"/>
+      <place name="Erro1" x="30.0" y="48.0"/>
+      <place name="Erro2" x="10.0" y="61.0"/>
+      <place marking="1" name="L_T1" x="8.0" y="8.0"/>
+      <place marking="1" name="L_T2" x="14.0" y="8.0"/>
+      <place marking="1" name="L_T3" x="21.0" y="8.0"/>
+      <place marking="1" name="L_T4" x="27.0" y="8.0"/>
+      <place marking="1" name="L_T5" x="34.0" y="8.0"/>
+      <place marking="1" name="L_T6" x="40.0" y="8.0"/>
+      <place label-x="-1.0" name="P42" x="17.0" y="26.0"/>
+      <place label-x="-1.0" name="P43" x="24.0" y="26.0"/>
+      <place label-x="-1.0" label-y="-1.5" name="P44" x="31.0" y="25.0"/>
+      <place label-x="-1.0" label-y="-1.5" name="P41" x="11.0" y="25.0"/>
     </nodes>
     <edges>
       <arc head="T1" kind="INPUT" tail="P11"/>
@@ -68,11 +77,6 @@
       <arc head="T7" kind="INPUT" tail="P25"/>
       <arc head="P31" kind="OUTPUT" tail="T7"/>
       <arc head="T8" kind="INPUT" tail="P31"/>
-      <arc head="P41" kind="OUTPUT" tail="T8"/>
-      <arc head="T9" kind="INPUT" tail="P41"/>
-      <arc head="T10" kind="INPUT" tail="P41"/>
-      <arc head="T11" kind="INPUT" tail="P41"/>
-      <arc head="T12" kind="INPUT" tail="P41"/>
       <arc head="P51" kind="OUTPUT" tail="T9"/>
       <arc head="P52" kind="OUTPUT" tail="T10"/>
       <arc head="P53" kind="OUTPUT" tail="T11"/>
@@ -89,31 +93,47 @@
       <arc head="T16" kind="INPUT" tail="P81"/>
       <arc head="P91" kind="OUTPUT" tail="T16"/>
       <arc head="T9" kind="INPUT" tail="P11">
-        <point x="3.0" y="5.0"/>
-        <point x="3.0" y="29.0"/>
+        <point x="2.5" y="3.0"/>
+        <point x="2.5" y="27.0"/>
       </arc>
       <arc head="T10" kind="INPUT" tail="P12">
-        <point x="4.5" y="7.0"/>
-        <point x="4.5" y="27.5"/>
+        <point x="3.5" y="7.0"/>
+        <point x="3.5" y="25.5"/>
       </arc>
       <arc head="T12" kind="INPUT" tail="P14">
-        <point x="31.0" y="5.0"/>
-        <point x="31.0" y="29.0"/>
+        <point x="44.0" y="3.0"/>
+        <point x="44.0" y="28.0"/>
       </arc>
       <arc head="T11" kind="INPUT" tail="P13">
-        <point x="29.5" y="7.0"/>
-        <point x="29.5" y="27.5"/>
+        <point x="43.0" y="7.0"/>
+        <point x="43.0" y="25.0"/>
       </arc>
       <arc head="E1" kind="INPUT" tail="P61"/>
       <arc head="E2" kind="INPUT" tail="P81"/>
       <arc head="T7" kind="INPUT" tail="P21">
-        <point x="9.0" y="15.0"/>
+        <point x="8.0" y="17.0"/>
       </arc>
       <arc head="T7" kind="INPUT" tail="P26">
-        <point x="24.5" y="15.0"/>
+        <point x="36.0" y="17.0"/>
       </arc>
       <arc head="Erro1" kind="OUTPUT" tail="E1"/>
       <arc head="Erro2" kind="OUTPUT" tail="E2"/>
+      <arc head="T1" kind="INPUT" tail="L_T1"/>
+      <arc head="T2" kind="INPUT" mult-k="0.6227539062500002" tail="L_T2">
+        <point x="13.25009765625" y="9.0"/>
+      </arc>
+      <arc head="T3" kind="INPUT" tail="L_T3"/>
+      <arc head="T5" kind="INPUT" tail="L_T5"/>
+      <arc head="T4" kind="INPUT" tail="L_T4"/>
+      <arc head="T6" kind="INPUT" tail="L_T6"/>
+      <arc head="T9" kind="INPUT" tail="P41"/>
+      <arc head="T10" kind="INPUT" tail="P42"/>
+      <arc head="T11" kind="INPUT" tail="P43"/>
+      <arc head="T12" kind="INPUT" tail="P44"/>
+      <arc head="P41" kind="OUTPUT" tail="T8"/>
+      <arc head="P42" kind="OUTPUT" tail="T8"/>
+      <arc head="P43" kind="OUTPUT" tail="T8"/>
+      <arc head="P44" kind="OUTPUT" tail="T8"/>
     </edges>
   </gspn>
 </project>

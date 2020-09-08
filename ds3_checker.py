@@ -8,7 +8,7 @@ spn = None
 
 if len(sys.argv) == 2:
     formula = sys.argv[1]
-    print(f"Checking Formula \"{formula}\"\n")
+    print(f"Checking Formula \"{formula}\" \n")
 elif len(sys.argv) == 3:
     formula = sys.argv[1]
     spn = sys.argv[2]
