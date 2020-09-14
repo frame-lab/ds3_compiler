@@ -1,8 +1,8 @@
 from lark import Lark
 
-def ds3_parser():
+def parser():
     return Lark("""
-            _exp: "(" _exp ")"
+        _exp: "(" _exp ")"
             | _op2    
             | _op1
             | _value 
@@ -32,8 +32,13 @@ def ds3_parser():
 
         PATH: /(\/{0,1}(((\w)|(\.)|(\\\s))+\/)*((\w)|(\.)|(\\\s))+)|\//
 
-        %import common.WORD
         %import common.WS
         %ignore WS
 
         """, start='_exp')
+
+def parse(formula):
+    ast = parser().parse(formula)
+    ast = ast.children[0]  #Ignores Tree Root (_exp)
+    
+    return ast

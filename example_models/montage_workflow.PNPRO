@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="New project" version="121">
-  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false" zoom="125">
+  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false">
     <nodes>
       <place label-x="-1.5" label-y="-1.5" marking="3" name="P11" x="5.0" y="2.0"/>
       <place label-x="-1.5" label-y="-1.5" marking="5" name="P12" x="17.0" y="2.0"/>
@@ -110,11 +110,11 @@
       </arc>
       <arc head="E1" kind="INPUT" tail="P61"/>
       <arc head="E2" kind="INPUT" tail="P81"/>
-      <arc head="T7" kind="INPUT" tail="P21">
-        <point x="8.0" y="17.0"/>
+      <arc head="T7" kind="INPUT" mult-x="1.6670180870041431" mult-y="0.4004217044049714" tail="P21">
+        <point x="9.0" y="15.5"/>
       </arc>
       <arc head="T7" kind="INPUT" tail="P26">
-        <point x="36.0" y="17.0"/>
+        <point x="35.5" y="15.5"/>
       </arc>
       <arc head="Erro1" kind="OUTPUT" tail="E1"/>
       <arc head="Erro2" kind="OUTPUT" tail="E2"/>

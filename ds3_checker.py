@@ -1,6 +1,9 @@
+import parser
+
 from solver import solve
-from ds3_parser import ds3_parser
-from solver import StateTree
+
+from state_tree import StateTree
+
 import sys
 
 formula = None
@@ -18,9 +21,7 @@ else:
     exit()
 
 #Generates AST(formula)
-parser = ds3_parser()
 ast_formula = parser.parse(formula)
-ast_formula = ast_formula.children[0]  #Ignores Tree Root (_exp)
 
 #Generates Initial State
 initial_state = StateTree(spn)
