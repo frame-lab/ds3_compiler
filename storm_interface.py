@@ -6,6 +6,8 @@ import ast_analyzer as ast
 """ Storm Interface Module """
 
 def get_jani_program(path):
+    """ Receives SPN codified in JANI or PNPRO and returns a JANI Model """
+
     if path.lower().endswith(".jani"):
         jani_program, properties = stormpy.parse_jani_model(path)
         return jani_program
@@ -20,19 +22,19 @@ def get_jani_program(path):
     print("Unsupported file format: {}".format(path))
     exit()
 
-def model_check_storm(program, formulae, final_states=False):
+def model_check_storm(program, formula, final_states=False):
     """ 
-        Uses Storm Checker to verify formulae
+        Uses Storm Checker to verify DS3 formula
 
         Program: Jani Program
-        Formulae: String or AST Formulae
+        Formula: String or AST Formulae
         Final States: Boolean
 
         Returns boolean (quali) or float (quanti) result
     """
 
-    if type(formulae) != str:
-        storm_formula = ast.ast_to_string(formulae)
+    if type(formula) != str:
+        storm_formula = ast.ast_to_string(formula)
 
     if final_states:
         storm_formula = "P=? [true U ({}) & \"deadlock\"]".format(storm_formula)
@@ -63,7 +65,7 @@ def network_executes_and_stops(program):
 def storm_check(program, formula):
     """ Model Checks formula(string) over model """
 
-    properties = stormpy.parse_properties_for_jani_model(formula,program)
+    properties = stormpy.parse_properties_for_jani_model(formula, program)
     model = stormpy.build_model(program, properties)
     results_for_all_states = stormpy.check_model_sparse(model, properties[0])
     initial_state = model.initial_states[0]
