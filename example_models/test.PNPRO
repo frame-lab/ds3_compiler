@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="test" version="121">
+  <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false">
+    <nodes>
+      <place label-x="1.0" marking="3" name="P0" x="3.0" y="3.0"/>
+      <place name="P1" x="3.0" y="11.0"/>
+      <transition delay="0.01" label-x="-1.5" label-y="1.0" name="T0" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="3.55" y="7.0"/>
+      <place label-x="1.0" marking="3" name="P2" x="12.0" y="3.0"/>
+      <place name="P3" x="12.0" y="11.0"/>
+      <transition delay="100" label-x="-1.5" label-y="1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="12.55" y="7.0"/>
+    </nodes>
+    <edges>
+      <arc head="T0" kind="INPUT" tail="P0"/>
+      <arc head="P1" kind="OUTPUT" tail="T0"/>
+      <arc head="T1" kind="INPUT" tail="P2"/>
+      <arc head="P3" kind="OUTPUT" tail="T1"/>
+    </edges>
+  </gspn>
+</project>
