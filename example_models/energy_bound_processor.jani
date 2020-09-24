@@ -1,0 +1,444 @@
+{
+    "actions": [],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Artefatos_a_Processar <- (Artefatos_a_Processar - 1)",
+                                    "ref": "Artefatos_a_Processar",
+                                    "value": {
+                                        "left": "Artefatos_a_Processar",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Coletor <- (Coletor + 1)",
+                                    "ref": "Coletor",
+                                    "value": {
+                                        "left": "Coletor",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Energia <- (Energia - 1)",
+                                    "ref": "Energia",
+                                    "value": {
+                                        "left": "Energia",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((Energia >= 1) & (Artefatos_a_Processar >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "Energia",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "Artefatos_a_Processar",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(5 * (Artefatos_a_Processar / 1))",
+                        "exp": {
+                            "left": 5,
+                            "op": "*",
+                            "right": {
+                                "left": "Artefatos_a_Processar",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Coletor <- (Coletor - 1)",
+                                    "ref": "Coletor",
+                                    "value": {
+                                        "left": "Coletor",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Energia <- (Energia - 1)",
+                                    "ref": "Energia",
+                                    "value": {
+                                        "left": "Energia",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Parser <- (Parser + 1)",
+                                    "ref": "Parser",
+                                    "value": {
+                                        "left": "Parser",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((Energia >= 1) & (Coletor >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "Energia",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "Coletor",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(5 * (Coletor / 1))",
+                        "exp": {
+                            "left": 5,
+                            "op": "*",
+                            "right": {
+                                "left": "Coletor",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Energia <- (Energia - 1)",
+                                    "ref": "Energia",
+                                    "value": {
+                                        "left": "Energia",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Parser <- (Parser - 1)",
+                                    "ref": "Parser",
+                                    "value": {
+                                        "left": "Parser",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Processador <- (Processador + 1)",
+                                    "ref": "Processador",
+                                    "value": {
+                                        "left": "Processador",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((Energia >= 1) & (Parser >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "Energia",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "Parser",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(3 * (Parser / 1))",
+                        "exp": {
+                            "left": 3,
+                            "op": "*",
+                            "right": {
+                                "left": "Parser",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Energia <- (Energia - 1)",
+                                    "ref": "Energia",
+                                    "value": {
+                                        "left": "Energia",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Processador <- (Processador - 1)",
+                                    "ref": "Processador",
+                                    "value": {
+                                        "left": "Processador",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Verificador <- (Verificador + 1)",
+                                    "ref": "Verificador",
+                                    "value": {
+                                        "left": "Verificador",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((Energia >= 1) & (Processador >= 1))",
+                        "exp": {
+                            "left": {
+                                "left": "Energia",
+                                "op": "≥",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "Processador",
+                                "op": "≥",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Processador / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Processador",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Artefatos_Processados <- (Artefatos_Processados + 1)",
+                                    "ref": "Artefatos_Processados",
+                                    "value": {
+                                        "left": "Artefatos_Processados",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Verificador <- (Verificador - 1)",
+                                    "ref": "Verificador",
+                                    "value": {
+                                        "left": "Verificador",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Verificador >= 1)",
+                        "exp": {
+                            "left": "Verificador",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(4 * (Verificador / 1))",
+                        "exp": {
+                            "left": 4,
+                            "op": "*",
+                            "right": {
+                                "left": "Verificador",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "Erro <- (Erro + 1)",
+                                    "ref": "Erro",
+                                    "value": {
+                                        "left": "Erro",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Parser <- (Parser + 1)",
+                                    "ref": "Parser",
+                                    "value": {
+                                        "left": "Parser",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "Verificador <- (Verificador - 1)",
+                                    "ref": "Verificador",
+                                    "value": {
+                                        "left": "Verificador",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(Verificador >= 1)",
+                        "exp": {
+                            "left": "Verificador",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(1 * (Verificador / 1))",
+                        "exp": {
+                            "left": 1,
+                            "op": "*",
+                            "right": {
+                                "left": "Verificador",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                }
+            ],
+            "initial-locations": [
+                "loc"
+            ],
+            "locations": [
+                {
+                    "name": "loc"
+                }
+            ],
+            "name": "gspn_automaton",
+            "variables": []
+        }
+    ],
+    "constants": [],
+    "features": [
+        "derived-operators"
+    ],
+    "jani-version": 1,
+    "name": "GSPN",
+    "properties": [],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "gspn_automaton"
+            }
+        ]
+    },
+    "type": "ctmc",
+    "variables": [
+        {
+            "initial-value": 20,
+            "name": "Energia",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Coletor",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Parser",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Processador",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Verificador",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Artefatos_Processados",
+            "type": "int"
+        },
+        {
+            "initial-value": 3,
+            "name": "Artefatos_a_Processar",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "Erro",
+            "type": "int"
+        }
+    ]
+}
