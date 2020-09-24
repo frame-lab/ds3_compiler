@@ -23,14 +23,30 @@ def parser():
         conjunction: _exp "&" _exp
         disjunction: _exp "|" _exp
         implication: _exp "=>" _exp
-        diamond: "<" PATH ">" _exp
-        box: "[" PATH "]" _exp
+        diamond: "<" modal ">" _exp
+        box: "[" modal "]" _exp
+
+        modal: markup ";" subnet
+        
+        markup: marking
+            | marking _markup
+        _markup: "," marking _markup
+            | "," marking
+        marking: ID "=" NAT
+
+        subnet: transition
+            | transition _subnet
+        _subnet: "," transition _subnet
+            | "," transition
+        transition: ID
         
         true: "true"
         false: "false"
         loc_exp: /[a-zA-Z][a-zA-Z_0-9]*\s*(<=|>=|!=|<|>|=)\s*[\d]+/
 
         PATH: /(\/{0,1}(((\w)|(\.)|(\\\s))+\/)*((\w)|(\.)|(\\\s))+)|\//
+        NAT: /[0-9]+/
+        ID: /[a-zA-Z][a-zA-Z_0-9]*/
 
         %import common.WS
         %ignore WS
