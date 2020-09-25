@@ -9,15 +9,12 @@ import sys
 formula = None
 spn = None
 
-# if len(sys.argv) == 2:
-#     formula = sys.argv[1]
-#     print(f"Checking Formula \"{formula}\" \n")
 if len(sys.argv) == 3:
     formula = sys.argv[1]
     spn = sys.argv[2]
     print(f"Checking Formula \"{formula}\" SPN: {spn}\n")
 else:
-    print("Incorrect number of arguments.\nCorrect Use: python ds3_checker.py <formula> [<spn>]")
+    print("Incorrect number of arguments.\nCorrect Use: python ds3_checker.py <formula> <spn>")
     exit()
 
 #Generates AST(formula)

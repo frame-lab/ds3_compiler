@@ -22,19 +22,16 @@ def get_jani_program(path):
     print("Unsupported file format: {}".format(path))
     exit()
 
-def model_check_storm(program, formula, final_states=False):
+def model_check_storm(program, formula):
     """ 
         Uses Storm Checker to verify DS3 formula
 
         Program: Jani Program
-        Formula: String or AST Formulae
+        Formula: String or AST Formula
         Final States: Boolean
 
         Returns boolean (quali) or float (quanti) result
     """
-
-    if final_states:
-        formula = f"P=? [true U ({formula}) & \"deadlock\"]"
         
     print("Storm - Check Property: " + formula)
     result = storm_check(program, formula)
