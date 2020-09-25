@@ -149,7 +149,7 @@ def are_contradictions(t1, t2):
     else:
         return False
     
-    if is_tree_equivalent(t1, t2):
+    if ast.is_tree_equivalent(t1, t2):
         return True
     else:
         return False
