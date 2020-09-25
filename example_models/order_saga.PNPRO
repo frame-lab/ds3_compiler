@@ -2,8 +2,8 @@
 <!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="New project" version="121">
   <gspn name="GSPN" show-color-cmd="false" show-fluid-cmd="false" zoom="75">
     <nodes>
-      <place label-x="-4.0" label-y="-1.5" marking="1" name="Criar_Ordem" x="8.0" y="14.0"/>
-      <place label-x="-2.0" label-y="-1.5" marking="3" name="Estoque" x="40.0" y="2.0"/>
+      <place label-x="-4.0" label-y="-1.5" name="Criar_Ordem" x="8.0" y="14.0"/>
+      <place label-x="-2.0" label-y="-1.5" name="Estoque" x="40.0" y="2.0"/>
       <place label-x="2.0" label-y="-1.5" name="Entregas_Agendadas" x="66.0" y="2.0"/>
       <place label-x="4.0" label-y="2.0" name="Agendar_Entrega" x="66.0" y="14.0"/>
       <transition delay="5.0" delay-x="1.0" delay-y="1.5" label-x="-1.0" label-y="1.5" name="T0" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="8.55" y="8.0"/>

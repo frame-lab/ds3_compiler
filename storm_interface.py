@@ -33,23 +33,20 @@ def model_check_storm(program, formula, final_states=False):
         Returns boolean (quali) or float (quanti) result
     """
 
-    if type(formula) != str:
-        storm_formula = ast.ast_to_string(formula)
-
     if final_states:
-        storm_formula = "P=? [true U ({}) & \"deadlock\"]".format(storm_formula)
+        formula = f"P=? [true U ({formula}) & \"deadlock\"]"
         
-    print("Storm - Check Property: " + storm_formula)
-    result = storm_check(program, storm_formula)
+    print("Storm - Check Property: " + formula)
+    result = storm_check(program, formula)
     print(f"\t\tResult: {result}\n")
 
     return result
 
-def network_executes_and_stops(program):
+def network_executes_and_stops(program, stop_condition=' \"deadlock\" '):
     """ Verifies if network executes and stops """
     
     #Stops?
-    result = storm_check(program, "P=? [true U \"deadlock\"]")
+    result = storm_check(program, f"P=? [true U ({stop_condition})]")
     if result == 0:
         print("The given SPN does not stop. DS3 Checker was not designed to deal with this use case.\n")
         exit()

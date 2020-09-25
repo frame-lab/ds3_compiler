@@ -1,5 +1,6 @@
 import storm_interface as storm
 import ast_analyzer as ast
+import pnpro_interface as pnpro
 
 from state_tree import StateTree
 
@@ -66,39 +67,63 @@ def negate(state, formulae):
     # return result
 
 def diamond(state, formulae):  
-    path = formulae.children[0]
-    exp = formulae.children[1]
+    markup = formulae.children[0]
+    subnet = formulae.children[1]
+    exp = formulae.children[2]
     
-    jani_program = storm.get_jani_program(path)
+    #Generates Marked SPN
+    marked_spn = "temp/aux.PNPRO"     #TODO: generates unique dest path for SPNs
+    pnpro.set_markup(markup, state.network, marked_spn)
+    jani_program = storm.get_jani_program(marked_spn)
 
-    if not storm.network_executes_and_stops(jani_program):
+    #Generates Stop Condition
+    stopped = pnpro.check_subnet_stopped_storm_formula(subnet, state.network)
+        
+    #TODO: Should this function be here or inside of model_check_storm?
+    # Treat subnets that don't stop as an exception?
+    if not storm.network_executes_and_stops(jani_program, stopped):
         print("Network does not executes and stops. So modality is false\n")
         return False
 
     #Updates State Tree
-    new_state = StateTree(path)
+    new_state = StateTree(state.network)
     state.append_child(new_state)
 
     if ast.has_modality(exp):    
         return solve(new_state, exp)
     else:
-        model_check_result = storm.model_check_storm(jani_program, exp, final_states=True)
+        # GENERATES CSL Formula
+        csl_formula = f"P=? [true U ({ast.ast_to_string(exp)}) & ({stopped})]"
+
+        model_check_result = storm.model_check_storm(jani_program, csl_formula)
         return bool(model_check_result)     ## Probability != 0 => True
 
 def box(state, formulae):    
-    path = formulae.children[0]
-    exp = formulae.children[1]
+    markup = formulae.children[0]
+    subnet = formulae.children[1]
+    exp = formulae.children[2]
+    
+    #Generates Marked SPN
+    marked_spn = "temp/aux.PNPRO"     #TODO: generates unique dest path for SPNs
+    pnpro.set_markup(markup, state.network, marked_spn)
+    jani_program = storm.get_jani_program(marked_spn)
 
-    jani_program = get_jani_program(path)
+    #Generates Stop Condition
+    stopped = pnpro.check_subnet_stopped_storm_formula(subnet, state.network)
+        
+    #TODO: Should this function be here or inside of model_check_storm?
+    # Treat subnets that don't stop as an exception?
+    if not storm.network_executes_and_stops(jani_program, stopped):
+        print("Network does not executes and stops. So modality is false\n")
+        return False
 
-    if not network_executes_and_stops(jani_program):
-        print("Network does not executes and stops. So modality is false")
-        return False 
-
-    if has_modality(exp):    
+    if ast.has_modality(exp):    
         return solve(state, exp)
     else:
-        model_check_result = model_check_storm(jani_program, exp, final_states=True)
+        # GENERATES CSL Formula
+        csl_formula = f"P=? [true U ({ast.ast_to_string(exp)}) & ({stopped})]"
+
+        model_check_result = storm.model_check_storm(jani_program, csl_formula)
         return model_check_result == 1
 
 def loc_exp(state, formulae):
@@ -106,8 +131,8 @@ def loc_exp(state, formulae):
         print("Markup Expressions can't be resolved without an associated Stochastic Petri Net")
         exit()
     else: 
-        jani_program = get_jani_program(state.network)
-        result = model_check_storm(jani_program, formulae)
+        jani_program = storm.get_jani_program(state.network)
+        result = storm.model_check_storm(jani_program, formulae)
         return result
 
 def are_contradictions(t1, t2):

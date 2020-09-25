@@ -9,10 +9,10 @@ import sys
 formula = None
 spn = None
 
-if len(sys.argv) == 2:
-    formula = sys.argv[1]
-    print(f"Checking Formula \"{formula}\" \n")
-elif len(sys.argv) == 3:
+# if len(sys.argv) == 2:
+#     formula = sys.argv[1]
+#     print(f"Checking Formula \"{formula}\" \n")
+if len(sys.argv) == 3:
     formula = sys.argv[1]
     spn = sys.argv[2]
     print(f"Checking Formula \"{formula}\" SPN: {spn}\n")

@@ -23,10 +23,8 @@ def parser():
         conjunction: _exp "&" _exp
         disjunction: _exp "|" _exp
         implication: _exp "=>" _exp
-        diamond: "<" modal ">" _exp
-        box: "[" modal "]" _exp
-
-        modal: markup ";" subnet
+        diamond: "<" markup ";" subnet ">" _exp
+        box: "[" markup ";" subnet "]" _exp
         
         markup: marking
             | marking _markup

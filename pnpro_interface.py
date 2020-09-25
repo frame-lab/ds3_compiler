@@ -1,14 +1,22 @@
 from lark import Lark
 
 import xml.etree.ElementTree as ET
-
+    
 #Sub-rede
-def check_subnet_stopped_storm_formula(transitions, pnpro_file):
+def check_subnet_stopped_storm_formula(subnet, pnpro_file):
+    transitions = get_transitions_from_subnet(subnet)
+
     trans = []
     for transition in transitions:
         trans.append(check_transition_disabled_storm_formula(transition, pnpro_file))
     
     return ' & '.join([f'({t})' for t in trans])
+
+def get_transitions_from_subnet(subnet):
+    transitions = []
+    for transition in subnet.children:
+        transitions.append(transition.children[0].value)
+    return transitions
 
 def get_transition_preset(transition_name, pnpro_file):
     tree = ET.parse(pnpro_file)
@@ -47,13 +55,25 @@ def check_transition_disabled_storm_formula(transition_name, pnpro_file):
 #Marcação
 
 def set_markup(markup, orig, dest):
+    markings = get_markings_from_markup(markup)
+
     tree = ET.parse(orig)
     root = tree.getroot()
 
-    for node in markup:
+    for node in markings:
         set_place_marking(node['place'], node['marking'], root)
     
     tree.write(dest)
+
+def get_markings_from_markup(markup):
+    markings = []
+    for marking in markup.children:
+        node = { 
+            'place': marking.children[0].value,
+            'marking': marking.children[1].value 
+        }
+        markings.append(node)
+    return markings
 
 def set_place_marking(place_name, marking, root):
     place = root.find(f".//place[@name='{place_name}']")
