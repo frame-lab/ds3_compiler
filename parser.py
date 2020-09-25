@@ -32,7 +32,8 @@ def parser():
             | "," marking
         marking: ID "=" NAT
 
-        subnet: transition
+        subnet: ALL 
+            | transition
             | transition _subnet
         _subnet: "," transition _subnet
             | "," transition
@@ -42,6 +43,7 @@ def parser():
         false: "false"
         loc_exp: /[a-zA-Z][a-zA-Z_0-9]*\s*(<=|>=|!=|<|>|=)\s*[\d]+/
 
+        ALL: "@"
         PATH: /(\/{0,1}(((\w)|(\.)|(\\\s))+\/)*((\w)|(\.)|(\\\s))+)|\//
         NAT: /[0-9]+/
         ID: /[a-zA-Z][a-zA-Z_0-9]*/

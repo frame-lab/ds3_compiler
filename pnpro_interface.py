@@ -4,6 +4,10 @@ import xml.etree.ElementTree as ET
     
 #Sub-rede
 def check_subnet_stopped_storm_formula(subnet, pnpro_file):
+    # Entire network
+    if subnet.children[0] == "@":
+        return ' \"deadlock\" '
+
     transitions = get_transitions_from_subnet(subnet)
 
     trans = []
