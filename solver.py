@@ -65,7 +65,7 @@ def diamond(state, formula):
     exp = formula.children[2]
     
     #Generates Marked SPN
-    marked_spn = "temp/aux.PNPRO"     #TODO: generates unique dest path for SPNs
+    marked_spn = "/app/temp/aux.PNPRO"     #TODO: generates unique dest path for SPNs
     pnpro.set_markup(markup, state.network, marked_spn)
     jani_program = storm.get_jani_program(marked_spn)
 
