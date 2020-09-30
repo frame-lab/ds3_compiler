@@ -6,7 +6,7 @@ from state_tree import StateTree
 
 def solve(state, formula):    
     formula_string = ast.ast_to_string(formula)
-    print(f"Solving:\n  State: {state.name}\n  Formula: \"{formula_string}\"\n  Waiting for result...\n")
+    print(f"Solving:\n  State: {state.name}\n  Formula: {formula_string}\n  Waiting for result...\n")
 
     if(formula.data == 'conjunction'):
         result = conjunction(state, formula)
@@ -64,15 +64,14 @@ def diamond(state, formula):
     subnet = formula.children[1]
     exp = formula.children[2]
     
-    #Generates Marked SPN
-    marked_spn = "/app/temp/aux.PNPRO"     #TODO: generates unique dest path for SPNs
-    pnpro.set_markup(markup, state.network, marked_spn)
-    jani_program = storm.get_jani_program(marked_spn)
+    #TODO: generates unique dest path for SPNs so the generated spns are not lost
+    updated_spn = "/app/temp/aux.PNPRO"
 
-    #Generates Stop Condition
-    stopped = pnpro.check_subnet_stopped_storm_formula(subnet, state.network)
-        
-    if not storm.network_executes_and_stops(jani_program, stopped):
+    pnpro.update_spn(markup, subnet, state.network, updated_spn)
+    
+    jani_program = storm.get_jani_program(updated_spn)
+
+    if not storm.network_executes_and_stops(jani_program):
         print("Network does not executes and stops. So modality is false\n")
         return False
 
@@ -83,35 +82,14 @@ def diamond(state, formula):
     if ast.has_modality(exp):    
         return solve(new_state, exp)
     else:
-        csl_formula = f"P=? [true U ({ast.ast_to_string(exp)}) & ({stopped})]"
+        csl_formula = f"P=? [true U ({ast.ast_to_string(exp)}) & (\"deadlock\")]"
 
         model_check_result = storm.model_check_storm(jani_program, csl_formula)
         return bool(model_check_result)     ## Probability != 0 => True
 
-def box(state, formula):    
-    markup = formula.children[0]
-    subnet = formula.children[1]
-    exp = formula.children[2]
-    
-    #Generates Marked SPN
-    marked_spn = "temp/aux.PNPRO"     #TODO: generates unique dest path for SPNs
-    pnpro.set_markup(markup, state.network, marked_spn)
-    jani_program = storm.get_jani_program(marked_spn)
-
-    #Generates Stop Condition
-    stopped = pnpro.check_subnet_stopped_storm_formula(subnet, state.network)
-        
-    if not storm.network_executes_and_stops(jani_program, stopped):
-        print("Network does not executes and stops. So modality is false\n")
-        return False
-
-    if ast.has_modality(exp):    
-        return solve(state, exp)
-    else:
-        csl_formula = f"P=? [true U ({ast.ast_to_string(exp)}) & ({stopped})]"
-
-        model_check_result = storm.model_check_storm(jani_program, csl_formula)
-        return model_check_result == 1
+def box(state, formula):
+    #TODO: return not (negated_diamond)
+    return False
 
 def loc_exp(state, formula):
     if not state.network:

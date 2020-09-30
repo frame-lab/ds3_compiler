@@ -1,52 +1,46 @@
 from lark import Lark
 import xml.etree.ElementTree as ET
     
-## Subnet
-def check_subnet_stopped_storm_formula(subnet, pnpro_file):
-    # Entire network
-    if subnet.children[0] == "@":
-        return ' \"deadlock\" '
-
-    trans = []
-    transitions = get_transitions_from_subnet(subnet)
-    for transition in transitions:
-        trans.append(check_transition_disabled_storm_formula(transition, pnpro_file))
-    
-    return ' & '.join([f'({t})' for t in trans])
-
-def get_transitions_from_subnet(subnet):
-    transitions = []
-    for transition in subnet.children:
-        transitions.append(transition.children[0].value)
-    return transitions
-
-def get_transition_preset(transition_name, pnpro_file):
-    tree = ET.parse(pnpro_file)
-    root = tree.getroot()
-
-    preset = []
-    for arc in root.findall(f".//arc[@kind='INPUT'][@head='{transition_name}']"):
-        preset.append(arc.attrib['tail'])
-    
-    return preset
-
-def check_transition_disabled_storm_formula(transition_name, pnpro_file):    
-    preset = get_transition_preset(transition_name, pnpro_file)
-
-    return ' | '.join([p + '<=0' for p in preset])
-
-
-## Markup
-
-def set_markup(markup, orig, dest):
+def update_spn(markup, subnet, orig, dest):
     tree = ET.parse(orig)
     root = tree.getroot()
 
+    set_markup(markup, root)
+    extract_subnet(subnet, root)    
+
+    tree.write(dest)
+
+def extract_subnet(subnet, root):
+    #Use entire network
+    if subnet.children[0] == "@":
+        return
+
+    subnet_transition_names = map(lambda transition : transition.children[0].value, subnet.children)
+    
+    transitions = root.findall(".//transition")
+    for transition in transitions:
+        if transition.get('name') not in subnet_transition_names:
+            remove_transition(transition.get('name'), root)
+
+def remove_transition(transition_name, root):
+    #Remove Transition
+    nodes = root.find(".//nodes")
+    transition = nodes.find(f"./transition[@name='{transition_name}']")
+    nodes.remove(transition)
+
+    # Remove related Edges
+    edges = root.find(".//edges")
+    input_arcs = edges.findall(f"./arc[@head='{transition_name}']")
+    remove_arcs = edges.findall(f"./arc[@tail='{transition_name}']")
+    arcs = input_arcs + remove_arcs
+    
+    for arc in arcs:
+        edges.remove(arc)
+
+def set_markup(markup, root):
     markings = get_markings_from_markup(markup)    
     for node in markings:
         set_place_marking(node['place'], node['marking'], root)
-    
-    tree.write(dest)
 
 def get_markings_from_markup(markup):
     markings = []
