@@ -1,5 +1,4 @@
 from lark import Lark
-
 import xml.etree.ElementTree as ET
     
 ## Subnet

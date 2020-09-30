@@ -43,35 +43,44 @@ def ast_to_string(ast):
         Abstract Syntax Tree to String conversion
     """ 
 
+    #Calls ast_to_string recursion to child
+    rec_child = lambda x : ast_to_string(ast.children[x])
+
     if isinstance(ast, Token):
         return ast    
 
-    if len(ast.children) == 0:
-        if ast.data == "true":
-            return "true"
-        if ast.data == "false":
-            return "false"
+    # No children
+    if ast.data == "true":
+        return "true"
+    if ast.data == "false":
+        return "false"
 
-    if len(ast.children) == 1:
-        if ast.data == "negate":
-            return "! ({})".format(ast_to_string(ast.children[0]))
+    # Unary
+    if ast.data == "negate":
+        return "! ({})".format(rec_child(0))
 
-    if len(ast.children) == 2:
-        fst = ast.children[0]
-        snd = ast.children[1]
+    # Binary
+    if ast.data == "conjunction":
+        return "({}) & ({})".format(rec_child(0), rec_child(1))
+    if ast.data == "disjunction":
+        return "({}) | ({})".format(rec_child(0), rec_child(1))
+    if ast.data == "implication":
+        return "({}) => ({})".format(rec_child(0), rec_child(1))
+    if ast.data == "marking":
+        return "{}={}".format(rec_child(0), rec_child(1))
+    
+    # Trinary
+    if(ast.data == 'diamond'):
+        return "< {} ; {} > ({})".format(rec_child(0), rec_child(1), rec_child(2))
+    if(ast.data == 'box'):
+        return "[ {} ; {} ] ({})".format(rec_child(0), rec_child(1), rec_child(2))
+    
+    # N-ary
+    if ast.data in ("markup", "subnet"):
+        processed_children = [ rec_child(i) for i in range(len(ast.children)) ]
+        return ', '.join(processed_children)
 
-        if ast.data == "conjunction":
-            return "({}) & ({})".format(ast_to_string(fst), ast_to_string(snd))
-        if ast.data == "disjunction":
-            return "({}) | ({})".format(ast_to_string(fst), ast_to_string(snd))
-        if ast.data == "implication":
-            return "({}) => ({})".format(ast_to_string(fst), ast_to_string(snd))
-        if(ast.data == 'diamond'):
-            return "<{}> ({})".format(ast_to_string(fst), ast_to_string(snd))
-        if(ast.data == 'box'):
-            return "[{}] ({})".format(ast_to_string(fst), ast_to_string(snd))
-        
-    return ast_to_string(ast.children[0])
+    return rec_child(0)
 
 def has_modality(ast):
     if isinstance(ast, Token):  #Ignore Tokens
