@@ -21,4 +21,4 @@ ast_formula = parse(formula)
 initial_state = StateTree(spn)
 
 result = solve(initial_state, ast_formula)
-print(f"Formula \"{formula}\" is {result}")
+print(f"Final result: \"{formula}\" is {result}")

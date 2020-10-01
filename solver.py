@@ -1,6 +1,7 @@
 import ast_analyzer as ast
 import pnpro_interface as pnpro
 import storm_interface as storm
+from lark import Tree
 
 from state_tree import StateTree
 
@@ -87,9 +88,13 @@ def diamond(state, formula):
         model_check_result = storm.model_check_storm(jani_program, csl_formula)
         return bool(model_check_result)     ## Probability != 0 => True
 
-def box(state, formula):
-    #TODO: return not (negated_diamond)
-    return False
+def box(state, formula):    
+    # []A <=> !<> !A
+    exp = formula.children[-1]
+    negated_exp = Tree("negate", [exp])
+    negated_diamond = Tree("negate", [ Tree("diamond", formula.children[:-1] + [negated_exp]) ])
+
+    return solve(state, negated_diamond)    
 
 def loc_exp(state, formula):
     if not state.network:
