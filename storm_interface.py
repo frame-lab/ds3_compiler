@@ -1,5 +1,6 @@
 import stormpy
 import stormpy.gspn
+import sys
 
 import ast_analyzer as ast
 
@@ -34,10 +35,18 @@ def model_check_storm(program, formula):
     """
         
     print("Storm - Check Property: " + formula)
-    result = storm_check(program, formula)
-    print(f"\t\tResult: {result}\n")
-
-    return result
+    
+    try:
+        result = storm_check(program, formula)
+        print(f"\t\tResult: {result}\n")
+        return result
+    except:
+        error_message = sys.exc_info()[1].args[0]
+        if "Parsing error" in error_message:
+            print("Please, verify if all place names are correct.")
+            exit()
+        else:
+            raise
 
 def network_executes_and_stops(program, stop_condition=' \"deadlock\" '):
     """ Verifies if network executes and stops """
