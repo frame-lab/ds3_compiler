@@ -102,7 +102,7 @@ def loc_exp(state, formula):
         exit()
     else: 
         jani_program = storm.get_jani_program(state.network)
-        result = storm.model_check_storm(jani_program, formula)
+        result = storm.model_check_storm(jani_program, ast.ast_to_string(formula))
         return result
 
 def are_contradictions(t1, t2):
