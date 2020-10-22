@@ -26,7 +26,8 @@ def parser():
         diamond: "<" markup ";" subnet ">" _exp
         box: "[" markup ";" subnet "]" _exp
         
-        markup: marking
+        markup: INITIAL 
+            | marking
             | marking _markup
         _markup: "," marking _markup
             | "," marking
@@ -43,6 +44,7 @@ def parser():
         false: "false"
         loc_exp: /[a-zA-Z][a-zA-Z_0-9]*\s*(<=|>=|!=|<|>|=)\s*[\d]+/
 
+        INITIAL: "."
         ALL: "@"
         PATH: /(\/{0,1}(((\w)|(\.)|(\\\s))+\/)*((\w)|(\.)|(\\\s))+)|\//
         NAT: /[0-9]+/

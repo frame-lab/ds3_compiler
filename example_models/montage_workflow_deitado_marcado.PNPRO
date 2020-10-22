@@ -69,7 +69,7 @@
       <place name="P12_3" x="12.0" y="14.0"/>
       <place label-x="-1.5" label-y="1.0" name="P12_5" x="9.0" y="18.0"/>
       <place name="P12_4" x="12.0" y="18.0"/>
-      <place marking="1" name="P13_1" x="12.0" y="24.0"/>
+      <place name="P13_1" x="12.0" y="24.0"/>
       <place name="P13_2" x="12.0" y="28.0"/>
       <place name="P13_3" x="5.0" y="28.0"/>
       <place name="P14_3" x="12.0" y="34.0"/>

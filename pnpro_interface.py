@@ -38,9 +38,20 @@ def remove_transition(transition_name, root):
         edges.remove(arc)
 
 def set_markup(markup, root):
+    #Use initial markup
+    if markup.children[0] == ".":
+        return
+    
+    #Clean initial markup
+    clean_markup(root)
+
     markings = get_markings_from_markup(markup)    
     for node in markings:
         set_place_marking(node['place'], node['marking'], root)
+
+def clean_markup(root):
+    for place in root.findall(f".//place"):
+        place.attrib['marking'] = '0'
 
 def get_markings_from_markup(markup):
     markings = []
