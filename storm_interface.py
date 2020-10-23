@@ -6,36 +6,19 @@ import ast_analyzer as ast
 
 """ Storm Interface Module """
 
-def get_jani_program(path):
-    """ Receives SPN codified in JANI or PNPRO and returns a JANI Model """
-
-    if path.lower().endswith(".jani"):
-        jani_program, properties = stormpy.parse_jani_model(path)
-        return jani_program
-    
-    if path.lower().endswith(".pnpro"):
-        gspn_parser = stormpy.gspn.GSPNParser()
-        gspn = gspn_parser.parse(path)
-        jani_builder = stormpy.gspn.GSPNToJaniBuilder(gspn)
-        jani_program = jani_builder.build()
-        return jani_program
-    
-    print("Unsupported file format: {}".format(path))
-    exit()
-
-def model_check_storm(program, formula):
+def model_check_storm(network, formula):
     """ 
         Uses Storm Checker to verify DS3 formula
 
-        Program: Jani Program
+        Network: SPN codified in PNPRO or JANI
         Formula: String or AST Formula
-        Final States: Boolean
-
+        
         Returns boolean (quali) or float (quanti) result
     """
-        
-    print("Storm - Check Property: " + formula)
     
+    program = get_jani_program(network)    
+
+    print("Storm - Check Property: " + formula)
     try:
         result = storm_check(program, formula)
         print(f"\t\tResult: {result}\n")
@@ -48,9 +31,11 @@ def model_check_storm(program, formula):
         else:
             raise
 
-def network_executes_and_stops(program, stop_condition=' \"deadlock\" '):
+def network_executes_and_stops(network, stop_condition=' \"deadlock\" '):
     """ Verifies if network executes and stops """
     
+    program = get_jani_program(network)    
+
     #Stops?
     result = storm_check(program, f"P=? [true U ({stop_condition})]")
     if result == 0:
@@ -75,3 +60,20 @@ def storm_check(program, formula):
     result = results_for_all_states.at(initial_state)
     
     return result
+
+def get_jani_program(path):
+    """ Receives SPN codified in JANI or PNPRO and returns a JANI Model """
+
+    if path.lower().endswith(".jani"):
+        jani_program, properties = stormpy.parse_jani_model(path)
+        return jani_program
+    
+    if path.lower().endswith(".pnpro"):
+        gspn_parser = stormpy.gspn.GSPNParser()
+        gspn = gspn_parser.parse(path)
+        jani_builder = stormpy.gspn.GSPNToJaniBuilder(gspn)
+        jani_program = jani_builder.build()
+        return jani_program
+    
+    print("Unsupported file format: {}".format(path))
+    exit()
