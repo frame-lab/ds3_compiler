@@ -65,14 +65,11 @@ def diamond(state, formula):
     subnet = formula.children[1]
     exp = formula.children[2]
     
-    #TODO: generates unique dest path for SPNs so the generated spns are not lost
+    #TODO: generate unique dest path for SPNs
     updated_spn = "/app/temp/aux.PNPRO"
-
     pnpro.update_spn(markup, subnet, state.network, updated_spn)
-    
-    jani_program = storm.get_jani_program(updated_spn)
 
-    if not storm.network_executes_and_stops(jani_program):
+    if not storm.network_executes_and_stops(updated_spn):
         print("Network does not executes and stops. So modality is false\n")
         return False
 
@@ -85,7 +82,7 @@ def diamond(state, formula):
     else:
         csl_formula = f"P=? [true U ({ast.ast_to_string(exp)}) & (\"deadlock\")]"
 
-        model_check_result = storm.model_check_storm(jani_program, csl_formula)
+        model_check_result = storm.model_check_storm(updated_spn, csl_formula)
         return bool(model_check_result)     ## Probability != 0 => True
 
 def box(state, formula):    
@@ -97,13 +94,7 @@ def box(state, formula):
     return solve(state, negated_diamond)    
 
 def loc_exp(state, formula):
-    if not state.network:
-        print("Markup Expressions can't be resolved without an associated Stochastic Petri Net")
-        exit()
-    else: 
-        jani_program = storm.get_jani_program(state.network)
-        result = storm.model_check_storm(jani_program, ast.ast_to_string(formula))
-        return result
+    return storm.model_check_storm(state.network, ast.ast_to_string(formula))
 
 def are_contradictions(t1, t2):
     """ Detects if t1 and t2 are contradictions.
