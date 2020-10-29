@@ -83,7 +83,7 @@ def diamond(state, formula):
         csl_formula = f"P=? [true U ({ast.ast_to_string(exp)}) & (\"deadlock\")]"
 
         model_check_result = storm.model_check_storm(updated_spn, csl_formula)
-        return bool(model_check_result)     ## Probability != 0 => True
+        return model_check_result > 0
 
 def box(state, formula):    
     # []A <=> !<> !A
