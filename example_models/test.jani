@@ -1,0 +1,107 @@
+{
+    "actions": [],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "P2 <- (P2 - 1)",
+                                    "ref": "P2",
+                                    "value": {
+                                        "left": "P2",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "P3 <- (P3 + 1)",
+                                    "ref": "P3",
+                                    "value": {
+                                        "left": "P3",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "loc"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(P2 >= 1)",
+                        "exp": {
+                            "left": "P2",
+                            "op": "≥",
+                            "right": 1
+                        }
+                    },
+                    "location": "loc",
+                    "rate": {
+                        "comment": "(100 * (P2 / 1))",
+                        "exp": {
+                            "left": 100,
+                            "op": "*",
+                            "right": {
+                                "left": "P2",
+                                "op": "/",
+                                "right": 1
+                            }
+                        }
+                    }
+                }
+            ],
+            "initial-locations": [
+                "loc"
+            ],
+            "locations": [
+                {
+                    "name": "loc"
+                }
+            ],
+            "name": "gspn_automaton",
+            "variables": []
+        }
+    ],
+    "constants": [],
+    "features": [
+        "derived-operators"
+    ],
+    "jani-version": 1,
+    "name": "GSPN",
+    "properties": [],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "gspn_automaton"
+            }
+        ]
+    },
+    "type": "ctmc",
+    "variables": [
+        {
+            "initial-value": 3,
+            "name": "P0",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "P1",
+            "type": "int"
+        },
+        {
+            "initial-value": 3,
+            "name": "P2",
+            "type": "int"
+        },
+        {
+            "initial-value": 0,
+            "name": "P3",
+            "type": "int"
+        }
+    ]
+}

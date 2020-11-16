@@ -4,7 +4,7 @@
     <nodes>
       <place label-x="1.0" marking="3" name="P0" x="3.0" y="3.0"/>
       <place name="P1" x="3.0" y="11.0"/>
-      <transition delay="0.01" label-x="-1.5" label-y="1.0" name="T0" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="3.55" y="7.0"/>
+      <transition delay="0" label-x="-1.5" label-y="1.0" name="T0" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="3.55" y="7.0"/>
       <place label-x="1.0" marking="3" name="P2" x="12.0" y="3.0"/>
       <place name="P3" x="12.0" y="11.0"/>
       <transition delay="100" label-x="-1.5" label-y="1.0" name="T1" nservers-x="0.5" rotation="4.71238898038469" type="EXP" x="12.55" y="7.0"/>
